@@ -77,7 +77,6 @@ export default {
       // },
 
       fontSize: {
-        // Add your custom font sizes here
         "heading-xs": ["20pt"],
         "heading-s": ["24pt"],
         "heading-m": ["28pt"],
