@@ -14,7 +14,7 @@ export const ButtonPrimary = ({
   return (
     <button
       className={
-        " bg-brand-primary text-white px-l py-xs rounded-md border-0 duration-300 cursor-pointer active:bg-gray-primary " +
+        " bg-brand-primary text-white px-m py-xs rounded-md border-0 duration-300 cursor-pointer active:bg-gray-primary " +
         btnSize
       }
       type={type}
