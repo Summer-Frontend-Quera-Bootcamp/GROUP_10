@@ -10,13 +10,11 @@ export const ButtonPrimary = ({
   bigger,
   onClick,
 }: IButtonPrimary) => {
-  const btnSize = bigger ? "w-full" : "";
   return (
     <button
-      className={
-        " bg-brand-primary text-white px-m py-xs rounded-md border-0 duration-300 cursor-pointer active:bg-gray-primary " +
-        btnSize
-      }
+      className={`${
+        bigger && "w-full"
+      } bg-brand-primary text-white px-m py-xs rounded-md border-0 duration-300 cursor-pointer active:bg-gray-primary `}
       type={type}
       onClick={onClick}
     >
