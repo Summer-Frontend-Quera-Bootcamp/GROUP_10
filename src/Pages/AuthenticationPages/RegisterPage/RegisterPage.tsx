@@ -14,14 +14,16 @@ import { InputText } from "../../../Components/Ui/Inputs";
 //------ Zod Schema here ------//
 
 const schema = z.object({
-  username: z.string().min(3, { message: "Too short" }),
-  email: z.string().email({ message: "Invalid email" }),
+  username: z
+    .string()
+    .min(3, { message: "نام کامل حدافل باید ۳ کاراکتر باشد" }),
+  email: z.string().email({ message: "این ایمیل معتبر نیست" }),
   password: z
     .string()
-    .min(8, "Password must be at least 8 characters long")
-    .max(32, "Password cannot be longer than 32 characters"),
+    .min(8, "رمز عبور حداقل باید ۸ کاراکتر باشد")
+    .max(32, "رمز عبور نمیتواند بیشتر از ۳۲ کاراکتر باشد"),
   guideline: z.boolean().refine((value) => value === true, {
-    message: "Please accept the guidelines",
+    message: "لطفا مقررات را مطالعه و قبول کنید",
   }),
 });
 
