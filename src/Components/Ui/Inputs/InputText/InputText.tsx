@@ -5,9 +5,11 @@ interface IInputTextProps {
   name: string;
   type?: "email" | "password" | "text";
   placeHolder?: string;
+  value?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register: UseFormRegister<any>;
+  register?: UseFormRegister<any>;
   options?: RegisterOptions;
+  onChange?: () => void;
 }
 
 export const InputText = ({
@@ -15,6 +17,7 @@ export const InputText = ({
   type = "text",
   placeHolder,
   name,
+  value,
   options,
   register,
 }: IInputTextProps) => {
@@ -25,10 +28,10 @@ export const InputText = ({
       <input
         id={name}
         type={type}
-        defaultValue=""
+        value={value}
         placeholder={placeHolder}
         className="border border-gray-primary rounded-md p-xs my-xs w-full"
-        {...register(name, options)}
+        {...(register !== undefined && { ...register(name, options) })}
       />
     </div>
   );
