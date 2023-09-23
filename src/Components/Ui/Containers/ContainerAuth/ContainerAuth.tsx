@@ -1,6 +1,6 @@
 interface IContainerAuthProp {
   heading: string;
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 export const ContainerAuth = ({ heading, children }: IContainerAuthProp) => {
