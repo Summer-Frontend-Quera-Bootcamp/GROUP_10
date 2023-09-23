@@ -19,6 +19,7 @@ export const InputText = ({
   name,
   value,
   options,
+  onChange,
   register,
 }: IInputTextProps) => {
   return (
@@ -29,6 +30,7 @@ export const InputText = ({
         id={name}
         type={type}
         value={value}
+        onChange={onChange}
         placeholder={placeHolder}
         className="border border-gray-primary rounded-md p-xs my-xs w-full"
         {...(register !== undefined && { ...register(name, options) })}
