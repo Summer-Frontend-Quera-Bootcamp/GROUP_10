@@ -5,7 +5,7 @@ import AuthLayout from "../../../Layouts/AuthLayout";
 const ResetPasswordPage = () => {
   return (
     <AuthLayout>
-      <h1>Reset</h1>
+      <h1>ResetPassword</h1>
     </AuthLayout>
   );
 };
