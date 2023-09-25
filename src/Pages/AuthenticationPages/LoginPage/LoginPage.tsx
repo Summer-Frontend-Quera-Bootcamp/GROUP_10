@@ -1,9 +1,12 @@
 import AuthLayout from "../../../Layouts/AuthLayout";
+import { ContainerAuth } from "../../../Components/Ui/Containers";
 
 const Login = () => {
   return (
     <AuthLayout>
-      <h1>Login</h1>
+      <ContainerAuth heading="Hellow">
+        <div></div>
+      </ContainerAuth>
     </AuthLayout>
   );
 };
