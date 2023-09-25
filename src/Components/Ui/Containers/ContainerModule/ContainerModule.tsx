@@ -29,13 +29,13 @@ export const ContainerModule = ({
     <>
       {isOpen && (
         <div
-          className={`flex flex-col items-center ${width} rounded-m drop-shadow-2xl bg-white rounded-3xl p-m`}
+          className={`flex flex-col items-center ${width} rounded-m drop-shadow-2xl bg-white rounded-3xl p-m `}
         >
           <div className="w-full flex justify-between items-center mb-m">
             {onBack !== undefined ? (
               <IoArrowBackOutline
                 size="22"
-                className="text-gray-darker cursor-pointer delay-100 active:text-brand-primary hover:text-brand-primary"
+                className="text-gray-darker cursor-pointer duration-300 active:text-brand-primary hover:text-brand-primary"
                 onClick={onBack}
               />
             ) : (
@@ -44,7 +44,7 @@ export const ContainerModule = ({
             <h3 className=" font-extrabold text-[24px]">{heading}</h3>
             <IoClose
               size="22"
-              className="text-gray-darker cursor-pointer delay-100 active:text-red-primary hover:text-red-primary"
+              className="text-gray-darker cursor-pointer duration-300 active:text-red-primary hover:text-red-primary"
               onClick={handleClose}
             />
           </div>

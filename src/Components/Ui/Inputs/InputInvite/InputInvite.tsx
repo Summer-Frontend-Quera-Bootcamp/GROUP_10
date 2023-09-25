@@ -19,7 +19,7 @@ export const InputInvite = ({
       <button
         type="submit"
         onClick={onClick}
-        className="bg-brand-primary w-1/4 h-[40px] rounded-tl-md rounded-bl-md text-white"
+        className="bg-brand-primary w-1/4 h-[40px] rounded-tl-md rounded-bl-md text-white duration-200 active:bg-gray-primary"
       >
         ارسال
       </button>
