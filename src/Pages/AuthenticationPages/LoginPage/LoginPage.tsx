@@ -5,7 +5,9 @@ const Login = () => {
   return (
     <AuthLayout>
       <ContainerAuth heading="Hellow">
-        <div></div>
+        <div>
+          <h2>salam</h2>
+        </div>
       </ContainerAuth>
     </AuthLayout>
   );
