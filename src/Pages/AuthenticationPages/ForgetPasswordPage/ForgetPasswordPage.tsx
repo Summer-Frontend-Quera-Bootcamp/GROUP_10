@@ -1,6 +1,6 @@
 // forgot password component
 
-import AuthLayout from "../../../Layouts/AuthLayout";
+import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 
 const ForgetPass = () => {
   return (

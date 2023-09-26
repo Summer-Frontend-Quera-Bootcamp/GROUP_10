@@ -6,7 +6,7 @@ import "./App.css";
 import { RegisterPage } from "../Pages/AuthenticationPages";
 //import { LoginPage } from "../Pages/AuthenticationPages";
 //import { ForgetPassPage } from "../Pages/AuthenticationPages";
-//import ResetPassword from "../Pages/AuthenticationPages";
+//import {ResetPasswordPage} from "../Pages/AuthenticationPages";
 
 //-------------Welcome to The App-------------//
 

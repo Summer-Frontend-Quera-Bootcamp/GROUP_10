@@ -1,8 +1,7 @@
 // reset password component
+import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 
-import AuthLayout from "../../../Layouts/AuthLayout";
-
-const ResetPasswordPage = () => {
+const ResetPassword = () => {
   return (
     <AuthLayout>
       <h1>Reset</h1>
@@ -10,4 +9,4 @@ const ResetPasswordPage = () => {
   );
 };
 
-export default ResetPasswordPage;
+export default ResetPassword;
