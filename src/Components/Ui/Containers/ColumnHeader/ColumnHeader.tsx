@@ -1,5 +1,6 @@
 import "./styles.css";
 import { useState } from "react";
+import { useDetectClickOutside } from "react-detect-click-outside";
 
 import { FaPlus } from "react-icons/fa6";
 import { TfiMoreAlt } from "react-icons/tfi";
@@ -17,6 +18,7 @@ interface IColumnHeaderProps {
 }
 
 export const ColumnHeader = ({
+  color,
   name,
   count,
   onAdd,
@@ -25,22 +27,39 @@ export const ColumnHeader = ({
   onEdit,
 }: IColumnHeaderProps) => {
   const [moreDisplay, setMoreDisplay] = useState(false);
+  const ref = useDetectClickOutside({
+    onTriggered: () => {
+      setMoreDisplay(false);
+    },
+  });
 
   const handleMoreClick = () => {
-    console.log("click");
     setMoreDisplay(true);
   };
 
   return (
-    <div className="w-full h-[44px] bg-blue-primary relative rounded-2xl shadow-xl">
+    <div
+      ref={ref}
+      className={`
+      ${color === "red" && "bg-red-primary"}
+      ${color === "pink" && "bg-pink-primary"}
+      ${color === "grape" && "bg-grape-primary"}
+      ${color === "violet" && "bg-violet-primary"}
+      ${color === "indigo" && "bg-indigo-primary"}
+      ${color === "blue" && "bg-blue-primary"}
+      ${color === "cyan" && "bg-cyan-primary"}
+      ${color === "teal" && "bg-teal-primary"}
+      ${color === "brand" && "bg-brand-primary"}
+      ${color === "green" && "bg-green-primary"}
+      ${color === "lime" && "bg-lime-primary"}
+      ${color === "orange" && "bg-orange-primary"} 
+      w-full h-[44px] bg-blue-primary relative rounded-2xl shadow-xl`}
+    >
       <div
         id="parent"
         className="ease-in-out duration-300 w-full h-[44px] bg-white absolute top-[3px] rounded-2xl flex flex-row items-center justify-between px-s"
       >
-        <div
-          id="child"
-          className=" flex gap-xs text-gray-darker transition-opacity duration-300 ease-in-out"
-        >
+        <div id="child" className=" flex gap-xs text-gray-darker">
           <FaPlus onClick={onAdd} className="cursor-pointer" />
           <TfiMoreAlt onClick={handleMoreClick} className="cursor-pointer" />
         </div>
@@ -52,7 +71,7 @@ export const ColumnHeader = ({
         </div>
       </div>
       {moreDisplay && (
-        <div className="bg-gray-secondary w-[160px] h-[150px] absolute rounded-md left-[15px] top-[15px] shadow-xl text-right text-sm flex flex-col">
+        <div className="bg-gray-secondary w-[160px] h-[150px] absolute rounded-md left-[15px] top-[15px] shadow-xl text-right text-sm flex flex-col ">
           <button
             onClick={onEdit}
             className="flex flex-row-reverse items-center gap-xs w-full rounded-tr-md rounded-tl-md h-1/4 hover:bg-gray-300 px-xs"

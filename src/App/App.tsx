@@ -9,7 +9,6 @@ import {
   ButtonIcon,
   ButtonNewTask,
 } from "../Components/Ui/Buttons";
-import { InputInvite } from "../Components/Ui/Inputs";
 
 //-------------Welcome to The App-------------//
 
@@ -25,14 +24,20 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
         <ButtonColor onClick={() => {}} color="grape">
           test button
         </ButtonColor>
-        <ButtonNewTask onClick={() => {}} />
-        <ColumnHeader
-          onAdd={() => {}}
-          onMore={() => {}}
-          count={3}
-          name="Open"
-        />
-        <InputInvite onClick={() => {}}></InputInvite>
+        <div className="my-m">
+          <ButtonNewTask onClick={() => {}} />
+        </div>
+        <div className="my-m">
+          <ColumnHeader
+            onAdd={() => {}}
+            onArchive={() => {}}
+            onDelete={() => {}}
+            onEdit={() => {}}
+            color="grape"
+            count={3}
+            name="Open"
+          />
+        </div>
         <div className="text-center flex flex-col mb-m">
           <p> ▄▀▄─────▄▀▄</p>
           <p> ▄█░░▀▀▀▀▀░░█▄</p>
