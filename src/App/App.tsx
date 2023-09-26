@@ -4,7 +4,7 @@ import "./App.css";
 //--------Import Your Components Here!--------//
 
 import { ContainerModule } from "../Components/Ui/Containers";
-import { ButtonIcon } from "../Components/Ui/Buttons";
+import { ButtonColor, ButtonIcon } from "../Components/Ui/Buttons";
 import { InputInvite } from "../Components/Ui/Inputs";
 
 //-------------Welcome to The App-------------//
@@ -18,6 +18,9 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
         onClose={() => {}}
         onBack={() => {}}
       >
+        <ButtonColor onClick={() => {}} color="grape">
+          test button
+        </ButtonColor>
         <InputInvite onClick={() => {}}></InputInvite>
         <div className="text-center flex flex-col mb-m">
           <p> ▄▀▄─────▄▀▄</p>
@@ -25,7 +28,7 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
           <p> █░░░░░░░░░░░█</p>
           <p> █░░▀░░┬░░▀░░█</p>
         </div>
-        <ButtonIcon onClick={() => {}} useCase="share" bigger={true} />
+        <ButtonIcon onClick={() => {}} useCase="back" bigger={true} />
       </ContainerModule>
     </>
   );
