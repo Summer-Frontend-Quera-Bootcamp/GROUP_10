@@ -4,7 +4,11 @@ import "./App.css";
 //--------Import Your Components Here!--------//
 
 import { ContainerModule } from "../Components/Ui/Containers";
-import { ButtonColor, ButtonIcon } from "../Components/Ui/Buttons";
+import {
+  ButtonColor,
+  ButtonIcon,
+  ButtonNewTask,
+} from "../Components/Ui/Buttons";
 import { InputInvite } from "../Components/Ui/Inputs";
 
 //-------------Welcome to The App-------------//
@@ -21,6 +25,7 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
         <ButtonColor onClick={() => {}} color="grape">
           test button
         </ButtonColor>
+        <ButtonNewTask onClick={() => {}} />
         <InputInvite onClick={() => {}}></InputInvite>
         <div className="text-center flex flex-col mb-m">
           <p> ▄▀▄─────▄▀▄</p>

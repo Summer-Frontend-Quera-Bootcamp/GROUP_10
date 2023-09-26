@@ -4,9 +4,10 @@
 import { ButtonPrimary } from "./ButtonPrimary/ButtonPrimary";
 import { ButtonIcon } from "./ButtonIcon/ButtonIcon";
 import { ButtonColor } from "./ButtonColor/ButtonColor";
+import { ButtonNewTask } from "./ButtonNewTask/ButtonNewTask";
 
 //
 //-----------------------------------------
 //
 
-export { ButtonPrimary, ButtonIcon, ButtonColor };
+export { ButtonPrimary, ButtonIcon, ButtonColor, ButtonNewTask };
