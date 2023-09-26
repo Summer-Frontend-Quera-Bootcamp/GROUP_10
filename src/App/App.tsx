@@ -3,7 +3,7 @@ import "./App.css";
 
 //--------Import Your Components Here!--------//
 
-import { ContainerModule } from "../Components/Ui/Containers";
+import { ColumnHeader, ContainerModule } from "../Components/Ui/Containers";
 import {
   ButtonColor,
   ButtonIcon,
@@ -26,6 +26,12 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
           test button
         </ButtonColor>
         <ButtonNewTask onClick={() => {}} />
+        <ColumnHeader
+          onAdd={() => {}}
+          onMore={() => {}}
+          count={3}
+          name="Open"
+        />
         <InputInvite onClick={() => {}}></InputInvite>
         <div className="text-center flex flex-col mb-m">
           <p> ▄▀▄─────▄▀▄</p>

@@ -3,9 +3,10 @@
 
 import { ContainerAuth } from "./ContainerAuth/ContainerAuth";
 import { ContainerModule } from "./ContainerModule/ContainerModule";
+import { ColumnHeader } from "./ColumnHeader/ColumnHeader";
 
 //
 //---------------------------------
 //
 
-export { ContainerAuth, ContainerModule };
+export { ContainerAuth, ContainerModule, ColumnHeader };
