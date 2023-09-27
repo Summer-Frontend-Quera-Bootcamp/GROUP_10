@@ -8,7 +8,20 @@ import { FiEdit } from "react-icons/fi";
 import { PiArchiveTray } from "react-icons/pi";
 import { GoTrash } from "react-icons/go";
 interface IColumnHeaderProps {
-  color: string;
+  color:
+    | "red"
+    | "pink"
+    | "grape"
+    | "violet"
+    | "indigo"
+    | "blue"
+    | "cyan"
+    | "teal"
+    | "brand"
+    | "green"
+    | "yellow"
+    | "lime"
+    | "orange";
   name: string;
   count: number;
   onAdd: () => void;
@@ -49,6 +62,7 @@ export const ColumnHeader = ({
       ${color === "blue" && "bg-blue-primary"}
       ${color === "cyan" && "bg-cyan-primary"}
       ${color === "teal" && "bg-teal-primary"}
+      ${color === "yellow" && "bg-yellow-primary"}
       ${color === "brand" && "bg-brand-primary"}
       ${color === "green" && "bg-green-primary"}
       ${color === "lime" && "bg-lime-primary"}

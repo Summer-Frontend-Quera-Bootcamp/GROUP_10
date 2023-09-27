@@ -1,3 +1,5 @@
+import { FiFlag } from "react-icons/fi";
+
 import { SimpleTag } from "../../Tags/SimpleTag/SimpleTag";
 
 interface tags {
@@ -13,6 +15,7 @@ interface tags {
     | "teal"
     | "brand"
     | "green"
+    | "yellow"
     | "lime"
     | "orange";
 }
@@ -49,10 +52,26 @@ export const ContainerColTask = ({
       </div>
       <p>{taskTitle}</p>
       <div>
-        {priority === "important" && <span></span>}
-        {priority === "high" && <span></span>}
-        {priority === "mid" && <span></span>}
-        {priority === "low" && <span></span>}
+        {priority === "important" && (
+          <span className="text-red-primary">
+            <FiFlag size="20" />
+          </span>
+        )}
+        {priority === "high" && (
+          <span className="text-yellow-primary">
+            <FiFlag size="20" />
+          </span>
+        )}
+        {priority === "mid" && (
+          <span>
+            <FiFlag size="20" />
+          </span>
+        )}
+        {priority === "low" && (
+          <span>
+            <FiFlag size="20" />
+          </span>
+        )}
         <p>{date}</p>
         <div>
           {taskStatus.tasksDone} / {taskStatus.allTasks}

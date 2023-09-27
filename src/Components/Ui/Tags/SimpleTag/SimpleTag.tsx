@@ -11,6 +11,7 @@ interface ISimpleTagProps {
     | "teal"
     | "brand"
     | "green"
+    | "yellow"
     | "lime"
     | "orange";
 }
@@ -26,6 +27,7 @@ export const SimpleTag = ({ title, color }: ISimpleTagProps) => {
   ${color === "blue" && "bg-blue-secondary text-blue-primary"}
   ${color === "cyan" && "bg-cyan-secondary text-cyan-primary"}
   ${color === "teal" && "bg-teal-secondary text-teal-primary"}
+  ${color === "yellow" && "bg-yellow-secondary text-yellow-primary"}
   ${color === "brand" && "bg-brand-secondary text-brand-primary"}
   ${color === "green" && "bg-green-secondary text-green-primary"}
   ${color === "lime" && "bg-lime-secondary text-lime-primary"}

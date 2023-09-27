@@ -12,6 +12,7 @@ interface IButtonColor {
     | "teal"
     | "brand"
     | "green"
+    | "yellow"
     | "lime"
     | "orange";
 }
@@ -28,6 +29,7 @@ export const ButtonColor = ({ children, onClick, color }: IButtonColor) => {
     ${color === "blue" && "bg-blue-primary text-blue-secondary"}
     ${color === "cyan" && "bg-cyan-primary text-cyan-secondary"}
     ${color === "teal" && "bg-teal-primary text-teal-secondary"}
+    ${color === "yellow" && "bg-yellow-primary text-yellow-secondary"}
     ${color === "brand" && "bg-brand-primary text-brand-secondary"}
     ${color === "green" && "bg-green-primary text-green-secondary"}
     ${color === "lime" && "bg-lime-primary text-lime-secondary"}
