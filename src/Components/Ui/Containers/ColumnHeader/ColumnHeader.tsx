@@ -74,26 +74,26 @@ export const ColumnHeader = ({
         <div className="bg-gray-secondary w-[160px] h-[150px] absolute rounded-md left-[15px] top-[15px] shadow-xl text-right text-sm flex flex-col ">
           <button
             onClick={onEdit}
-            className="flex flex-row-reverse items-center gap-xs w-full rounded-tr-md rounded-tl-md h-1/4 hover:bg-gray-300 px-xs"
+            className="flex flex-row-reverse items-center gap-xs w-full rounded-tr-md rounded-tl-md h-1/4 hover:bg-gray-300 hover:text-orange-primary px-xs"
           >
             <FiEdit size="19" /> ویرایش نام ستون
           </button>
           <button
             onClick={onAdd}
-            className="flex flex-row-reverse items-center gap-xs w-full h-1/4 hover:bg-gray-300 px-xs"
+            className="flex flex-row-reverse items-center gap-xs w-full h-1/4 hover:bg-gray-300 hover:text-green-primary px-xs"
           >
             <FaPlus size="16" className="pr-[4px]" /> افزودن تسک
           </button>
           <button
             onClick={onArchive}
-            className="flex flex-row-reverse items-center gap-xs w-full h-1/4 hover:bg-gray-300 px-xs"
+            className="flex flex-row-reverse items-center gap-xs w-full h-1/4 hover:bg-gray-300 hover:text-blue-primary px-xs"
           >
             <PiArchiveTray size="20" />
             آرشیو تمام تسک‌ها
           </button>
           <button
             onClick={onDelete}
-            className="flex flex-row-reverse items-center gap-xs w-full rounded-bl-md rounded-br-md h-1/4 hover:bg-gray-300 px-xs"
+            className="flex flex-row-reverse items-center gap-xs w-full rounded-bl-md rounded-br-md h-1/4 hover:bg-gray-300 hover:text-red-primary px-xs"
           >
             <GoTrash size="19" />
             حذف ستون
