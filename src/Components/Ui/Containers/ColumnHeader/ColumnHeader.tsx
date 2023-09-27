@@ -1,4 +1,4 @@
-import "./styles.css";
+// import "./styles.css";
 import { useState } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 
@@ -67,23 +67,19 @@ export const ColumnHeader = ({
       ${color === "green" && "bg-green-primary"}
       ${color === "lime" && "bg-lime-primary"}
       ${color === "orange" && "bg-orange-primary"} 
-      w-full h-[44px] bg-blue-primary relative rounded-2xl shadow-xl`}
+      w-full h-[44px] bg-blue-primary pt-[4px] rounded-2xl shadow-xl`}
     >
-      <div
-        id="parent"
-        className="ease-in-out duration-300 w-full h-[44px] bg-white absolute top-[3px] rounded-2xl flex flex-row items-center justify-between px-s"
-      >
-        <div
-          id="child"
-          className="opacity-0 flex gap-xs text-gray-darker relative transition-opacity duration-500 ease-in-out"
-        >
-          <FaPlus id="plus" onClick={onAdd} className="cursor-pointer" />
+      <div className="group ease-in-out duration-300 w-full h-[44px] bg-white rounded-2xl flex flex-row items-center justify-between px-s">
+        <div className="group-hover:opacity-100 opacity-0 flex flex-row-reverse gap-xs text-gray-darker relative transition-opacity duration-500 ease-in-out">
           <TfiMoreAlt onClick={handleMoreClick} className="cursor-pointer" />
-          <span
-            id="context"
-            className=" w-[100px] text-sm text-white p-xs rounded-xl bg-gray-darker absolute bottom-s -right-s opacity-0 transition-opacity duration-500 ease-in-out delay-500"
-          >
-            افزودن تسک
+          <span className="group/plus">
+            <FaPlus id="plus" onClick={onAdd} className="cursor-pointer" />
+            <span
+              id="context"
+              className="group-hover/plus:opacity-100 w-[100px] text-sm text-white p-xs rounded-xl bg-gray-darker absolute bottom-s -right-s opacity-0 transition-opacity duration-500 ease-in-out delay-500"
+            >
+              افزودن تسک
+            </span>
           </span>
         </div>
         <div className="flex gap-xs ml-auto">

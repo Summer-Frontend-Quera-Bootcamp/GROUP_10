@@ -1,7 +1,0 @@
-#parent:hover > #child {
-  opacity: 1;
-}
-
-#plus:hover ~ #context {
-  opacity: 1;
-}

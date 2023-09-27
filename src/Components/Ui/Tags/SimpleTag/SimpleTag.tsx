@@ -17,7 +17,7 @@ interface ISimpleTagProps {
 }
 export const SimpleTag = ({ title, color }: ISimpleTagProps) => {
   return (
-    <span
+    <div
       className={`
   ${color === "red" && "bg-red-secondary text-red-primary"}
   ${color === "pink" && "bg-pink-secondary text-pink-primary"}
@@ -32,9 +32,9 @@ export const SimpleTag = ({ title, color }: ISimpleTagProps) => {
   ${color === "green" && "bg-green-secondary text-green-primary"}
   ${color === "lime" && "bg-lime-secondary text-lime-primary"}
   ${color === "orange" && "bg-orange-secondary text-orange-primary"} 
-  rounded-full`}
+  rounded-full px-xs w-fit mx-[2px] font-extrabold`}
     >
-      {title}
-    </span>
+      <p> {title}</p>
+    </div>
   );
 };
