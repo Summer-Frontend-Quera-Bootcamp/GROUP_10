@@ -59,9 +59,18 @@ export const ColumnHeader = ({
         id="parent"
         className="ease-in-out duration-300 w-full h-[44px] bg-white absolute top-[3px] rounded-2xl flex flex-row items-center justify-between px-s"
       >
-        <div id="child" className=" flex gap-xs text-gray-darker">
-          <FaPlus onClick={onAdd} className="cursor-pointer" />
+        <div
+          id="child"
+          className="opacity-0 flex gap-xs text-gray-darker relative transition-opacity duration-500 ease-in-out"
+        >
+          <FaPlus id="plus" onClick={onAdd} className="cursor-pointer" />
           <TfiMoreAlt onClick={handleMoreClick} className="cursor-pointer" />
+          <span
+            id="context"
+            className=" w-[100px] text-sm text-white p-xs rounded-xl bg-gray-darker absolute bottom-s -right-s opacity-0 transition-opacity duration-500 ease-in-out delay-500"
+          >
+            افزودن تسک
+          </span>
         </div>
         <div className="flex gap-xs ml-auto">
           <span className="bg-gray-secondary text-lg px-xs rounded-full">
