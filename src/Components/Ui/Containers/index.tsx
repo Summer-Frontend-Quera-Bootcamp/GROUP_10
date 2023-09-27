@@ -4,9 +4,10 @@
 import { ContainerAuth } from "./ContainerAuth/ContainerAuth";
 import { ContainerModule } from "./ContainerModule/ContainerModule";
 import { ColumnHeader } from "./ColumnHeader/ColumnHeader";
+import { ContainerColTask } from "./ContaineColTask/ContainerColTask";
 
 //
 //---------------------------------
 //
 
-export { ContainerAuth, ContainerModule, ColumnHeader };
+export { ContainerAuth, ContainerModule, ColumnHeader, ContainerColTask };
