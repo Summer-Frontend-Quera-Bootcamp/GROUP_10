@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 
-interface IContainerModuleProp {
+interface IContainerModalProp {
   heading: string;
   width?: string;
   children: React.ReactNode;
@@ -11,13 +11,13 @@ interface IContainerModuleProp {
   onClose: () => void;
 }
 
-export const ContainerModule = ({
+export const ContainerModal = ({
   heading,
   width = "w-[500px]",
   children,
   onBack,
   onClose,
-}: IContainerModuleProp) => {
+}: IContainerModalProp) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
