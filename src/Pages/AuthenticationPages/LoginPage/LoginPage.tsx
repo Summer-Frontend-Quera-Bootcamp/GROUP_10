@@ -1,4 +1,4 @@
-import AuthLayout from "../../../Layouts/AuthLayout";
+import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 
 const Login = () => {
   return (

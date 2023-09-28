@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 //------ Other Components -----//
 
-import AuthLayout from "../../../Layouts/AuthLayout";
+import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 import { ButtonPrimary } from "../../../Components/Ui/Buttons";
 import { ContainerAuth } from "../../../Components/Ui/Containers";
 import { InputText } from "../../../Components/Ui/Inputs";
