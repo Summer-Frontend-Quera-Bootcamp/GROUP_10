@@ -1,10 +1,10 @@
 import { PropsWithChildren } from "react";
 import "./App.css";
-import { ColumnHeader, ContainerColTask } from "../Components/Ui/Containers";
+import { ColumnHeader } from "../Components/Ui/Containers";
 
 //--------Import Your Components Here!--------//
 
-import { ColumnHeader, ContainerColTask } from "../Components/Ui/Containers";
+import { ContainerColTask } from "../Components/Ui/Containers";
 
 //-------------Welcome to The App-------------//
 
