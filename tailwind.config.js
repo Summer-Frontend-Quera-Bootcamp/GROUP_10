@@ -57,6 +57,10 @@ export default {
           primary: "#fd7e14",
           secondary: "#ffe8cc",
         },
+        yellow: {
+          primary: "#FAB005",
+          secondary: "#FFF3BF",
+        },
       },
 
       // fontSize: {
