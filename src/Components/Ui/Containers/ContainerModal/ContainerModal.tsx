@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDetectClickOutside } from "react-detect-click-outside";
 
 import { IoArrowBackOutline } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
@@ -20,6 +21,13 @@ export const ContainerModal = ({
 }: IContainerModalProp) => {
   const [isOpen, setIsOpen] = useState(true);
 
+  const ref = useDetectClickOutside({
+    onTriggered: () => {
+      setIsOpen(true);
+      onClose();
+    },
+  });
+
   const handleClose = () => {
     setIsOpen(false);
     onClose();
@@ -29,6 +37,7 @@ export const ContainerModal = ({
     <>
       {isOpen && (
         <div
+          ref={ref}
           className={`flex flex-col items-center ${width} rounded-m drop-shadow-2xl bg-white rounded-3xl p-m `}
         >
           <div className="w-full flex justify-between items-center mb-m">
