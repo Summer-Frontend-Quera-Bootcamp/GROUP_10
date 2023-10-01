@@ -23,7 +23,7 @@ export const FlagSelecter = ({ onData }: IFlagSelecterProps) => {
             handleClick(4);
           }}
         >
-          <FiFlag size="19" className="text-red-primary" /> ویرایش نام ستون
+          <FiFlag size="19" className="text-red-primary" /> فوری
         </button>
         <button
           className="flex flex-row-reverse items-center gap-xs w-full h-1/5 hover:bg-gray-300 text-body-m px-xs"
@@ -31,7 +31,7 @@ export const FlagSelecter = ({ onData }: IFlagSelecterProps) => {
             handleClick(3);
           }}
         >
-          <FiFlag size="19" className="text-orange-primary" /> افزودن تسک
+          <FiFlag size="19" className="text-orange-primary" /> بالا
         </button>
         <button
           className="flex flex-row-reverse items-center gap-xs w-full h-1/5 hover:bg-gray-300 text-body-m px-xs"
@@ -40,7 +40,7 @@ export const FlagSelecter = ({ onData }: IFlagSelecterProps) => {
           }}
         >
           <FiFlag size="19" className="text-blue-primary" />
-          آرشیو تمام تسک‌ها
+          متوسط
         </button>
         <button
           className="flex flex-row-reverse items-center gap-xs w-full rounded-bl-md rounded-br-md h-1/5 hover:bg-gray-300 text-body-m px-xs"
@@ -49,7 +49,7 @@ export const FlagSelecter = ({ onData }: IFlagSelecterProps) => {
           }}
         >
           <FiFlag size="19" className="text-lime-primary" />
-          حذف ستون
+          پایین
         </button>
         <button
           className="flex flex-row-reverse items-center gap-xs w-full rounded-bl-md rounded-br-md h-1/5 hover:bg-gray-300 text-body-m px-xs"
@@ -58,7 +58,7 @@ export const FlagSelecter = ({ onData }: IFlagSelecterProps) => {
           }}
         >
           <IoClose size="19" className="text-red-primary" />
-          حذف ستون
+          حذف اولویت
         </button>
       </div>
     )
