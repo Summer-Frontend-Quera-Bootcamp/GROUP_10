@@ -3,11 +3,10 @@ import "./App.css";
 
 //--------Import Your Components Here!--------//
 
-import { RegisterPage } from "../Pages/AuthenticationPages";
 import BoardLayout from "../Layouts/BoardLayout/BoardLayout";
+import { ResetPasswordPage } from "../Pages/AuthenticationPages";
 //import { LoginPage } from "../Pages/AuthenticationPages";
 //import { ForgetPassPage } from "../Pages/AuthenticationPages";
-//import {ResetPasswordPage} from "../Pages/AuthenticationPages";
 
 //-------------Welcome to The App-------------//
 
@@ -15,11 +14,11 @@ interface IPropsApp extends PropsWithChildren {}
 const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
     <>
-      <BoardLayout></BoardLayout>
+      {/* <BoardLayout /> */}
       {/* <RegisterPage /> */}
       {/* <ForgetPassPage /> */}
       {/* <LoginPage /> */}
-      {/* <ResetPasswordPage /> */}
+      <ResetPasswordPage />
     </>
   );
 };

@@ -1,41 +1,88 @@
-import { Fragment, PropsWithChildren, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  MouseEvent,
+  Fragment,
+  PropsWithChildren,
+  useState,
+} from "react";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import { FiPlusSquare } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
 import ProjectTitle from "../../Components/Ui/Titles/ProjectTitle/ProjectTitle";
 import { ContainerModal } from "../../Components/Ui/Containers/ContainerModal/ContainerModal";
-import { InputText } from "../../Components/Ui/Inputs";
 import { ButtonPrimary } from "../../Components/Ui/Buttons";
-import { useDetectClickOutside } from "react-detect-click-outside";
-
+import { CiNoWaitingSign } from "react-icons/ci";
 interface IBoardLayout extends PropsWithChildren {}
 const BoardLayout = ({ children }: IBoardLayout): JSX.Element => {
-  const [workspaceData, setWorkSpaceData] = useState({
+  interface IWorkSpaceData {
+    name: string | undefined;
+    color: string | undefined;
+    members: string[] | undefined;
+  }
+  const [workspaceData, setWorkSpaceData] = useState<
+    Partial<IWorkSpaceData> | undefined
+  >({
     name: "",
     color: "",
-    memebrs: [],
+    // memebrs: [],
   });
 
+  //  TODO
+  const addWorkSpaceHandler = () => {
+    // if (workspaceData.name.length > 4) {
+    //   setDisplayNameModal(false);
+    //   setDisplayColorModal(true);
+    //   // setWorkSpaceData((prevState) => ({ ...prevState, name: "" }));
+    // }
+    setDisplayNameModal(false);
+    setDisplayColorModal(true);
+    console.log(workspaceData);
+  };
+  const addWorkSpaceChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setWorkSpaceData((prevState) => ({ ...prevState, name: e.target.value }));
+    console.log(workspaceData);
+  };
   const [accordionStatus, setAccordionStatus] = useState<Boolean>(false);
-  const [showModal, setShowModal] = useState(false);
-  const [displayWorkSpaceNameeModal, setDisplayWorkSpaceNameModal] =
+  const [displayNameModal, setDisplayNameModal] = useState<Boolean>(false);
+  const [displayColorModal, setDisplayColorModal] = useState<Boolean>(false);
+  const [displayFinalWorkSpaceDataModal, setDisplayFinalWorkSpaceDataModal] =
     useState<Boolean>(false);
 
-  const [displayWorkSpaceColorModal, setDisplayWorkSpaceColorModal] =
-    useState<Boolean>(false);
-
-  const colorModalRef = useDetectClickOutside({
-    onTriggered: () => {
-      setDisplayWorkSpaceColorModal(false);
-    },
-    disableClick: true,
-  });
-
+  const buttonsColor: string[] = [
+    "default",
+    "indigo",
+    "blue",
+    "cyan",
+    "teal",
+    "brand",
+    "green",
+    "lime",
+    "yellow",
+    "orange",
+    "red",
+    "pink",
+    "grape",
+    "violet",
+  ];
+  const selectColorHandler = (event: MouseEvent<HTMLButtonElement>) => {
+    const target = event.currentTarget.dataset.color;
+    setWorkSpaceData((prevData) => ({
+      ...prevData,
+      color: target ? target : "default",
+    }));
+    console.log(workspaceData);
+  };
   return (
     <>
       <div
         className={`grid grid-cols-4 transition duration-200
-        ${showModal ? "blur-sm backdrop-contrast-50 " : ""}`}
+        ${
+          displayNameModal ||
+          displayColorModal ||
+          displayFinalWorkSpaceDataModal
+            ? "blur-sm backdrop-contrast-50 "
+            : ""
+        }`}
       >
         <div className="grid col-span-3 grid-rows-2 pt-xl ps-xl h-screen">
           <div>navbar</div>
@@ -81,7 +128,7 @@ const BoardLayout = ({ children }: IBoardLayout): JSX.Element => {
               </div>
               <div>
                 <button
-                  onClick={() => setShowModal(true)}
+                  onClick={() => setDisplayNameModal(true)}
                   className="flex items-center justify-center text-black bg-gray-100 hover:bg-gray-300 transition  rounded-md w-transparent border-1 border-brand-primary p-2.5 text-body-sm my-xs w-full"
                 >
                   ساختن اسپیس جدید
@@ -131,21 +178,102 @@ const BoardLayout = ({ children }: IBoardLayout): JSX.Element => {
         </Fragment>
       </div>
 
-      {showModal && (
+      {displayNameModal && (
         <div className="absolute inset-x-1/3 inset-y-1/4">
           <ContainerModal
             heading="ساختن ورک اسپیس جدید"
-            onClose={() => setDisplayWorkSpaceNameModal(false)}
+            onClose={() => setDisplayNameModal(false)}
           >
             <div className="mt-l">
-              <InputText label="نام ورک اسپیس" name="workSpaceName" />
+              <div className="flex flex-col text-right">
+                <label className="text-right" htmlFor="name">
+                  نام ورک اسپیس
+                </label>
+                <input
+                  name="name"
+                  type="text"
+                  value={workspaceData?.name}
+                  onChange={(e) => {
+                    addWorkSpaceChangeHandler(e);
+                  }}
+                  className="border border-gray-primary rounded-md p-xs my-xs w-full"
+                />
+              </div>
             </div>
             <div className=" mt-l">
+              <ButtonPrimary bigger={true} onClick={addWorkSpaceHandler}>
+                ادامه
+              </ButtonPrimary>
+            </div>
+          </ContainerModal>
+        </div>
+      )}
+
+      {displayColorModal && (
+        <div className="absolute inset-x-1/3 inset-y-1/4">
+          <ContainerModal
+            heading="انتخاب رنگ ورک اسپیس"
+            onClose={() => {
+              setDisplayColorModal(false);
+              setWorkSpaceData((prevState) => ({ ...prevState, name: "" }));
+            }}
+            onBack={() => {
+              setDisplayNameModal(true);
+              setDisplayColorModal(false);
+            }}
+          >
+            <div className="flex flex-row-reverse mt-l">
+              <div
+                className={`bg-${
+                  workspaceData?.color === "default" ||
+                  workspaceData?.color === ""
+                    ? "brand"
+                    : workspaceData?.color
+                }-primary flex justify-center items-center w-16 h-16 p-2 rounded-lg`}
+              >
+                <span className="text-heading-s mx-1 font-extrabold text-white">
+                  ط
+                </span>
+                <span className="text-heading-s mx-1 font-extrabold text-white">
+                  ت
+                </span>
+              </div>
+              <div className="me-s flex flex-col items-end">
+                <label className="text-body-s font-normal">رنگ ورک اسپیس</label>
+                <div className="flex mt-s flex-wrap gap-y-3.5 items-center flex-row-reverse">
+                  {buttonsColor &&
+                    buttonsColor.map((color) => (
+                      <button
+                        key={color}
+                        data-color={color}
+                        onClick={selectColorHandler}
+                        className={`w-5 h-5 mx-2 flex items-center justify-center rounded-lg bg-${color}-primary ${
+                          color === workspaceData?.color &&
+                          color !== "default" &&
+                          "w-7 h-7 rounded-xl"
+                        }  ${color === "default" && "text-xl"}`}
+                      >
+                        {color === "default" ? (
+                          <CiNoWaitingSign />
+                        ) : (
+                          <span
+                            className={`${
+                              color === workspaceData?.color &&
+                              "w-3.5 h-3.5 rounded-full bg-white z-10"
+                            }`}
+                          ></span>
+                        )}
+                      </button>
+                    ))}
+                </div>
+              </div>
+            </div>
+            <div className="px-s mt-10">
               <ButtonPrimary
                 bigger={true}
                 onClick={() => {
-                  setDisplayWorkSpaceNameModal(false);
-                  setDisplayWorkSpaceColorModal(true);
+                  setDisplayColorModal(false);
+                  setDisplayFinalWorkSpaceDataModal(true);
                 }}
               >
                 ادامه
@@ -155,25 +283,51 @@ const BoardLayout = ({ children }: IBoardLayout): JSX.Element => {
         </div>
       )}
 
-      {displayWorkSpaceColorModal && (
-        <div className="absolute inset-x-1/3 inset-y-1/4" ref={colorModalRef}>
+      {displayFinalWorkSpaceDataModal && (
+        <div className="absolute inset-x-1/3 inset-y-1/4">
           <ContainerModal
-            heading="انتخاب رنگ ورک اسپیس"
+            heading="مرور اطلاعات"
             onClose={() => {
-              setDisplayWorkSpaceColorModal(false);
+              setDisplayFinalWorkSpaceDataModal(false);
             }}
             onBack={() => {
-              setDisplayWorkSpaceNameModal(true);
-              setDisplayWorkSpaceColorModal(false);
+              setDisplayColorModal(true);
+              setDisplayFinalWorkSpaceDataModal(false);
             }}
           >
-            <div>test</div>
+            <div className="border border-gray-400 flex flex-col gap-7 border-black rounded-lg px-3 py-4 mt-xl">
+              <div className="flex justify-between flex-row-reverse text-body-m font-extrabold">
+                <p>نام ورک اسپیس</p>
+                <span>{workspaceData?.name}</span>
+              </div>
+              <div className="flex justify-between flex-row-reverse">
+                <p className=" text-body-m font-extrabold">رنگ ورک اسپیس</p>
+                {workspaceData?.color === "default" ? (
+                  <CiNoWaitingSign />
+                ) : (
+                  <label
+                    className={`w-4 h-4 rounded-sm bg-${workspaceData?.color}-primary`}
+                  ></label>
+                )}
+              </div>
+              <div className="flex justify-between flex-row-reverse">
+                <p className=" text-body-m font-extrabold">اعضا</p>
+                <span>khodam</span>
+              </div>
+            </div>
+            <div className="px-s mt-10">
+              <ButtonPrimary
+                bigger={true}
+                onClick={() => {
+                  console.log(workspaceData);
+                }}
+              >
+                ساختن ورک اسپیس
+              </ButtonPrimary>
+            </div>
           </ContainerModal>
         </div>
       )}
-      <ContainerModal heading="1" onClose={() => {}}>
-        test
-      </ContainerModal>
     </>
   );
 };

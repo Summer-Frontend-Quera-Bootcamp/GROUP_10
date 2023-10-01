@@ -23,6 +23,7 @@ export const ContainerModal = ({
   const ref = useDetectClickOutside({
     onTriggered: () => {
       setIsOpen(false);
+      onClose();
     },
     disableClick: true,
   });
