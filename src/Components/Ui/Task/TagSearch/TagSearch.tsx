@@ -2,7 +2,7 @@ import { BiSearch } from "react-icons/bi";
 import { SimpleTag, TagEdit } from "../../Tags";
 import { useRef, useState } from "react";
 import { TfiMoreAlt } from "react-icons/tfi";
-import { useDetectClickOutside } from "react-detect-click-outside";
+import { useClickAway } from "@uidotdev/usehooks";
 
 interface tag {
   title: string;
@@ -52,10 +52,8 @@ export const TagSearch = () => {
       }
     })
   );
-  const ref = useDetectClickOutside({
-    onTriggered: () => {
-      setIsOpen(false);
-    },
+  const ref = useClickAway<HTMLDivElement>(() => {
+    setIsOpen(false);
   });
   const inputRef = useRef<HTMLInputElement>(null);
 
