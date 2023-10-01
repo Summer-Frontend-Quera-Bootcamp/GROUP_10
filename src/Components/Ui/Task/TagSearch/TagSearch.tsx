@@ -62,8 +62,14 @@ export const TagSearch = ({ onData }: Props) => {
 
   const handleEdit = (text: string) => {
     tags.forEach((tag: tag) => {
-      if (tag.title === tagClick.title) {
-        tag.title = text.trim();
+      if (tag === tagClick) {
+        const trimmedText = text.trim();
+        const tagExists = tags.some(
+          (existingTag) => existingTag.title === trimmedText
+        );
+        if (!tagExists) {
+          tag.title = trimmedText;
+        }
       }
     });
     setShowMore(false);
