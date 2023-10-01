@@ -22,10 +22,12 @@ interface tag {
     | "orange";
 }
 
-type tags = tag[];
+interface Props {
+  onData: (data: tag[]) => void;
+}
 
-export const TagSearch = () => {
-  const [tags, setTags] = useState<tags>([
+export const TagSearch = ({ onData }: Props) => {
+  const [tags, setTags] = useState<tag[]>([
     { title: "riazi", color: "yellow" },
     { title: "shimi", color: "red" },
     { title: "armaan", color: "lime" },
@@ -38,14 +40,14 @@ export const TagSearch = () => {
     { title: "code", color: "violet" },
   ]);
 
-  const [selectedTags, setSelectedTags] = useState<tags>([]);
+  const [selectedTags, setSelectedTags] = useState<tag[]>([]);
   const [isOpen, setIsOpen] = useState(true);
   const [tagClick, setTagClick] = useState<tag>({
     title: "test",
     color: "orange",
   });
   const [showMore, setShowMore] = useState(false);
-  const [searchTag, setSearchTag] = useState<tags>(
+  const [searchTag, setSearchTag] = useState<tag[]>(
     tags.filter((tag: tag) => {
       if (!selectedTags.includes(tag)) {
         return tag;
@@ -54,6 +56,7 @@ export const TagSearch = () => {
   );
   const ref = useClickAway<HTMLDivElement>(() => {
     setIsOpen(false);
+    onData(selectedTags);
   });
   const inputRef = useRef<HTMLInputElement>(null);
 
