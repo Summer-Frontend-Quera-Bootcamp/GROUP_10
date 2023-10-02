@@ -4,7 +4,6 @@ import "./App.css";
 //--------Import Your Components Here!--------//
 
 import BoardLayout from "../Layouts/BoardLayout/BoardLayout";
-import { ResetPasswordPage } from "../Pages/AuthenticationPages";
 //import { LoginPage } from "../Pages/AuthenticationPages";
 //import { ForgetPassPage } from "../Pages/AuthenticationPages";
 
@@ -14,11 +13,11 @@ interface IPropsApp extends PropsWithChildren {}
 const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
     <>
-      {/* <BoardLayout /> */}
+      <BoardLayout />
       {/* <RegisterPage /> */}
       {/* <ForgetPassPage /> */}
       {/* <LoginPage /> */}
-      <ResetPasswordPage />
+      {/* <ResetPasswordPage /> */}
     </>
   );
 };
