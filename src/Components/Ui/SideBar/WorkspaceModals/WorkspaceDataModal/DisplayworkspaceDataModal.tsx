@@ -1,5 +1,5 @@
-import { ContainerModal } from "../../Containers/ContainerModal/ContainerModal";
-import { ButtonPrimary } from "../../Buttons";
+import { ContainerModal } from "../../../Containers/ContainerModal/ContainerModal";
+import { ButtonPrimary } from "../../../Buttons";
 import { CiNoWaitingSign } from "react-icons/ci";
 import { PropsWithChildren } from "react";
 import { SetStateAction, Dispatch } from "react";
@@ -10,17 +10,16 @@ interface INewWorkspace {
   members: string[];
 }
 
+interface IModalsStatus {
+  nameModal: boolean;
+  colorModal: boolean;
+  dataModal: boolean;
+}
 interface IDisplayWorkspaceDataModalProps extends PropsWithChildren {
   newWorkspace: INewWorkspace;
   displayModals: IModalsStatus;
   setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
   addWorkspaceHandler: () => void;
-}
-
-interface IModalsStatus {
-  nameModal: boolean;
-  colorModal: boolean;
-  dataModal: boolean;
 }
 
 const DisplayWorkspaceDataModal: React.FC<IDisplayWorkspaceDataModalProps> = (

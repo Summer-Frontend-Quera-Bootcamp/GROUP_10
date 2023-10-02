@@ -83,7 +83,7 @@ const RenderSelectButtonColor: React.FC<IRenderSelectButtonColor> = ({
         ) : (
           <span
             className={`${
-              color === data?.color && "w-3.5 h-3.5 rounded-full bg-white z-10"
+              color === data.color && "w-3.5 h-3.5 rounded-full bg-white z-10"
             }`}
           ></span>
         )}

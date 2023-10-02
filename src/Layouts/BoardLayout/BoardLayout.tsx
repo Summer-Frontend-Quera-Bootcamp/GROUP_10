@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 
-import DisplayNameModal from "../../Components/Ui/SideBar/WorkspaceNameModal/DisplayNameModal";
-import DisplayColorModal from "../../Components/Ui/SideBar/WorkspaceColorModal/DisplayColorModal";
-import DisplayWorkspaceDataModal from "../../Components/Ui/SideBar/WorkspaceDataModal/DisplayworkspaceDataModal";
+import DisplayNameModal from "../../Components/Ui/SideBar/WorkspaceModals/WorkspaceNameModal/DisplayNameModal";
+import DisplayColorModal from "../../Components/Ui/SideBar/WorkspaceModals/WorkspaceColorModal/DisplayColorModal";
+import DisplayWorkspaceDataModal from "../../Components/Ui/SideBar/WorkspaceModals/WorkspaceDataModal/DisplayworkspaceDataModal";
 import SiderBarSection from "../../Components/Ui/SideBar/SideBarSection/SideBarSection";
 
 interface INewWorkspace {
@@ -15,7 +15,8 @@ interface IModalsStatus {
   colorModal: boolean;
   dataModal: boolean;
 }
-const BoardLayout: React.FC = (): JSX.Element => {
+interface IBoardLayout extends PropsWithChildren {}
+const BoardLayout: React.FC<IBoardLayout> = ({ children }): JSX.Element => {
   const [newWorkspace, setNewWorkspace] = useState<INewWorkspace>({
     name: "",
     color: "",
@@ -23,7 +24,9 @@ const BoardLayout: React.FC = (): JSX.Element => {
   });
 
   const [workspaceData, setWorkspaceData] = useState<INewWorkspace[]>([]);
-
+  const [filteredWorkspace, setFilteredWorkspace] = useState<INewWorkspace[]>(
+    []
+  );
   const [displayModals, setDisplayModals] = useState<IModalsStatus>({
     nameModal: false,
     colorModal: false,
@@ -32,13 +35,13 @@ const BoardLayout: React.FC = (): JSX.Element => {
   // add Workspace
   const addNewWorkspace = () => {
     setWorkspaceData((prevState) => [...prevState, newWorkspace]);
+    setFilteredWorkspace((prevState) => [...prevState, newWorkspace]);
     setNewWorkspace({ name: "", color: "", members: [] });
     setDisplayModals({
       nameModal: false,
       colorModal: false,
       dataModal: false,
     });
-    console.log(workspaceData);
   };
   //
 
@@ -47,12 +50,15 @@ const BoardLayout: React.FC = (): JSX.Element => {
       <div className="grid grid-cols-4">
         <div className="grid col-span-3 grid-rows-2 pt-xl ps-xl h-screen">
           <div>navbar</div>
-          <div>boardview</div>
+          {/* BoardView */}
+          <div>{children}</div>
         </div>
         {/* SideBar Section */}
         <SiderBarSection
           workspaceData={workspaceData}
           setWorkspaceData={setWorkspaceData}
+          filteredWorkspace={filteredWorkspace}
+          setFilteredWorkspace={setFilteredWorkspace}
           //
           setDisplayModals={setDisplayModals}
         />

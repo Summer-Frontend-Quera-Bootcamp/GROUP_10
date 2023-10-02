@@ -1,7 +1,7 @@
-import { ContainerModal } from "../../Containers/ContainerModal/ContainerModal";
-import { ButtonPrimary } from "../../Buttons";
+import { ContainerModal } from "../../../Containers/ContainerModal/ContainerModal";
+import { ButtonPrimary } from "../../../Buttons";
 import { PropsWithChildren } from "react";
-import RenderSelectButtonColor from "../../../../Utils/SelectColorsButton";
+import RenderSelectButtonColor from "../../../../../Utils/SelectColorsButton";
 import { Dispatch, SetStateAction } from "react";
 interface INewWorkspace {
   name: string;

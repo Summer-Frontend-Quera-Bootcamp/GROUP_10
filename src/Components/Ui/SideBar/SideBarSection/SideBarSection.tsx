@@ -22,8 +22,11 @@ interface IModalsStatus {
   colorModal: boolean;
   dataModal: boolean;
 }
+
 interface ISiderBarSection extends PropsWithChildren {
   workspaceData: INewWorkspace[];
+  filteredWorkspace: INewWorkspace[];
+  setFilteredWorkspace: Dispatch<SetStateAction<INewWorkspace[]>>;
   setWorkspaceData: Dispatch<SetStateAction<INewWorkspace[]>>;
   setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
 }
@@ -31,18 +34,19 @@ interface ISiderBarSection extends PropsWithChildren {
 const SiderBarSection: React.FC<ISiderBarSection> = ({
   workspaceData,
   setWorkspaceData,
+  filteredWorkspace,
+  setFilteredWorkspace,
   setDisplayModals,
 }) => {
   const [accordionStatus, setAccordionStatus] = useState<boolean>(false);
 
   // TODO:
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // const filteredData = filteredWorkspace.filter((workspace) =>
-    //   workspace.name.toLowerCase().includes(e.target.value.toLowerCase())
-    // );
+    const filteredData = workspaceData.filter((workspace) =>
+      workspace.name.toLowerCase().includes(e.target.value.toLowerCase())
+    );
     console.log(e.target.value);
-
-    // setWorkspaceData(filteredData);
+    setFilteredWorkspace(filteredData);
     console.log(workspaceData);
   };
 
@@ -103,34 +107,24 @@ const SiderBarSection: React.FC<ISiderBarSection> = ({
           </div>
           <div>
             {/* WorkSpaces */}
-            {workspaceData.map((workspace) => (
-              <div
-                className="flex flex-col w-full border-b-2 border-gray-500"
-                key={workspace.name}
-              >
-                <div className="flex justify-end select-none rounded-md p-1 items-center transition duration-200 hover:bg-slate-200 mt-s">
-                  <p className="text-end text-body-m select-none">
-                    {workspace.name}
-                  </p>
-                  <div
-                    className={`w-5 h-5 bg-${workspace.color}-primary rounded ms-xs select-none`}
-                  ></div>
+            {filteredWorkspace &&
+              filteredWorkspace.map((workspace) => (
+                <div className="flex flex-col w-full " key={workspace.name}>
+                  <div className="flex justify-end select-none rounded-md p-1 items-center transition duration-200 hover:bg-slate-200 mt-s">
+                    <p className="text-end text-body-m select-none">
+                      {workspace.name}
+                    </p>
+                    <div
+                      className={`w-5 h-5 bg-${workspace.color}-primary rounded ms-xs select-none`}
+                    ></div>
+                  </div>
+                  <button className="text-brand-primary bg-white hover:bg-brand-secondary transition rounded-md w-transparent border-2 border-brand-primary p-1 text-body-sm my-xs">
+                    ساختن پروژه جدید
+                  </button>
                 </div>
-                <button className="text-brand-primary bg-white hover:bg-brand-secondary transition rounded-md w-transparent border-2 border-brand-primary p-1 text-body-sm my-xs">
-                  ساختن پروژه جدید
-                </button>
-              </div>
-            ))}
+              ))}
+            {/* static workspace */}
             {/* <div className="flex flex-col w-full">
-              <div className="flex justify-end select-none rounded-md p-1 items-center transition duration-200 hover:bg-slate-200 mt-s">
-                <p className="text-end text-body-m select-none">درس کامپایلر</p>
-                <div className="w-5 h-5 bg-red-primary rounded ms-xs select-none"></div>
-              </div>
-              <button className="text-brand-primary bg-white hover:bg-brand-secondary transition rounded-md w-transparent border-2 border-brand-primary p-1 text-body-sm my-xs">
-                ساختن پروژه جدید
-              </button>
-            </div> */}
-            <div className="flex flex-col w-full">
               <div className="flex justify-end select-none rounded-md p-1 items-center transition duration-200 hover:bg-slate-200 mt-s">
                 <p className="text-end text-body-m select-none">
                   درس مدیریت پروژه
@@ -151,7 +145,7 @@ const SiderBarSection: React.FC<ISiderBarSection> = ({
               <button className="text-brand-primary bg-white hover:bg-brand-secondary transition rounded-md w-transparent border-2 border-brand-primary p-1 text-body-sm my-xs">
                 ساختن پروژه جدید
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

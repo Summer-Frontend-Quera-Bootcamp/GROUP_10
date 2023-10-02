@@ -1,24 +1,22 @@
 import { Dispatch, PropsWithChildren, SetStateAction } from "react";
-import { ButtonPrimary } from "../../Buttons";
-import { ContainerModal } from "../../Containers/ContainerModal/ContainerModal";
+import { ButtonPrimary } from "../../../Buttons";
+import { ContainerModal } from "../../../Containers/ContainerModal/ContainerModal";
 import { ChangeEvent } from "react";
 interface INewWorkspace {
   name: string;
   color: string;
   members: string[];
 }
-
+interface IModalsStatus {
+  nameModal: boolean;
+  colorModal: boolean;
+  dataModal: boolean;
+}
 interface IDisplayNameModal extends PropsWithChildren {
   newWorkspace: INewWorkspace;
   displayModals: IModalsStatus;
   setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
   setNewWorkspace: Dispatch<SetStateAction<INewWorkspace>>;
-}
-
-interface IModalsStatus {
-  nameModal: boolean;
-  colorModal: boolean;
-  dataModal: boolean;
 }
 
 const DisplayNameModal: React.FC<IDisplayNameModal> = (props) => {
@@ -27,7 +25,6 @@ const DisplayNameModal: React.FC<IDisplayNameModal> = (props) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewWorkspace((prevState) => ({ ...prevState, name: e.target.value }));
-    // console.log(newWorkspace);
   };
 
   const handleClick = () => {
