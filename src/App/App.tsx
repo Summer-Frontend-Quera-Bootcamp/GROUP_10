@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import "./App.css";
-// import { TagSearch } from "../Components/Ui/Task";
-import { MinimalistDatePicker } from "../Components/Ui/Task";
+import { NewTask } from "../Components/Ui/Task";
+import { ContainerModal } from "../Components/Ui/Containers";
 
 //--------Import Your Components Here!--------//
 
@@ -11,8 +11,10 @@ interface IPropsApp extends PropsWithChildren {}
 const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
     <div>
-      <MinimalistDatePicker />
-      {/* <TagSearch /> */}
+      <ContainerModal heading="test" onClose={() => {}}>
+        <div>hello</div>
+      </ContainerModal>
+      <NewTask onClose={() => {}} />
     </div>
   );
 };

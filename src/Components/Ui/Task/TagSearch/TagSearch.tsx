@@ -156,7 +156,7 @@ export const TagSearch = ({ onData }: Props) => {
     isOpen && (
       <div
         ref={ref}
-        className="w-[250px] p-s flex flex-col shadow-xl rounded-md relative"
+        className="w-[250px] bg-white p-s flex flex-col shadow-xl rounded-md relative"
       >
         {showMore && (
           <TagEdit

@@ -1,6 +1,7 @@
 import { FiFlag } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
+import { useClickAway } from "@uidotdev/usehooks";
 
 interface IFlagSelecterProps {
   onData: (data: number) => void;
@@ -14,9 +15,16 @@ export const FlagSelecter = ({ onData }: IFlagSelecterProps) => {
     setIsOpen(false);
   };
 
+  const ref = useClickAway<HTMLDivElement>(() => {
+    setIsOpen(false);
+  });
+
   return (
     isOpen && (
-      <div className="bg-gray-secondary w-[200px] h-[250px] absolute rounded-md left-[15px] top-[15px] shadow-xl text-right text-sm flex flex-col ">
+      <div
+        ref={ref}
+        className="bg-gray-secondary w-[200px] h-[250px] absolute rounded-md left-[15px] top-[15px] shadow-xl text-right text-sm flex flex-col "
+      >
         <button
           className="flex flex-row-reverse items-center gap-xs w-full rounded-tr-md rounded-tl-md h-1/5 hover:bg-gray-300 text-body-m px-xs"
           onClick={() => {

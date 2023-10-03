@@ -15,7 +15,6 @@ const Dropdown: React.FC<DropdownProps> = ({ options }) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(event.target.value);
   };
-
   return (
     <select
       value={selectedValue}
