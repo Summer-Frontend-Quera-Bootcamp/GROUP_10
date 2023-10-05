@@ -72,7 +72,7 @@ const Login = () => {
               </ButtonPrimary>
             </div>
 
-            <div className="">
+            <div className="text-right">
               <AncherPrimary href="">ثبت نام</AncherPrimary>
               <p>ثبت نام نکرده ای؟</p>
             </div>
