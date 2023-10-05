@@ -7,7 +7,9 @@ import "./App.css";
 // import { LoginPage } from "../Pages/AuthenticationPages";
 //import { ForgetPassPage } from "../Pages/AuthenticationPages";
 //import ResetPassword from "../Pages/AuthenticationPages";
-
+import Comment from "../Components/Ui/Comment/Comment";
+import { ButtonPrimary } from "../Components/Ui/Buttons";
+import SubmiteComment from "../Components/Ui/SubmiteComment/SubmiteComment";
 
 //-------------Welcome to The App-------------//
 
@@ -20,6 +22,7 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
       {/* <LoginPage /> */}
       {/* <ResetPasswordPage /> */}
       <Comment/>
+      <SubmiteComment/>
     </>
   );
 };
