@@ -1,10 +1,11 @@
+import React, { useRef, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { SimpleTag, TagEdit } from "../../Tags";
-import { useRef, useState } from "react";
 import { TfiMoreAlt } from "react-icons/tfi";
 import { useClickAway } from "@uidotdev/usehooks";
 
-interface tag {
+// Define the interface for tag objects
+interface Tag {
   title: string;
   color:
     | "red"
@@ -22,12 +23,14 @@ interface tag {
     | "orange";
 }
 
+// Define the component props interface
 interface Props {
-  onData: (data: tag[]) => void;
+  onData: (data: Tag[]) => void;
 }
 
-export const TagSearch = ({ onData }: Props) => {
-  const [tags, setTags] = useState<tag[]>([
+const TagSearch: React.FC<Props> = ({ onData }) => {
+  const [tags, setTags] = useState<Tag[]>([
+    // Initial tags data
     { title: "riazi", color: "yellow" },
     { title: "shimi", color: "red" },
     { title: "armaan", color: "lime" },
@@ -40,28 +43,26 @@ export const TagSearch = ({ onData }: Props) => {
     { title: "code", color: "violet" },
   ]);
 
-  const [selectedTags, setSelectedTags] = useState<tag[]>([]);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [isOpen, setIsOpen] = useState(true);
-  const [tagClick, setTagClick] = useState<tag>({
-    title: "test",
+  const [tagClick, setTagClick] = useState<Tag>({
+    title: "",
     color: "orange",
   });
   const [showMore, setShowMore] = useState(false);
-  const [searchTag, setSearchTag] = useState<tag[]>(
-    tags.filter((tag: tag) => {
-      if (!selectedTags.includes(tag)) {
-        return tag;
-      }
-    })
-  );
+  const [searchTag, setSearchTag] = useState<Tag[]>(tags);
+
   const ref = useClickAway<HTMLDivElement>(() => {
     setIsOpen(false);
     onData(selectedTags);
   });
-  const inputRef = useRef<HTMLInputElement>(null);
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // Function to handle tag editing
   const handleEdit = (text: string) => {
-    tags.forEach((tag: tag) => {
+    // Update tag title
+    tags.forEach((tag: Tag) => {
       if (tag === tagClick) {
         const trimmedText = text.trim();
         const tagExists = tags.some(
@@ -74,43 +75,34 @@ export const TagSearch = ({ onData }: Props) => {
     });
     setShowMore(false);
   };
-  const handleColor = (
-    color:
-      | "red"
-      | "pink"
-      | "grape"
-      | "violet"
-      | "indigo"
-      | "blue"
-      | "cyan"
-      | "teal"
-      | "brand"
-      | "green"
-      | "yellow"
-      | "lime"
-      | "orange"
-  ) => {
-    tags.forEach((tag: tag) => {
+
+  // Function to handle tag color change
+  const handleColor = (color: Tag["color"]) => {
+    // Update tag color
+    tags.forEach((tag: Tag) => {
       if (tag.title === tagClick.title) {
         tag.color = color;
       }
     });
     setShowMore(false);
   };
-  const handleDelet = () => {
-    tags.forEach((tag: tag) => {
+
+  // Function to handle tag deletion
+  const handleDelete = () => {
+    // Delete the selected tag
+    tags.forEach((tag: Tag) => {
       if (tag.title === tagClick.title) {
         tags.splice(tags.indexOf(tagClick), 1);
       }
       setSearchTag(
-        tags.filter((tag: tag) => {
+        tags.filter((tag: Tag) => {
           if (!selectedTags.includes(tag)) {
             return tag;
           }
         })
       );
       setSelectedTags(
-        tags.filter((tag: tag) => {
+        tags.filter((tag: Tag) => {
           if (selectedTags.includes(tag)) {
             return tag;
           }
@@ -119,9 +111,12 @@ export const TagSearch = ({ onData }: Props) => {
     });
     setShowMore(false);
   };
+
+  // Function to handle input change for tag search
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Update the filtered tags based on the input value
     setSearchTag(
-      tags.filter((tag: tag) => {
+      tags.filter((tag: Tag) => {
         if (tag.title.includes(event.target.value)) {
           return tag;
         }
@@ -129,20 +124,21 @@ export const TagSearch = ({ onData }: Props) => {
     );
   };
 
+  // Function to handle Enter key press for tag creation
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (
       event.key === "Enter" &&
       inputRef.current !== null &&
       searchTag.length === 0
     ) {
-      const tag: tag = {
+      const tag: Tag = {
         title: inputRef.current.value.trim(),
         color: "orange",
       };
       setTags([...tags, tag]);
       setSelectedTags([...selectedTags, tag]);
       setSearchTag(
-        tags.filter((tag: tag) => {
+        tags.filter((tag: Tag) => {
           if (!selectedTags.includes(tag)) {
             return tag;
           }
@@ -162,12 +158,13 @@ export const TagSearch = ({ onData }: Props) => {
           <TagEdit
             onEdit={handleEdit}
             onColor={handleColor}
-            onDelete={handleDelet}
+            onDelete={handleDelete}
           />
         )}
+
         {selectedTags.length !== 0 && (
           <div className="flex flex-row-reverse flex-wrap mb-xs">
-            {selectedTags.map((tag: tag) => (
+            {selectedTags.map((tag) => (
               <span
                 key={tag.title}
                 onClick={() => {
@@ -180,6 +177,7 @@ export const TagSearch = ({ onData }: Props) => {
             ))}
           </div>
         )}
+
         <div className="relative">
           <BiSearch
             size="25"
@@ -195,9 +193,10 @@ export const TagSearch = ({ onData }: Props) => {
             autoFocus
           />
         </div>
-        <div className="flex flex-col mt-m overflow-auto max-h-[150px]">
+
+        <div className="flex flex-col mt-m overflow-auto scroll-w-thin max-h-[150px] scrollbar-thumb-white scrollbar-track-gray-200">
           {searchTag.length !== 0 ? (
-            searchTag.map((tag: tag) => (
+            searchTag.map((tag) => (
               <div
                 className="flex flex-row-reverse items-center hover:bg-slate-100"
                 key={tag.title}
@@ -206,11 +205,7 @@ export const TagSearch = ({ onData }: Props) => {
                   onClick={() => {
                     selectedTags.push(tag);
                     setSearchTag(
-                      tags.filter((tag: tag) => {
-                        if (!selectedTags.includes(tag)) {
-                          return tag;
-                        }
-                      })
+                      tags.filter((t: Tag) => !selectedTags.includes(t))
                     );
                   }}
                 >
@@ -236,3 +231,5 @@ export const TagSearch = ({ onData }: Props) => {
     )
   );
 };
+
+export default TagSearch;
