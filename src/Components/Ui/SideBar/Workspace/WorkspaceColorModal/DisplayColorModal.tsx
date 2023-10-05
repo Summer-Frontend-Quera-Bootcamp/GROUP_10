@@ -1,26 +1,7 @@
 import { ContainerModal } from "../../../Containers/ContainerModal/ContainerModal";
 import { ButtonPrimary } from "../../../Buttons";
-import { PropsWithChildren } from "react";
 import RenderSelectButtonColor from "../../../../../Utils/SelectColorsButton";
-import { Dispatch, SetStateAction } from "react";
-interface INewWorkspace {
-  name: string;
-  color: string;
-  members: string[];
-}
-
-interface IModalsStatus {
-  nameModal: boolean;
-  colorModal: boolean;
-  dataModal: boolean;
-}
-
-interface IDisplayColorModal extends PropsWithChildren {
-  newWorkspace: INewWorkspace;
-  displayModals: IModalsStatus;
-  setNewWorkspace: Dispatch<SetStateAction<INewWorkspace>>;
-  setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
-}
+import { IDisplayColorModal } from "../../Interface";
 
 const DisplayColorModal: React.FC<IDisplayColorModal> = (props) => {
   const { setNewWorkspace, newWorkspace, setDisplayModals, displayModals } =
@@ -31,7 +12,7 @@ const DisplayColorModal: React.FC<IDisplayColorModal> = (props) => {
       ...prevState,
       colorModal: !prevState.colorModal,
     }));
-    setNewWorkspace((prevData) => ({ ...prevData, name: "" }));
+    setNewWorkspace({ name: "", color: "", members: [] });
   };
 
   const handleBack = () => {
@@ -40,8 +21,6 @@ const DisplayColorModal: React.FC<IDisplayColorModal> = (props) => {
       nameModal: !prevState.nameModal,
       colorModal: !prevState.colorModal,
     }));
-    // setNameModalToggle(true);
-    // setColorModalToggle(false);
   };
 
   const handleClick = () => {
@@ -50,8 +29,6 @@ const DisplayColorModal: React.FC<IDisplayColorModal> = (props) => {
       colorModal: !prevState.colorModal,
       dataModal: !prevState.dataModal,
     }));
-    // setColorModalToggle(false);
-    // setFinalDataModalToggle(true);
   };
 
   const label = newWorkspace.name.split(" ");

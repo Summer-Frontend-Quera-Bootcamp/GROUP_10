@@ -1,44 +1,35 @@
-import { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import { ButtonPrimary } from "../../../Buttons";
 import { ContainerModal } from "../../../Containers/ContainerModal/ContainerModal";
-import { ChangeEvent } from "react";
-interface INewWorkspace {
-  name: string;
-  color: string;
-  members: string[];
-}
-interface IModalsStatus {
-  nameModal: boolean;
-  colorModal: boolean;
-  dataModal: boolean;
-}
-interface IDisplayNameModal extends PropsWithChildren {
-  newWorkspace: INewWorkspace;
-  displayModals: IModalsStatus;
-  setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
-  setNewWorkspace: Dispatch<SetStateAction<INewWorkspace>>;
-}
+import { ChangeEvent, useState } from "react";
+import { IDisplayNameModal } from "../../Interface";
 
 const DisplayNameModal: React.FC<IDisplayNameModal> = (props) => {
   const { newWorkspace, setNewWorkspace, displayModals, setDisplayModals } =
     props;
-
+  const [validateName, setValidateName] = useState<boolean>(true);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewWorkspace((prevState) => ({ ...prevState, name: e.target.value }));
   };
 
   const handleClick = () => {
-    setDisplayModals((prevState) => ({
-      ...prevState,
-      colorModal: !prevState.colorModal,
-      nameModal: !prevState.nameModal,
-    }));
+    if (newWorkspace.name.length >= 4) {
+      setDisplayModals((prevState) => ({
+        ...prevState,
+        colorModal: !prevState.colorModal,
+        nameModal: !prevState.nameModal,
+      }));
+      setValidateName(true);
+    } else {
+      setValidateName(false);
+    }
   };
   const handleClose = () => {
     setDisplayModals((prevState) => ({
       ...prevState,
       nameModal: !prevState.nameModal,
     }));
+    setNewWorkspace({ name: "", color: "", members: [] });
+    setValidateName(true);
   };
   return (
     displayModals.nameModal && (
@@ -61,6 +52,11 @@ const DisplayNameModal: React.FC<IDisplayNameModal> = (props) => {
                     }}
                     className="border border-gray-primary rounded-md p-xs my-xs w-full"
                   />
+                  {!validateName && (
+                    <span className="text-xs text-red-primary">
+                      ! وارد کردن نام ورک اسپیس اجباری است
+                    </span>
+                  )}
                 </div>
               </div>
               <div className=" mt-l">

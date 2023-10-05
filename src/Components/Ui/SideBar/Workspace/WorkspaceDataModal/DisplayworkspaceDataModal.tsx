@@ -1,32 +1,18 @@
 import { ContainerModal } from "../../../Containers/ContainerModal/ContainerModal";
 import { ButtonPrimary } from "../../../Buttons";
 import { CiNoWaitingSign } from "react-icons/ci";
-import { PropsWithChildren } from "react";
-import { SetStateAction, Dispatch } from "react";
-
-interface INewWorkspace {
-  name: string;
-  color: string;
-  members: string[];
-}
-
-interface IModalsStatus {
-  nameModal: boolean;
-  colorModal: boolean;
-  dataModal: boolean;
-}
-interface IDisplayWorkspaceDataModalProps extends PropsWithChildren {
-  newWorkspace: INewWorkspace;
-  displayModals: IModalsStatus;
-  setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
-  addWorkspaceHandler: () => void;
-}
+import { IDisplayWorkspaceDataModalProps } from "../../Interface";
 
 const DisplayWorkspaceDataModal: React.FC<IDisplayWorkspaceDataModalProps> = (
   props
 ) => {
-  const { newWorkspace, displayModals, setDisplayModals, addWorkspaceHandler } =
-    props;
+  const {
+    newWorkspace,
+    displayModals,
+    setDisplayModals,
+    addWorkspaceHandler,
+    setNewWorkspace,
+  } = props;
 
   const handleBack = () => {
     setDisplayModals((prevState) => ({
@@ -34,15 +20,13 @@ const DisplayWorkspaceDataModal: React.FC<IDisplayWorkspaceDataModalProps> = (
       colorModal: !prevState.colorModal,
       dataModal: !prevState.dataModal,
     }));
-    // setColorModalToggle(true);
-    // setFinalDataModalToggle(false);
   };
   const handleClose = () => {
     setDisplayModals((prevState) => ({
       ...prevState,
       dataModal: !prevState.dataModal,
     }));
-    //   setFinalDataModalToggle(false);
+    setNewWorkspace({ name: "", color: "", members: [] });
   };
   return (
     displayModals.dataModal && (

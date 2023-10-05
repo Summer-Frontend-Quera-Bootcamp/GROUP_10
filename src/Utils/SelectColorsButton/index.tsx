@@ -1,16 +1,7 @@
-import { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import { CiNoWaitingSign } from "react-icons/ci";
 import { MouseEvent } from "react";
-interface IWorkSpaceData {
-  name: string;
-  color: string;
-  members: string[];
-}
+import { IRenderSelectButtonColor } from "../../Components/Ui/SideBar/Interface";
 
-interface IRenderSelectButtonColor extends PropsWithChildren {
-  data: IWorkSpaceData;
-  setData: Dispatch<SetStateAction<IWorkSpaceData>>;
-}
 const RenderSelectButtonColor: React.FC<IRenderSelectButtonColor> = ({
   data,
   setData,
