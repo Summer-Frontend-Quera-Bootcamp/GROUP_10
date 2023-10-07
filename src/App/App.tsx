@@ -5,7 +5,8 @@ import "./App.css";
 
 //import { RegisterPage } from "../Pages/AuthenticationPages";
 //import { LoginPage } from "../Pages/AuthenticationPages";
-import { ForgetPassPage } from "../Pages/AuthenticationPages";
+//import { ForgetPassPage } from "../Pages/AuthenticationPages";
+import NavBar from "../Components/Ui/NavBar";
 //import ResetPassword from "../Pages/AuthenticationPages";
 
 //-------------Welcome to The App-------------//
@@ -15,9 +16,10 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
     <>
       {/*<RegisterPage />*/}
-      <ForgetPassPage />
+      {/*<ForgetPassPage />*/}
       {/* <LoginPage /> */}
       {/* <ResetPasswordPage /> */}
+      <NavBar />
     </>
   );
 };
