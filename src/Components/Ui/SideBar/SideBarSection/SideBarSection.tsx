@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DisplayNameModal from "../Workspace/WorkspaceNameModal/DisplayNameModal";
 import DisplayColorModal from "../Workspace/WorkspaceColorModal/DisplayColorModal";
 import DisplayWorkspaceDataModal from "../Workspace/WorkspaceDataModal/DisplayworkspaceDataModal";
 import SiderBarMenu from "../SideBarMenu/SideBarMenu";
 import { IModalsStatus, INewWorkspace } from "../Interface";
+// import DisplayProjectModal from "../Workspace/WorkspaceProjectModal/DisplayProjectModal";
 
 const SideBarSection = () => {
   const [newWorkspace, setNewWorkspace] = useState<INewWorkspace>({
+    id: 0,
     name: "",
     color: "",
     members: [],
@@ -21,16 +23,22 @@ const SideBarSection = () => {
     nameModal: false,
     colorModal: false,
     dataModal: false,
+    projectModal: false,
   });
   // add Workspace
   const addNewWorkspace = () => {
-    setWorkspaceData((prevState) => [...prevState, newWorkspace]);
-    setFilteredWorkspace((prevState) => [...prevState, newWorkspace]);
-    setNewWorkspace({ name: "", color: "", members: [] });
+    const workspace = {
+      ...newWorkspace,
+      id: Date.now(),
+    };
+    setWorkspaceData((prevState) => [...prevState, workspace]);
+    setFilteredWorkspace((prevState) => [...prevState, workspace]);
+    setNewWorkspace({ id: 0, name: "", color: "", members: [] });
     setDisplayModals({
       nameModal: false,
       colorModal: false,
       dataModal: false,
+      projectModal: false,
     });
   };
 
@@ -66,6 +74,12 @@ const SideBarSection = () => {
         setDisplayModals={setDisplayModals}
         addWorkspaceHandler={addNewWorkspace}
       />
+      {/* <DisplayProjectModal
+        setWorkspaceData={setWorkspaceData}
+        workspaceData={workspaceData}
+        displayModals={displayModals}
+        setDisplayModals={setDisplayModals}
+      /> */}
     </>
   );
 };

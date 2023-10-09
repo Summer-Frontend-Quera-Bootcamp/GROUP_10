@@ -39,7 +39,7 @@ const RenderSelectButtonColor: React.FC<IRenderSelectButtonColor> = ({
         key={color}
         data-color={color}
         onClick={selectColorHandler}
-        className={`w-5 h-5 mx-2 flex items-center justify-center rounded-lg ${
+        className={`w-5 h-5 mx-2 flex items-center text-center justify-center rounded-lg ${
           color === "indigo"
             ? "bg-indigo-primary"
             : color == "blue"

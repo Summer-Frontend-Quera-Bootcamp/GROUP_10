@@ -1,22 +1,27 @@
 import { PropsWithChildren, Dispatch, SetStateAction } from "react";
 // add new workspace Interface
 export interface INewWorkspace {
+  id: number;
   name: string;
   color: string;
   members: string[];
+}
+export interface IWorkspaceData extends INewWorkspace {
+  projects?: [];
 }
 // workspaceModals status Interface
 export interface IModalsStatus {
   nameModal: boolean;
   colorModal: boolean;
   dataModal: boolean;
+  projectModal: boolean;
 }
 // SiderBar Component Interface
 export interface ISiderBarMenu extends PropsWithChildren {
-  workspaceData: INewWorkspace[];
-  filteredWorkspace: INewWorkspace[];
-  setFilteredWorkspace: Dispatch<SetStateAction<INewWorkspace[]>>;
-  setWorkspaceData: Dispatch<SetStateAction<INewWorkspace[]>>;
+  workspaceData: IWorkspaceData[];
+  filteredWorkspace: IWorkspaceData[];
+  setFilteredWorkspace: Dispatch<SetStateAction<IWorkspaceData[]>>;
+  setWorkspaceData: Dispatch<SetStateAction<IWorkspaceData[]>>;
   setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
 }
 // DisplayColorModal Component Interface
@@ -30,8 +35,8 @@ export interface IDisplayColorModal extends PropsWithChildren {
 export interface IDisplayNameModal extends PropsWithChildren {
   newWorkspace: INewWorkspace;
   displayModals: IModalsStatus;
-  setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
   setNewWorkspace: Dispatch<SetStateAction<INewWorkspace>>;
+  setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
 }
 // DisplayWorkspaceDataModal Component Interface
 export interface IDisplayWorkspaceDataModalProps extends PropsWithChildren {
@@ -40,6 +45,12 @@ export interface IDisplayWorkspaceDataModalProps extends PropsWithChildren {
   setNewWorkspace: Dispatch<SetStateAction<INewWorkspace>>;
   setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
   addWorkspaceHandler: () => void;
+}
+export interface IDisplayProjectModal extends PropsWithChildren {
+  displayModals: IModalsStatus;
+  workspaceData: IWorkspaceData[];
+  setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
+  setWorkspaceData: Dispatch<SetStateAction<IWorkspaceData[]>>;
 }
 // select workspaceColor Component Interface
 export interface IRenderSelectButtonColor extends PropsWithChildren {
