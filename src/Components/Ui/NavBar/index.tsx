@@ -3,15 +3,22 @@ import { MdOutlineViewQuilt, MdDateRange } from "react-icons/md";
 import { BiShareAlt } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { LiaFilterSolid } from "react-icons/lia";
-//import { useState } from "react";
-//import FilterModal from "../FilterView/FilterModal";
+import { useState } from "react";
+import FilterModal from "../FilterView/FilterModal";
+//import { ContainerModal } from "../Containers";
 
 const NavBar = () => {
-  // const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [chosen, setChosen] = useState<string[]>([]);
 
-  // const openFilterModal = () => {
-  //   setIsFilterModalOpen(true);
-  // };
+  const openFilterModal = () => {
+    setIsFilterModalOpen(true);
+  };
+
+  const handleClose = (attributes: string[]) => {
+    setIsFilterModalOpen(false);
+    setChosen(attributes);
+  };
   return (
     <div className="gird w-[1034px] mt-[41px] ml-[50px] border-cyan-600">
       <div className="flex flex-row-reverse gap-x-s py-4 border-b-[1px]">
@@ -43,14 +50,20 @@ const NavBar = () => {
         </div>
         <button
           className="flex flex-row-reverse gap-x-xs items-center hover:text-cyan-primary hover:font-extrabold pr-4 pl-4"
-          // onClick={openFilterModal}
+          onClick={openFilterModal}
         >
           <LiaFilterSolid />
           فیلتر ها
         </button>
-        {/* {isFilterModalOpen && <FilterModal />} */}
+        {isFilterModalOpen && (
+          <FilterModal
+            onClose={(attributes) => {
+              handleClose(attributes);
+            }}
+          />
+        )}
         <p className="bg-cyan-secondary text-cyan-primary px-2 py-1 text-xs">
-          دسته بندی شده با وضعیت
+          دسته بندی شده با {chosen.join(" و ")}
         </p>
       </div>
     </div>
