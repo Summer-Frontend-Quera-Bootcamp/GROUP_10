@@ -1,33 +1,105 @@
-import { PropsWithChildren } from "react";
-import "./App.css";
+//import List from "../Components/Ui/FmButton/List";
+//import { ButtonColor } from "../Components/Ui/Buttons";
+//import Mamad from "../Components/Ui/FmButton/mamad";
 
-//--------Import Your Components Here!--------//
+import {BoardListComponents} from "../Components/Ui/BoardList";
 
-import { RegisterPage } from "../Pages/AuthenticationPages";
-//import { LoginPage } from "../Pages/AuthenticationPages";
-//import { ForgetPassPage } from "../Pages/AuthenticationPages";
-//import ResetPassword from "../Pages/AuthenticationPages";
+function App() {
+  // const tasks = [
+  //   {
+  //     member: "hasan",
+  //     deadline: "23 aban",
+  //     priority: "High",
+  //     description: "blah blah",
+  //   },
+  //   {
+  //     member: "asghar",
+  //     deadline: "22 aban",
+  //     priority: "Medium",
+  //     description: "yhdgh",
+  //   },
+  // ];
 
-//-------------Welcome to The App-------------//
-
-interface IPropsApp extends PropsWithChildren {}
-const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
-    <>
-      <RegisterPage />
-      {/* <ForgetPassPage /> */}
-      {/* <LoginPage /> */}
-      {/* <ResetPasswordPage /> */}
-    </>
-  );
-};
+    <div className="App">
 
+      {/* <ButtonColor onClick={()=>{}} color="green"> In Progress </ButtonColor> */}
+      {/* <h1>Task List</h1> */}
+      {/* <List tasks={tasks} /> */}
+      
+      <BoardListComponents Heading={{color:"pink",
+      state: "Pending"
+      
+    }}
+    Tasks={[
+    {
+      id: 1,
+      title: "تیتر",
+      members: ["Amir", "arman"],
+      deadline: "shanbe",
+      priority: 0,
+      description: "hi guys all",
+    },
+    {
+      id: 2,
+      title: "akbar",
+      members: ["asghar", "dostan"],
+      deadline: "doshanbe",
+      priority: 1,
+      description: "bye guys all",
+    },
+    {
+      id: 3,
+      title: "reza",
+      members: ["reza"],
+      deadline: "4 shanbe",
+      priority: 2,
+      description: "aaaaaaaaaaaaaaa",
+    },
+  ]}
+    />
+    <BoardListComponents Heading={{color:"orange", state:"in Progress"}}
+    Tasks={[
+    {
+      id: 1,
+      title: "تیتر",
+      members: ["Amir", "arman"],
+      deadline: "shanbe",
+      priority: 0,
+      description: "hi guys all",
+    },
+    {
+      id: 2,
+      title: "akbar",
+      members: ["asghar", "dostan"],
+      deadline: "doshanbe",
+      priority: 1,
+      description: "bye guys all",
+    }]}
+    /> 
+    
+  
+
+<BoardListComponents Heading={{color:"green", state:"Done"}}
+    Tasks={[
+    {
+      id: 1,
+      title: "تیتر",
+      members: ["Amir", "arman"],
+      deadline: "shanbe",
+      priority: 0,
+      description: "hi guys all",
+    },
+    {
+      id: 2,
+      title: "akbar",
+      members: ["asghar", "dostan"],
+      deadline: "doshanbe",
+      priority: 1,
+      description: "bye guys all",
+    }]}
+    /> 
+    </div>
+
+  );}
 export default App;
-
-// 1 - first clone the Git repository on your system.
-// 2 - open the terminal and type "npm install".
-// 3 - wait for it to finish then type "npm run dev".
-// 4 - "ctrl + click" on the link.
-// 5 - remember to only save your changes on your branch!
-
-//------------- -> WISH YOU THE BEST <- -------------//
