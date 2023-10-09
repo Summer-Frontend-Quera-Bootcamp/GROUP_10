@@ -1,36 +1,26 @@
 import { PropsWithChildren } from "react";
 import "./App.css";
 
-//--------Import Your Components Here!--------//
-
-//import { RegisterPage } from "../Pages/AuthenticationPages";
-//import { LoginPage } from "../Pages/AuthenticationPages";
 //import { ForgetPassPage } from "../Pages/AuthenticationPages";
-//import NavBar from "../Components/Ui/NavBar";
-import UserInfo from "../Components/Form/UserInfo/UserInfo";
-//import ResetPassword from "../Pages/AuthenticationPages";
 
-//-------------Welcome to The App-------------//
+import UserInfo from "../Components/Form/UserInfo/UserInfo";
+// import AccountInfo from "../Components/Form/AccountInfo/AccountInfo";
+// import SettingForm from "../Components/Form/SettingForm/SettingForm";
+// import NavBar from "../Components/Ui/NavBar";
+// import FilterModal from "../Components/Ui/FilterView/FilterModal";
 
 interface IPropsApp extends PropsWithChildren {}
 const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
     <>
-      {/*<RegisterPage />*/}
       {/*<ForgetPassPage />*/}
-      {/* <LoginPage /> */}
-      {/* <ResetPasswordPage /> */}
+
       <UserInfo />
+      {/* <AccountInfo /> */}
+      {/* <SettingForm /> */}
+      {/* <NavBar /> */}
     </>
   );
 };
 
 export default App;
-
-// 1 - first clone the Git repository on your system.
-// 2 - open the terminal and type "npm install".
-// 3 - wait for it to finish then type "npm run dev".
-// 4 - "ctrl + click" on the link.
-// 5 - remember to only save your changes on your branch!
-
-//------------- -> WISH YOU THE BEST <- -------------//

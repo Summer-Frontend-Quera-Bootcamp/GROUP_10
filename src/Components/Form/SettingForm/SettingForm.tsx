@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SettingPage = () => {
+const SettingForm = () => {
   const colors = [
     "red-primary",
     "pink-primary",
@@ -76,4 +76,4 @@ const SettingPage = () => {
   );
 };
 
-export default SettingPage;
+export default SettingForm;
