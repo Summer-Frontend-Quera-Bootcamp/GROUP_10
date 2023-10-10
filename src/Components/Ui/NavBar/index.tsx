@@ -5,19 +5,29 @@ import { BsSearch } from "react-icons/bs";
 import { LiaFilterSolid } from "react-icons/lia";
 import { useState } from "react";
 import FilterModal from "../FilterView/FilterModal";
+import ShareProjectModal from "../Modals/ShareProjectModal";
 //import { ContainerModal } from "../Containers";
 
 const NavBar = () => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [chosen, setChosen] = useState<string[]>([]);
 
   const openFilterModal = () => {
     setIsFilterModalOpen(true);
   };
 
-  const handleClose = (attributes: string[]) => {
+  const closeFilterModal = (attributes: string[]) => {
     setIsFilterModalOpen(false);
     setChosen(attributes);
+  };
+
+  const openShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const closeShareModal = () => {
+    setIsShareModalOpen(false);
   };
   return (
     <div className="gird w-[1034px] mt-[41px] ml-[50px] border-cyan-600">
@@ -35,10 +45,15 @@ const NavBar = () => {
           <MdDateRange />
           تقویم
         </button>
-        <button className="flex flex-row-reverse gap-x-xs items-center mr-auto  hover:text-cyan-primary hover:font-extrabold">
+        <button
+          className="flex flex-row-reverse gap-x-xs items-center mr-auto  hover:text-cyan-primary hover:font-extrabold"
+          onClick={openShareModal}
+        >
           <BiShareAlt />
           اشتراک گذاری
         </button>
+
+        {isShareModalOpen && <ShareProjectModal onClose={closeShareModal} />}
       </div>
       <div className="flex flex-row-reverse py-4 items-center border-b-[1px]">
         <div className="flex flex-row-reverse gap-x-xs items-center border-l-[2px] pl-4">
@@ -58,7 +73,7 @@ const NavBar = () => {
         {isFilterModalOpen && (
           <FilterModal
             onClose={(attributes) => {
-              handleClose(attributes);
+              closeFilterModal(attributes);
             }}
           />
         )}
