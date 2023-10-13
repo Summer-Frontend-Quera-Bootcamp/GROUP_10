@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import DisplayNameModal from "../Workspace/WorkspaceNameModal/DisplayNameModal";
-import DisplayColorModal from "../Workspace/WorkspaceColorModal/DisplayColorModal";
-import DisplayWorkspaceDataModal from "../Workspace/WorkspaceDataModal/DisplayworkspaceDataModal";
+import { useState } from "react";
+import DisplayNameModal from "../WorkspaceModals/WorkspaceNameModal/DisplayNameModal";
+import DisplayColorModal from "../WorkspaceModals/WorkspaceColorModal/DisplayColorModal";
+import DisplayWorkspaceDataModal from "../WorkspaceModals/WorkspaceDataModal/DisplayworkspaceDataModal";
+import DisplayProjectModal from "../WorkspaceModals/WorkspaceProjectModal/WorkspaceProjectModal";
 import SiderBarMenu from "../SideBarMenu/SideBarMenu";
 import { IModalsStatus, INewWorkspace } from "../Interface";
-// import DisplayProjectModal from "../Workspace/WorkspaceProjectModal/DisplayProjectModal";
 
 const SideBarSection = () => {
   const [newWorkspace, setNewWorkspace] = useState<INewWorkspace>({
@@ -46,8 +46,8 @@ const SideBarSection = () => {
     <>
       <SiderBarMenu
         workspaceData={workspaceData}
-        setWorkspaceData={setWorkspaceData}
         filteredWorkspace={filteredWorkspace}
+        setWorkspaceData={setWorkspaceData}
         setFilteredWorkspace={setFilteredWorkspace}
         //
         setDisplayModals={setDisplayModals}
@@ -74,12 +74,12 @@ const SideBarSection = () => {
         setDisplayModals={setDisplayModals}
         addWorkspaceHandler={addNewWorkspace}
       />
-      {/* <DisplayProjectModal
+      <DisplayProjectModal
         setWorkspaceData={setWorkspaceData}
         workspaceData={workspaceData}
         displayModals={displayModals}
         setDisplayModals={setDisplayModals}
-      /> */}
+      />
     </>
   );
 };

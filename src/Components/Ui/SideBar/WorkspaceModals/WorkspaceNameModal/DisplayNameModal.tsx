@@ -12,7 +12,7 @@ const DisplayNameModal: React.FC<IDisplayNameModal> = (props) => {
   };
 
   const handleClick = () => {
-    if (newWorkspace.name.length >= 4) {
+    if (newWorkspace.name.trim().length >= 4) {
       setDisplayModals((prevState) => ({
         ...prevState,
         colorModal: !prevState.colorModal,
@@ -28,7 +28,7 @@ const DisplayNameModal: React.FC<IDisplayNameModal> = (props) => {
       ...prevState,
       nameModal: !prevState.nameModal,
     }));
-    setNewWorkspace({ name: "", color: "", members: [] });
+    setNewWorkspace({ id: 0, name: "", color: "", members: [] });
     setValidateName(true);
   };
   return (
@@ -47,10 +47,11 @@ const DisplayNameModal: React.FC<IDisplayNameModal> = (props) => {
                     id="workspaceName"
                     type="text"
                     value={newWorkspace.name}
+                    placeholder="نام ورک اسپیس را وارد کنید"
                     onChange={(e) => {
                       handleChange(e);
                     }}
-                    className="border border-gray-primary rounded-md p-xs my-xs w-full"
+                    className="border border-gray-primary text-end rounded-md p-xs my-xs w-full"
                   />
                   {!validateName && (
                     <span className="text-xs text-red-primary">
