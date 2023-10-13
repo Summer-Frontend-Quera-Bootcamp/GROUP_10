@@ -32,10 +32,10 @@ function MyComponent() {
   };
 
   return (
-    <div className="flex flex-col items-start justify-start h-screen p-4 bg-gray-100">
+    <div className=" w-1/2 flex flex-col items-start justify-start h-screen p-4">
       <div className="flex items-center mb-4">
         <button
-          className="py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
+          className="opacity-25 hover:opacity-100 h-209 text-black  py-2 px-4 bg-gray-456 hover:bg-slate-700 hover:text-gray-400 text-white"
           onClick={handleSubmit}
         >
           ثبت
@@ -43,7 +43,7 @@ function MyComponent() {
         <input
           dir="rtl"
           type="text"
-          className="ml-2 w-659 h-209 py-2 px-4 text-2xl border rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+          className="ml-2 w-659 h-209 py-2 px-4 text-2xl   focus:border-green-500 w-96"
           placeholder="کامنت"
           value={inputValue}
           onChange={handleInputChange}
@@ -51,11 +51,17 @@ function MyComponent() {
       </div>
       <div className="flex flex-col-reverse">
         {comments.map((comment, index) => (
-          <div key={index} className="p-2 border rounded-lg shadow-md mb-2">
+          <div
+            key={index}
+            className="p-2 border rounded-lg shadow-lg m-5 w-10000"
+          >
             <p dir="rtl" className="font-bold text-blue-500">
               شما
             </p>
-            <p dir="rtl" className="font-bold text-gray-500"> کامنت گذاشته اید</p>
+            <p dir="rtl" className="font-bold text-gray-500">
+              {" "}
+              کامنت گذاشته اید
+            </p>
             <br />
             <p dir="rtl">{comment.text}</p>
             <div className="text-xs text-blue-500 mt-1">{comment.time}</div>

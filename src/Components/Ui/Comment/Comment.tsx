@@ -11,7 +11,7 @@ const Comment = () => {
         <div className="mt-7">
           <p
             dir="rtl"
-            className="text-black-primary text-[16px] border border-solid border-black-2 rounded-lg p-4"
+            className="text-black-primary text-[16px] border border-solid border-black-2 rounded-lg p-5"
           >
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
             استفاده از طراحان
