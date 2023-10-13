@@ -58,7 +58,7 @@ const Login = () => {
               )}
             </div>
 
-            <div className="flex items-center">
+            <div dir="rtl" className="flex items-center text-right">
               <AncherPrimary href="">رمز عبور را فراموش کرده ای؟</AncherPrimary>
             </div>
 
@@ -72,9 +72,9 @@ const Login = () => {
               </ButtonPrimary>
             </div>
 
-            <div className="text-right">
+            <div className="inline text-center">
               <AncherPrimary href="">ثبت نام</AncherPrimary>
-              <p>ثبت نام نکرده ای؟</p>
+              <p className="inline-block">ثبت نام نکرده ای؟</p>
             </div>
           </div>
         </ContainerAuth>
