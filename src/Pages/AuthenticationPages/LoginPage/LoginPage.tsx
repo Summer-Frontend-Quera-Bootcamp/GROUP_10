@@ -75,6 +75,7 @@ const Login = () => {
             <div className=" inline text-center">
               <AncherPrimary href="">ثبت نام</AncherPrimary>
               <p className="mt-5 inline-block">ثبت نام نکرده ای؟</p>
+              <p className="mt-5 inline-block">سلام</p>
             </div>
           </div>
         </ContainerAuth>

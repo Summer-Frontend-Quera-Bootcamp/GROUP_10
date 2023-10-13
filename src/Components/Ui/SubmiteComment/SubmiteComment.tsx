@@ -35,7 +35,7 @@ function MyComponent() {
     <div className=" w-1/2 flex flex-col items-start justify-start h-screen p-4">
       <div className="flex items-center mb-4">
         <button
-          className="opacity-25 hover:opacity-100 h-209 text-black  py-2 px-4 bg-gray-456 hover:bg-slate-700 hover:text-gray-400 text-white"
+          className="flex items-start text-black opacity-25 hover:opacity-100 h-209  py-2 px-4 bg-gray-456 hover:bg-slate-700 hover:text-gray-400"
           onClick={handleSubmit}
         >
           ثبت
@@ -49,20 +49,20 @@ function MyComponent() {
           onChange={handleInputChange}
         />
       </div>
-      <div className="flex flex-col-reverse">
+      <div className="w-50% flex flex-col-reverse">
         {comments.map((comment, index) => (
           <div
             key={index}
-            className="p-2 border rounded-lg shadow-lg m-5 w-10000"
+            className="text-right inline p-2 border rounded-lg shadow-lg m-5 w-10000"
           >
-            <p dir="rtl" className="font-bold text-blue-500">
-              شما
-            </p>
-            <p dir="rtl" className="font-bold text-gray-500">
-              {" "}
+            <p dir="rtl" className="mr-1.5 inline-block font-bold text-gray-500">
               کامنت گذاشته اید
             </p>
+            <p dir="rtl" className="text-right inline-block font-bold text-blue-500">
+              شما
+            </p>
             <br />
+            <br/>
             <p dir="rtl">{comment.text}</p>
             <div className="text-xs text-blue-500 mt-1">{comment.time}</div>
           </div>
