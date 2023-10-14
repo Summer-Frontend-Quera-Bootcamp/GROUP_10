@@ -5,8 +5,8 @@ import "./App.css";
 
 //import UserInfo from "../Components/Form/UserInfo/UserInfo";
 // import AccountInfo from "../Components/Form/AccountInfo/AccountInfo";
-// import SettingForm from "../Components/Form/SettingForm/SettingForm";
-import NavBar from "../Components/Ui/NavBar";
+import SettingForm from "../Components/Form/SettingForm/SettingForm";
+//import NavBar from "../Components/Ui/NavBar";
 // import FilterModal from "../Components/Ui/FilterView/FilterModal";
 
 interface IPropsApp extends PropsWithChildren {}
@@ -17,8 +17,8 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
 
       {/* <UserInfo /> */}
       {/* <AccountInfo /> */}
-      {/* <SettingForm /> */}
-      <NavBar />
+      <SettingForm />
+      {/* <NavBar /> */}
     </>
   );
 };

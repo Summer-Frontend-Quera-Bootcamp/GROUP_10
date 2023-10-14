@@ -1,16 +1,33 @@
+import { useState } from "react";
 import { FiLink } from "react-icons/fi";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { ContainerModal } from "../Containers/ContainerModal/ContainerModal";
 import { InputInvite } from "../Inputs/InputInvite/InputInvite";
+import PermissionModal from "./PermissionModal";
 
 interface IShareModal {
   onClose: () => void;
 }
 
 const ShareProjectModal = ({ onClose }: IShareModal) => {
-  //const [isPermissionModalOpen, setPermissionModalOpen] = useState(false);
+  const [isPermissionModalOpen, setPermissionModalOpen] = useState(false);
+  const [selectedPermission, setSelectedPermission] = useState<number>(1);
+
+  const permissions = [
+    "دسترسی کامل",
+    "دسترسی ویرایش",
+    "دسترسی کامنت",
+    "دسترسی مشاهده",
+  ];
+  const handleClick = () => {
+    setPermissionModalOpen(!isPermissionModalOpen);
+  };
+
+  const handleChange = (id: number) => {
+    setSelectedPermission(id);
+  };
   return (
-    <div className="mr-[429px] mt-[50px] fixed backdrop-grayscale">
+    <div className="mr-[429px] fixed backdrop-grayscale">
       <ContainerModal
         heading={"به اشتراک گذاری پروژه"}
         onClose={onClose}
@@ -45,10 +62,25 @@ const ShareProjectModal = ({ onClose }: IShareModal) => {
               <div className="flex flex-row-reverse items-center gap-xs">
                 <div className="bg-orange-secondary w-[34px] h-[37px] rounded-full" />
                 <span className="px-[8px]">smail@mail.com</span>
-                <button className="flex flex-row gap-xs items-center px-[12px] pt-[2px] pb-[3px] border rounded-md mr-auto">
-                  <IoIosArrowDown />
-                  دسترسی کامل
+                <button
+                  className="flex flex-row gap-xs items-center px-[12px] pt-[2px] pb-[3px] border rounded-md mr-auto"
+                  onClick={handleClick}
+                >
+                  {isPermissionModalOpen ? (
+                    <IoIosArrowDown />
+                  ) : (
+                    <IoIosArrowForward />
+                  )}
+
+                  {permissions[selectedPermission - 1]}
                 </button>
+                {isPermissionModalOpen && (
+                  <PermissionModal
+                    onChange={(id) => {
+                      handleChange(id);
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
