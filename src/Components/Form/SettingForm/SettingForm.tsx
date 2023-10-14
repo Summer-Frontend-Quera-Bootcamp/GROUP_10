@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { ButtonPrimary } from "../../Ui/Buttons";
-import ToggleSwitch from "../../Ui/ToggleSwitch";
 
 const SettingForm = () => {
   const colors = [
@@ -19,7 +17,7 @@ const SettingForm = () => {
     "orange-primary",
   ];
 
-  const [isChecked, setIsChecked] = useState([
+  const [isClicked, setIsClicked] = useState([
     false,
     false,
     false,
@@ -34,66 +32,46 @@ const SettingForm = () => {
     false,
     false,
   ]);
-
-  const handleChecked = (index: number) => {
-    const len = isChecked.length;
-    const Arr = Array(len).fill(false);
-    Arr[index] = true;
-    setIsChecked(Arr);
-  };
-
+  console.log("rendered");
   return (
-    <form className="w-[354px] flex flex-col items-end gap-l">
+    <form className="w-[450px] flex flex-col items-end gap-s">
       <h1 className="text-[31px] text-right">تنظیمات</h1>
-      <div className="flex flex-col gap-xs text-right">
-        <span>انتخاب تم</span>
-        <div className="flex flex-row-reverse items-center gap-[13px]">
-          {colors.map((color, index) => {
-            return isChecked[index] ? (
-              <label
-                key={index}
-                className={
-                  "flex justify-center items-center w-[28px] h-[28px] rounded-lg " +
-                  "bg-" +
-                  color
-                }
-              >
-                <span className="w-[12px] h-[12px] rounded-lg bg-white inline-block" />
-                <input
-                  type="radio"
-                  className="hidden w-full h-full"
-                  checked={isChecked[index]}
-                  onChange={() => {
-                    handleChecked(index);
-                  }}
-                />
-              </label>
-            ) : (
-              <label
-                key={index}
-                className={
-                  "flex justify-center items-center w-[20px] h-[20px] rounded-lg " +
-                  "bg-" +
-                  color
-                }
-              >
-                <input
-                  type="radio"
-                  className="hidden w-full h-full"
-                  checked={isChecked[index]}
-                  onChange={() => {
-                    handleChecked(index);
-                  }}
-                />
-              </label>
-            );
-          })}
-        </div>
+      <span>انتخاب تم</span>
+      <div className="flex flex-row-reverse items-center gap-[13px]">
+        {colors.map((color, index) => {
+          return isClicked[index] ? (
+            <button
+              key={index}
+              className={
+                "flex justify-center items-center w-[28px] h-[28px] rounded-lg " +
+                "bg-" +
+                color
+              }
+              onClick={() => {
+                const theStateArray = Array(colors.length).fill(false);
+                theStateArray[index] = true;
+                setIsClicked(theStateArray);
+              }}
+            >
+              <span className="w-[12px] h-[12px] rounded-lg bg-white inline-block" />
+            </button>
+          ) : (
+            <button
+              key={index}
+              className={
+                "flex justify-center items-center w-[20px] h-[20px] rounded-lg " +
+                "bg-" +
+                color
+              }
+              onClick={() => {
+                const theStateArray = Array(colors.length).fill(false);
+                theStateArray[index] = true;
+                setIsClicked(theStateArray);
+              }}
+            />
+          );
+        })}
       </div>
-      <ToggleSwitch />
-      <ButtonPrimary bigger onClick={() => {}}>
-        ثبت تغییرات
-      </ButtonPrimary>
     </form>
   );
 };
