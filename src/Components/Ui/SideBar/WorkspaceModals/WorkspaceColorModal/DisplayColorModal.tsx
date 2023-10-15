@@ -12,7 +12,7 @@ const DisplayColorModal: React.FC<IDisplayColorModal> = (props) => {
       ...prevState,
       colorModal: !prevState.colorModal,
     }));
-    setNewWorkspace({ name: "", color: "", members: [] });
+    setNewWorkspace({ id: 0, name: "", color: "", members: [] });
   };
 
   const handleBack = () => {

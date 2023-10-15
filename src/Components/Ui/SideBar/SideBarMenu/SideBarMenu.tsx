@@ -4,6 +4,7 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
 import { FiPlusSquare } from "react-icons/fi";
 import { ISiderBarMenu } from "../Interface";
+import Workspace from "../Workspace/Workspace";
 
 const SiderBarMenu: React.FC<ISiderBarMenu> = ({
   workspaceData,

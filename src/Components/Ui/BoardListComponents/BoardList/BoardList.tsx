@@ -5,8 +5,8 @@ const BoardList = () => {
   return (
     <div className="flex flex-col gap-y-6">
       <BoardProjectList projectName="پروژه اول" />
-      <BoardProjectList projectName="درس کامپایلر" />
-      <BoardProjectList projectName="مدیریت پروژه" />
+      {/* <BoardProjectList projectName="درس کامپایلر" /> */}
+      {/* <BoardProjectList projectName="مدیریت پروژه" /> */}
     </div>
   );
 };

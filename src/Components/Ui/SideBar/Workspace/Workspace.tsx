@@ -56,13 +56,13 @@ const Workspace = ({ workspace, setDisplayModals }) => {
                 setColumnMore((prevState) => !prevState);
               }}
             >
-              <div className="absolute  group/edit top-7 bg-white w-max right-60 p-3 shadow-lg rounded-lg">
+              <div className="absolute z-[50] group/edit top-7 bg-white w-max right-60 p-3 shadow-lg rounded-lg">
                 <div className="flex flex-col gap-s items-end">
                   {columnMoreItems.map((column) => (
                     <button
                       className={`flex items-center gap-1 rounded w-full flex-row-reverse transition duration-300 ${
                         column.btnMode
-                          ? "text-body-xs bg-brand-primary py-1.5 px-3 text-white gap-1"
+                          ? "text-body-xs bg-brand-primary justify-center text-center py-1.5 px-3 text-white gap-1"
                           : "text-body-s p-1 hover:bg-slate-100"
                       } ${
                         column.textColor && "text-red-primary hover:bg-red-100"
@@ -81,7 +81,7 @@ const Workspace = ({ workspace, setDisplayModals }) => {
           {/* ColumnMoreModal */}
 
           <button
-            className="invisible h-0 transition-opacity duration-300 opacity-0 group-hover/item:visible group-hover/item:opacity-100 group-hover/item:h-auto"
+            className="invisible h-0 z-[10] transition-opacity duration-300 opacity-0 group-hover/item:visible group-hover/item:opacity-100 group-hover/item:h-auto"
             onClick={() => {
               setColumnMore((prevState) => !prevState);
             }}
