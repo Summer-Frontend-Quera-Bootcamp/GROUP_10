@@ -1,3 +1,4 @@
+import { useClickAway } from "@uidotdev/usehooks";
 import { useState } from "react";
 
 import { IoArrowBackOutline } from "react-icons/io5";
@@ -25,10 +26,13 @@ export const ContainerModal = ({
     onClose();
   };
 
+  const ref = useClickAway<HTMLDivElement>(handleClose);
+
   return (
     <>
       {isOpen && (
         <div
+          ref={ref}
           className={`flex flex-col items-center ${width} rounded-m drop-shadow-2xl bg-white rounded-3xl p-m `}
         >
           <div className="w-full flex justify-between items-center mb-m">

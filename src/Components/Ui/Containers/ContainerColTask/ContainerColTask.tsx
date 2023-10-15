@@ -54,7 +54,7 @@ export const ContainerColTask = ({
   onCheck,
 }: IContainerColTaskProps) => {
   return (
-    <div className="flex w-full bg-gray-secondary rounded-[16px] pb-[4px] shadow-xl">
+    <div className="flex w-full bg-gray-secondary rounded-[16px] pb-[4px] shadow-md my-xs">
       <div className="group flex flex-col w-full p-s rounded-[16px] shadow-xl bg-white justify-between ">
         {image && (
           <img src={image} className="rounded-md h-[135px] object-cover"></img>

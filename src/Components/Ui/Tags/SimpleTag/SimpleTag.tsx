@@ -32,9 +32,9 @@ export const SimpleTag = ({ title, color }: ISimpleTagProps) => {
   ${color === "green" && "bg-green-secondary text-green-primary"}
   ${color === "lime" && "bg-lime-secondary text-lime-primary"}
   ${color === "orange" && "bg-orange-secondary text-orange-primary"} 
-  rounded-full px-xs w-fit mx-[2px] font-extrabold`}
+  rounded-full px-xs w-fit m-[4px] font-extrabold cursor-pointer`}
     >
-      <p> {title}</p>
+      <p> {title} </p>
     </div>
   );
 };
