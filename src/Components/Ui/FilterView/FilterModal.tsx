@@ -3,13 +3,13 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Filter } from "./Filter";
 
 interface Props {
-  onClose: (attributes: string[]) => void;
+  onClose: (values: string[]) => void;
 }
 
 const FilterModal = ({ onClose }: Props) => {
   const options = ["تاریخ", "تگ", "اعضا", "اولویت"];
   const optionList = ["درس", "کار", "پروژه"];
-  const [elements, setElements] = useState<number[]>([]);
+  const [filters, setfilters] = useState<number[]>([]);
   const [isOpen, setOpen] = useState(true);
   const [chosen, setChosen] = useState<string[]>([]);
 
@@ -18,14 +18,14 @@ const FilterModal = ({ onClose }: Props) => {
     onClose(chosen);
   };
   const handleAdd = () => {
-    if (elements.length < options.length) {
-      const newElement = elements.length;
-      setElements([...elements, newElement]);
+    if (filters.length < options.length) {
+      const newElement = filters.length;
+      setfilters([...filters, newElement]);
     }
   };
 
   const handleDelete = (id: number) => {
-    setElements(elements.filter((val) => val !== id));
+    setfilters(filters.filter((val) => val !== id));
   };
 
   const handleChange = (choice: string) => {
@@ -35,7 +35,7 @@ const FilterModal = ({ onClose }: Props) => {
   return (
     <>
       {isOpen && (
-        <div className="bg-white w-[718px] min-h-[206px] rounded-lg shadow-md pt-2 pb-4 flex flex-col gap-s ml-[232px] mt-[190px] fixed backdrop-grayscale">
+        <div className="bg-white w-[718px] min-h-[206px] rounded-lg shadow-md pt-2 pb-4 flex flex-col gap-s ml-[232px] mt-[190px]">
           <div className="flex flex-row-reverse justify-between items-center w-[673px] ml-[24px]">
             <h1 className="font-extrabold text-2xl ">فیلترها</h1>
             <button onClick={handleClose}>
@@ -43,11 +43,11 @@ const FilterModal = ({ onClose }: Props) => {
             </button>
           </div>
 
-          {elements.map((index) => (
+          {filters.map((index) => (
             <Filter
               id={index}
-              attributes={options}
-              attributeOptions={optionList}
+              d1Values={options}
+              d2Values={optionList}
               onDelete={handleDelete}
               onChange={handleChange}
             />

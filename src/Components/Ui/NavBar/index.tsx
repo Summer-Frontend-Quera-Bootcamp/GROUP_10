@@ -17,6 +17,7 @@ const NavBar = () => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [chosen, setChosen] = useState<string[]>([]);
   const [calenderFlag, setCalenderFlag] = useState(false);
+  const [userPermission, setUserPermission] = useState(3);
 
   const openFilterModal = () => {
     setIsFilterModalOpen(true);
@@ -31,7 +32,8 @@ const NavBar = () => {
     setIsShareModalOpen(true);
   };
 
-  const closeShareModal = () => {
+  const closeShareModal = (permissionId: number) => {
+    setUserPermission(permissionId);
     setIsShareModalOpen(false);
   };
 
@@ -75,7 +77,16 @@ const NavBar = () => {
           اشتراک گذاری
         </button>
 
-        {isShareModalOpen && <ShareProjectModal onClose={closeShareModal} />}
+        {isShareModalOpen && (
+          <div className="fixed inset-0 z-10 bg-gray-darker bg-opacity-50">
+            <ShareProjectModal
+              onClose={(permissionId) => {
+                closeShareModal(permissionId);
+              }}
+              userPermission={userPermission}
+            />
+          </div>
+        )}
       </div>
       <div className="flex flex-row-reverse py-4 items-center border-b-[1px]">
         <div className="flex flex-row-reverse gap-x-xs items-center border-l-[2px] pl-4">
@@ -96,11 +107,13 @@ const NavBar = () => {
             </button>
 
             {isFilterModalOpen && (
-              <FilterModal
-                onClose={(attributes) => {
-                  closeFilterModal(attributes);
-                }}
-              />
+              <div className="fixed inset-0 z-10 bg-gray-darker bg-opacity-50">
+                <FilterModal
+                  onClose={(attributes) => {
+                    closeFilterModal(attributes);
+                  }}
+                />
+              </div>
             )}
             <p className="bg-cyan-secondary text-cyan-primary px-2 py-1 text-xs">
               دسته بندی شده با {chosen.join(" و ")}

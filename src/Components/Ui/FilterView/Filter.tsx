@@ -1,17 +1,18 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
+import DropDownList from "../DropDownList";
 
 export interface IFilter {
   id: number;
-  attributes: string[];
-  attributeOptions: string[];
+  d1Values: string[];
+  d2Values: string[];
   onDelete: (id: number) => void;
   onChange: (choice: string) => void;
 }
 
 export const Filter = ({
   id,
-  attributes,
-  attributeOptions,
+  d1Values,
+  d2Values,
   onDelete,
   onChange,
 }: IFilter) => {
@@ -20,42 +21,27 @@ export const Filter = ({
   return (
     <div className="w-[673px] ml-[24px] flex flex-row-reverse items-center gap-xs">
       <p>تسک هایی که </p>
-      <select
-        className="w-[182px] border rounded bg-inherit text-right"
-        onChange={(e) => {
-          onChange(e.target.value);
-        }}
-      >
-        <option key={0} disabled hidden selected className="text-gray-400">
-          انتخاب کنید
-        </option>
-        {attributes.map((choice, index) => (
-          <option key={index + 1} value={choice} className="text-right">
-            {choice}
-          </option>
-        ))}
-      </select>
+      <DropDownList
+        options={d1Values}
+        width="w-[182px]"
+        onChange={onChange}
+        containsSearch={true}
+      />
+
       <p>آنها</p>
-      <select className="w-[146px] border rounded bg-inherit text-right">
-        <option key={0} disabled hidden selected>
-          انتخاب کنید
-        </option>
-        {attributeOptions.map((choice, index) => (
-          <option key={index + 1} value={index} className="text-right">
-            {choice}
-          </option>
-        ))}
-      </select>
-      <select className="w-[107px] border rounded bg-inherit text-right">
-        <option key={0} disabled hidden selected>
-          انتخاب کنید
-        </option>
-        {isOrNot.map((choice, index) => (
-          <option key={index + 1} value={index} className="text-right">
-            {choice}
-          </option>
-        ))}
-      </select>
+      <DropDownList
+        width="w-[146px]"
+        options={d2Values}
+        onChange={() => {}}
+        containsSearch={true}
+      />
+      <DropDownList
+        options={isOrNot}
+        width="w-[107px]"
+        onChange={() => {}}
+        tsize="text-[12px]"
+        containsSearch={false}
+      />
       <button className="mr-auto text-red-primary" onClick={() => onDelete(id)}>
         <RiDeleteBin6Line />
       </button>

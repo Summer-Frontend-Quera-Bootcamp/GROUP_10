@@ -1,11 +1,25 @@
+import { useState } from "react";
+
 interface IPermission {
   onChange: (id: number) => void;
+  userPermission: number;
 }
 
-const PermissionModal = ({ onChange }: IPermission) => {
+const PermissionModal = ({ onChange, userPermission }: IPermission) => {
+  const initialState = Array(4).fill(false);
+  initialState[userPermission] = true;
+  const [checked, setChecked] = useState(initialState);
+
+  const handleSelect = (id: number) => {
+    const arr = Array(4).fill(false);
+    arr[id] = true;
+    setChecked(arr);
+    onChange(id);
+  };
+
   return (
-    <div className="fixed w-[252px] p-[16px] flex flex-col rounded-lg gap-s bg-white">
-      <label id="full" className="border-b-2 py-[10px]">
+    <div className="w-[252px] p-[16px] flex flex-col rounded-lg gap-s bg-white shadow">
+      <label className="border-b-2 py-[10px]">
         <span className="font-extrabold block text-right text-[14px] h-[25px] leading-6">
           دسترسی کامل
         </span>
@@ -13,15 +27,16 @@ const PermissionModal = ({ onChange }: IPermission) => {
           توانایی ساختن تسک در این پروژه، ویرایش تنظیمات پروژه و حذف پروژه
         </span>
         <input
+          id="0"
           type="radio"
           className="hidden w-full h-full"
-          checked
+          checked={checked[0]}
           onChange={() => {
-            onChange(1);
+            handleSelect(0);
           }}
         />
       </label>
-      <label id="edit" className="border-b-2 py-[10px]">
+      <label className="border-b-2 py-[10px]">
         <span className="font-extrabold block text-right text-[14px] h-[25px] leading-6">
           دسترسی ویرایش
         </span>
@@ -30,14 +45,16 @@ const PermissionModal = ({ onChange }: IPermission) => {
           پروژه را حذف یا تسک جدید بسازد.
         </span>
         <input
+          id="1"
           type="radio"
           className="hidden w-full h-full"
+          checked={checked[1]}
           onChange={() => {
-            onChange(2);
+            handleSelect(1);
           }}
         />
       </label>
-      <label id="comment" className="border-b-2 py-[10px]">
+      <label className="border-b-2 py-[10px]">
         <span className="font-extrabold block text-right text-[14px] h-[25px] leading-6">
           دسترسی کامنت
         </span>
@@ -46,14 +63,16 @@ const PermissionModal = ({ onChange }: IPermission) => {
           توانایی ویرایش تنظیمات پروژه را ندارد.
         </span>
         <input
+          id="2"
           type="radio"
           className="hidden w-full h-full"
+          checked={checked[2]}
           onChange={() => {
-            onChange(3);
+            handleSelect(2);
           }}
         />
       </label>
-      <label id="none" className="py-[10px]">
+      <label className="py-[10px]">
         <span className="font-extrabold block text-right text-[14px] h-[25px] leading-5">
           فقط دسترسی مشاهده
         </span>
@@ -61,10 +80,12 @@ const PermissionModal = ({ onChange }: IPermission) => {
           توانایی گذاشتن کامنت یا ویرایش تسک ها را ندارد.
         </span>
         <input
+          id="3"
           type="radio"
           className="hidden w-full h-full"
+          checked={checked[3]}
           onChange={() => {
-            onChange(4);
+            handleSelect(3);
           }}
         />
       </label>

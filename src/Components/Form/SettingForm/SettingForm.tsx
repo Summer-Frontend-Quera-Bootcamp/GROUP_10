@@ -94,6 +94,12 @@ const SettingForm = () => {
       <ButtonPrimary bigger onClick={() => {}}>
         ثبت تغییرات
       </ButtonPrimary>
+      <div
+        className="bg-red-primary bg-pink-primary bg-grape-primary
+      bg-violet-primary bg-indigo-primary bg-blue-primary
+       bg-cyan-primary bg-teal-primary bg-brand-primary 
+       bg-green-primary bg-lime-primary bg-yellow-primary bg-orange-primary"
+      ></div>
     </form>
   );
 };
