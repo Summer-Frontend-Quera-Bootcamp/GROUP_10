@@ -20,14 +20,13 @@ export const ContainerModal = ({
   onClose,
 }: IContainerModalProp) => {
   const [isOpen, setIsOpen] = useState(true);
-
   const handleClose = () => {
     setIsOpen(false);
     onClose();
   };
-
+  
   const ref = useClickAway<HTMLDivElement>(handleClose);
-
+  
   return (
     <>
       {isOpen && (
