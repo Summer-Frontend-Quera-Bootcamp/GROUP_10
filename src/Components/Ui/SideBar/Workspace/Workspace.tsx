@@ -6,6 +6,7 @@ import { FiEdit } from "react-icons/fi";
 import { BsTrash3 } from "react-icons/bs";
 import { FiShare2 } from "react-icons/fi";
 import ClickAwayListener from "react-click-away-listener";
+import { IWorkspace } from "../Interface";
 
 const columnMoreItems = [
   {
@@ -36,7 +37,10 @@ const columnMoreItems = [
   },
 ];
 
-const Workspace = ({ workspace, setDisplayModals }) => {
+const Workspace: React.FC<IWorkspace> = ({
+  workspace,
+  setDisplayModals,
+}): JSX.Element => {
   const [columnMore, setColumnMore] = useState<boolean>(false);
 
   return (

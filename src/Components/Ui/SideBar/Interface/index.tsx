@@ -57,3 +57,10 @@ export interface IRenderSelectButtonColor extends PropsWithChildren {
   data: INewWorkspace;
   setData: Dispatch<SetStateAction<INewWorkspace>>;
 }
+
+// Interface for every Workspace button in sidebar
+
+export interface IWorkspace extends PropsWithChildren {
+  workspace: INewWorkspace;
+  setDisplayModals: Dispatch<SetStateAction<IModalsStatus>>;
+}

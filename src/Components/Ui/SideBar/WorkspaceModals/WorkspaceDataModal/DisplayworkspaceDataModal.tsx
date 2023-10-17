@@ -2,7 +2,6 @@ import { ContainerModal } from "../../../Containers/ContainerModal/ContainerModa
 import { ButtonPrimary } from "../../../Buttons";
 import { CiNoWaitingSign } from "react-icons/ci";
 import { IDisplayWorkspaceDataModalProps } from "../../Interface";
-import { useState } from "react";
 
 const DisplayWorkspaceDataModal: React.FC<IDisplayWorkspaceDataModalProps> = (
   props
@@ -27,7 +26,7 @@ const DisplayWorkspaceDataModal: React.FC<IDisplayWorkspaceDataModalProps> = (
       ...prevState,
       dataModal: !prevState.dataModal,
     }));
-    setNewWorkspace({ name: "", color: "", members: [] });
+    setNewWorkspace({ id: 0, name: "", color: "", members: [] });
   };
   return (
     displayModals.dataModal && (
