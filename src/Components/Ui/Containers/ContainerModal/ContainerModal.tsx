@@ -1,5 +1,5 @@
+import { useClickAway } from "@uidotdev/usehooks";
 import { useState } from "react";
-import { useDetectClickOutside } from "react-detect-click-outside";
 
 import { IoArrowBackOutline } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
@@ -20,18 +20,13 @@ export const ContainerModal = ({
   onClose,
 }: IContainerModalProp) => {
   const [isOpen, setIsOpen] = useState(true);
-  const ref = useDetectClickOutside({
-    onTriggered: () => {
-      setIsOpen(false);
-      onClose();
-    },
-    disableClick: true,
-  });
   const handleClose = () => {
     setIsOpen(false);
     onClose();
   };
-
+  
+  const ref = useClickAway<HTMLDivElement>(handleClose);
+  
   return (
     <>
       {isOpen && (

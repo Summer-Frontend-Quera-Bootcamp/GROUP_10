@@ -2,9 +2,12 @@
 // Please dont change anything!
 
 import { ContainerAuth } from "./ContainerAuth/ContainerAuth";
+import { ContainerModal } from "./ContainerModal/ContainerModal";
+import { ColumnHeader } from "./ColumnHeader/ColumnHeader";
+import { ContainerColTask } from "./ContainerColTask/ContainerColTask";
 
 //
 //---------------------------------
 //
 
-export { ContainerAuth };
+export { ContainerAuth, ContainerModal, ColumnHeader, ContainerColTask };

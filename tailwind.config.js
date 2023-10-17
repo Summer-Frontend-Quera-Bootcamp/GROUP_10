@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -48,6 +48,10 @@ export default {
         green: {
           primary: "#40c057",
           secondary: "#d3f9d8",
+        },
+        yellow: {
+          primary: "#FAB005",
+          secondary: "#FFF3BF",
         },
         lime: {
           primary: "#82c91e",

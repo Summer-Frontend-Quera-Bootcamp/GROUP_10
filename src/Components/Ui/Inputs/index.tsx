@@ -2,9 +2,9 @@
 // Please dont change anything!
 
 import { InputText } from "./InputText/InputText";
-
+import { InputInvite } from "./InputInvite/InputInvite";
 //
 //-----------------------------------------
 //
 
-export { InputText };
+export { InputText, InputInvite };
