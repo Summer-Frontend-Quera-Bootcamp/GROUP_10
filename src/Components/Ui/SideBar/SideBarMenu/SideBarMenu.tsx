@@ -1,11 +1,12 @@
 import { ChangeEvent, useState } from "react";
 import ProjectTitle from "../../Titles/ProjectTitle/ProjectTitle";
 import { IoChevronForwardSharp } from "react-icons/io5";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsSun, BsMoon } from "react-icons/bs";
 import { FiPlusSquare } from "react-icons/fi";
 import { ISiderBarMenu } from "../Interface";
 import Workspace from "../Workspace/Workspace";
-
+import { FaCircleUser } from "react-icons/fa6";
+import { GiExitDoor } from "react-icons/gi";
 const SiderBarMenu: React.FC<ISiderBarMenu> = ({
   workspaceData,
   filteredWorkspace,
@@ -13,7 +14,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
   setDisplayModals,
 }) => {
   const [accordionStatus, setAccordionStatus] = useState<boolean>(true);
-
+  const [toggleDarkMode, setToggleDarkMode] = useState<boolean>(false);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const filteredData = workspaceData.filter((workspace) =>
       workspace.name.toLowerCase().includes(e.target.value.toLowerCase())
@@ -23,7 +24,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
 
   return (
     <>
-      <div className="h-screen border-s-2 ps-s border-gray-100">
+      <div className="h-screen overflow-y-hidden flex flex-col border-s-2 ps-s border-gray-100">
         <div className="text-center mt-xl mb-m">
           <ProjectTitle />
         </div>
@@ -51,12 +52,12 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
         >
           <div className="relative">
             <input
-              className="bg-gray-100 w-full text-end text-body-s font-medium px-8 py-2 my-s rounded"
+              className="bg-gray-100 w-full text-end text-body-s font-medium px-8 py-3 my-s rounded"
               type="text"
               placeholder="جست و جو کنید"
               onChange={(e) => handleChange(e)}
             />
-            <span className="absolute top-6 right-2">
+            <span className="absolute top-7 right-2">
               <BsSearch />
             </span>
           </div>
@@ -68,7 +69,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
                   nameModal: true,
                 }));
               }}
-              className="flex items-center justify-center text-black bg-gray-100 hover:bg-gray-200 transition  rounded-md w-transparent border-1 border-brand-primary p-2.5 text-body-sm my-xs w-full"
+              className="flex items-center justify-center text-black bg-gray-100 hover:bg-gray-200 transition rounded-md w-transparent border-1 border-brand-primary p-2.5 text-body-sm my-xs w-full"
             >
               ساختن اسپیس جدید
               <span className="ms-1.5 font-black text-xl">
@@ -88,26 +89,50 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
               ))}
           </div>
         </div>
+        <div className="mt-auto mb-l flex gap-s flex-col pe-12">
+          <div className="flex flex-row-reverse items-center ">
+            <span className="ms-xs text-2xl">
+              <FaCircleUser />
+            </span>
+            <p className="text-body-m font-bold">امیر عبدالعظیمی</p>
+          </div>
+          <div className="flex flex-row-reverse items-center justify-between">
+            <button className="flex items-center text-gray-primary flex-start flex-row-reverse">
+              <span className="text-3xl ">
+                <GiExitDoor />
+              </span>
+              <span className="mr-xs text-body-m">خروج</span>
+            </button>
+            <button
+              className={`transition-all duration-300 w-16 flex rounded-lg p-1 items-center gap-xs ${
+                toggleDarkMode
+                  ? "bg-gray-darker justify-start"
+                  : "bg-gray-secondary justify-end"
+              }`}
+              onClick={() => {
+                setToggleDarkMode((prevState) => !prevState);
+              }}
+            >
+              <span
+                className={`p-1 transition-all duration-300 text-white flex items-center justify-center rounded bg-gray-primary text-lg ${
+                  toggleDarkMode ? "visible block" : "invisible hidden"
+                }`}
+              >
+                <BsMoon />
+              </span>
+              <span
+                className={`p-1 transition-all duration-300 text-black bg-white flex items-center justify-center rounded text-lg ${
+                  toggleDarkMode ? "invisible hidden" : "visible block"
+                }`}
+              >
+                <BsSun />
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
 };
 
 export default SiderBarMenu;
-
-// immutable : taghir napazir
-// mutable : taghiir pazir
-
-// refrence type : object , array : mutable but dont mutate !
-
-// objectAddress : 123astr3543ert
-
-// singleThread
-
-// memoryHeap , callStack
-
-// function => function
-
-// primitive type : but can reAssgin
-// mutate : taghiir dadan
-// immutate : taghir nadadan
