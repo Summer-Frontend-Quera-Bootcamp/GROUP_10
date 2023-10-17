@@ -104,25 +104,29 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
               <span className="mr-xs text-body-m">خروج</span>
             </button>
             <button
-              className={`transition-all duration-300 w-16 flex rounded-lg p-1 items-center gap-xs ${
+              className={`transition-all  delay-75 duration-500 w-16 flex rounded-lg p-1 items-center gap-xs ${
                 toggleDarkMode
-                  ? "bg-gray-darker justify-start"
-                  : "bg-gray-secondary justify-end"
+                  ? "bg-gray-darker "
+                  : "bg-gray-secondary "
               }`}
               onClick={() => {
                 setToggleDarkMode((prevState) => !prevState);
               }}
             >
               <span
-                className={`p-1 transition-all duration-300 text-white flex items-center justify-center rounded bg-gray-primary text-lg ${
-                  toggleDarkMode ? "visible block" : "invisible hidden"
+                className={`p-1 transition-all duration-500 text-white flex items-center justify-center rounded bg-gray-primary text-lg ${
+                  toggleDarkMode
+                    ? "visible opacity-100"
+                    : "invisible  opacity-0"
                 }`}
               >
                 <BsMoon />
               </span>
               <span
-                className={`p-1 transition-all duration-300 text-black bg-white flex items-center justify-center rounded text-lg ${
-                  toggleDarkMode ? "invisible hidden" : "visible block"
+                className={`p-1 transition-all duration-500 text-black bg-white flex items-center justify-center rounded text-lg ${
+                  toggleDarkMode
+                    ? "invisible  opacity-0"
+                    : "visible opacity-100"
                 }`}
               >
                 <BsSun />
