@@ -4,7 +4,7 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 import { BsSearch, BsSun, BsMoon } from "react-icons/bs";
 import { FiPlusSquare } from "react-icons/fi";
 import { ISiderBarMenu } from "../Interface";
-import Workspace from "../Workspace/Workspace";
+import Workspace from "../SideBarWorkspace/SideBarWorkspace";
 import { FaCircleUser } from "react-icons/fa6";
 import { GiExitDoor } from "react-icons/gi";
 const SiderBarMenu: React.FC<ISiderBarMenu> = ({
@@ -24,12 +24,12 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
 
   return (
     <>
-      <div className="h-screen overflow-y-hidden flex flex-col border-s-2 ps-s border-gray-100">
+      <div className="h-screen overflow-y-hidden flex flex-col pe-10 border-s-2 ps-s border-gray-100">
         <div className="text-center mt-xl mb-m">
           <ProjectTitle />
         </div>
         <div
-          className="flex items-center hover:cursor-pointer pe-12"
+          className="flex w-full items-center hover:cursor-pointer "
           onClick={() => setAccordionStatus((prevState) => !prevState)}
         >
           <span
@@ -44,7 +44,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
           </p>
         </div>
         <div
-          className={`transition-all duration-500 ease-in-out pe-12 ${
+          className={`transition-all duration-500 ease-in-out  ${
             accordionStatus
               ? "invisible opacity-0 h-0"
               : "visible opacity-100 h-auto"
@@ -89,7 +89,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
               ))}
           </div>
         </div>
-        <div className="mt-auto mb-l flex gap-s flex-col pe-12">
+        <div className="mt-auto mb-l flex gap-s flex-col ">
           <div className="flex flex-row-reverse items-center ">
             <span className="ms-xs text-2xl">
               <FaCircleUser />

@@ -4,7 +4,7 @@ import { Calendar } from "../Components/Ui/CalendarView";
 //--------Import Your Components Here!--------//
 
 import BoardLayout from "../Layouts/BoardLayout/BoardLayout";
-import BoardList from "../Components/Ui/BoardListComponents/BoardList/BoardList";
+import ListView from "../Components/Ui/BoardListComponents/ListView/ListView";
 //import { LoginPage } from "../Pages/AuthenticationPages";
 //import { ForgetPassPage } from "../Pages/AuthenticationPages";
 
@@ -12,11 +12,10 @@ import BoardList from "../Components/Ui/BoardListComponents/BoardList/BoardList"
 
 interface IPropsApp extends PropsWithChildren {}
 const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
-
   return (
     <div>
       <BoardLayout>
-        <BoardList />
+        <ListView />
       </BoardLayout>
       {/* <RegisterPage /> */}
       {/* <ForgetPassPage /> */}
@@ -24,15 +23,15 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
       {/* <ResetPasswordPage /> */}
     </div>
   );
-//   const events = [
-//     {
-//       title: "Event 1",
-//       start: "2023-10-05",
-//       end: "2023-10-11",
-//     },
-//     // Add more events as needed
-//   ];
-//   return <Calendar events={events} />;
+  //   const events = [
+  //     {
+  //       title: "Event 1",
+  //       start: "2023-10-05",
+  //       end: "2023-10-11",
+  //     },
+  //     // Add more events as needed
+  //   ];
+  //   return <Calendar events={events} />;
 };
 
 export default App;

@@ -24,9 +24,9 @@ export const ContainerModal = ({
     setIsOpen(false);
     onClose();
   };
-  
+
   const ref = useClickAway<HTMLDivElement>(handleClose);
-  
+
   return (
     <>
       {isOpen && (
