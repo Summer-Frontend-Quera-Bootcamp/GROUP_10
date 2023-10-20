@@ -1,6 +1,6 @@
 import BoardProjectList from "../BoardProjectList/BoardProjectList";
 
-const BoardList = () => {
+const ListView = () => {
   // TODO:Handling Components TS
   return (
     <div className="flex flex-col gap-y-6">
@@ -11,4 +11,4 @@ const BoardList = () => {
   );
 };
 
-export default BoardList;
+export default ListView;
