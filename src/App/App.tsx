@@ -15,7 +15,10 @@ interface IPropsApp extends PropsWithChildren {}
 const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
     <div>
-      <Dashboard />
+      {/* <Dashboard /> */}
+      <BoardLayout>
+        <ListView />
+      </BoardLayout>
       {/* <RegisterPage /> */}
       {/* <ForgetPassPage /> */}
       {/* <LoginPage /> */}
