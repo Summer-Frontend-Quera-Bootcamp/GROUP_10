@@ -24,7 +24,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
 
   return (
     <>
-      <div className="h-screen overflow-y-hidden flex flex-col pe-10 border-s-2 ps-s border-gray-100">
+      <div className="h-screen flex flex-col pe-10 border-s-2 ps-s border-gray-100">
         <div className="text-center mt-xl mb-m">
           <ProjectTitle />
         </div>
@@ -105,9 +105,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
             </button>
             <button
               className={`transition-all  delay-75 duration-500 w-16 flex rounded-lg p-1 items-center gap-xs ${
-                toggleDarkMode
-                  ? "bg-gray-darker "
-                  : "bg-gray-secondary "
+                toggleDarkMode ? "bg-gray-darker " : "bg-gray-secondary "
               }`}
               onClick={() => {
                 setToggleDarkMode((prevState) => !prevState);

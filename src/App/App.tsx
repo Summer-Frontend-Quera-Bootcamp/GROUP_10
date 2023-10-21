@@ -5,6 +5,7 @@ import { Calendar } from "../Components/Ui/CalendarView";
 
 import BoardLayout from "../Layouts/BoardLayout/BoardLayout";
 import ListView from "../Components/Ui/BoardListComponents/ListView/ListView";
+import Dashboard from "../Components/Ui/DashboardComponents/Dashboard/Dashboard";
 //import { LoginPage } from "../Pages/AuthenticationPages";
 //import { ForgetPassPage } from "../Pages/AuthenticationPages";
 
@@ -18,6 +19,7 @@ interface IPropsApp extends PropsWithChildren {}
 const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
   return (
     <div>
+      {/* <Dashboard /> */}
       <BoardLayout>
         <ListView />
       </BoardLayout>
