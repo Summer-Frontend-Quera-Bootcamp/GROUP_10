@@ -1,0 +1,9 @@
+.vertical-line{
+    content: '';
+    border-left: 1px solid #55555583;
+    height: 100vh; 
+    position: fixed;
+    right: 25%;
+    top: 0;
+    transform: translateX(-50%);
+}
