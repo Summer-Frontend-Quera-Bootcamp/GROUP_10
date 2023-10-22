@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ButtonPrimary } from "../../../Components/Ui/Buttons";
 import { ContainerAuth } from "../../../Components/Ui/Containers/";
 import { InputText } from "../../../Components/Ui/Inputs/";
-import AuthLayout from "../../../Layouts/AuthLayout";
+import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 import { useState } from "react";
 
 const schema = z.object({

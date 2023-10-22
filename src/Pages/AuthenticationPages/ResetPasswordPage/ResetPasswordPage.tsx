@@ -1,5 +1,5 @@
 // reset password component
-import AuthLayout from "../../../Layouts/AuthLayout";
+import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 import { ContainerAuth } from "../../../Components/Ui/Containers";
 import { InputText } from "../../../Components/Ui/Inputs";
 import { ButtonPrimary } from "../../../Components/Ui/Buttons";

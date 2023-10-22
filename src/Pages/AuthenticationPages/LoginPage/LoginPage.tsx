@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import AuthLayout from "../../../Layouts/AuthLayout";
+import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 import { ContainerAuth } from "../../../Components/Ui/Containers";
 import { InputText } from "../../../Components/Ui/Inputs";
 import { ButtonPrimary } from "../../../Components/Ui/Buttons";
