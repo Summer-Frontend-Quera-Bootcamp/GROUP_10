@@ -6,7 +6,7 @@ import { ButtonPrimary } from "../../../Components/Ui/Buttons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-const ResetPasswordPage = () => {
+const ResetPassword = () => {
   const PasswordResetSchema = z
     .object({
       password: z
@@ -76,4 +76,4 @@ const ResetPasswordPage = () => {
   );
 };
 
-export default ResetPasswordPage;
+export default ResetPassword;
