@@ -1,11 +1,9 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent } from "react";
 import { AiOutlineComment } from "react-icons/ai";
 import { GoFile } from "react-icons/go";
 import { GoLink } from "react-icons/go";
 import { BsEmojiSmile } from "react-icons/bs";
 import { MdAlternateEmail } from "react-icons/md";
-import Profile from "../../../../../assets/images.png";
-import jMoment from "jalali-moment";
 
 interface Comment {
   text: string;
@@ -17,7 +15,7 @@ const Comments = () => {
   const [buttonActive, setButtonActive] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [showButton, setShowButton] = useState<boolean>(false);
-  const [persianDate, setPersianDate] = useState<string>("");
+  const persianDate = "";
   const [showScroll, setShowScroll] = useState<boolean>(false);
   const [comments, setComments] = useState<Comment[]>([]);
 
@@ -57,15 +55,9 @@ const Comments = () => {
       handleOuterClick();
       setShowButton(false);
       setInputHeight(67);
-      setInputValue("") ; 
+      setInputValue("");
     }
   };
-
-  useEffect(() => {
-    const today = jMoment();
-    const formatDate = today.format("jYYYY/jMM/jDD");
-    setPersianDate(formatDate);
-  }, []);
 
   const handleClick = () => {
     setInputHeight(150);
@@ -77,13 +69,12 @@ const Comments = () => {
       <div
         id="targetDiv"
         onScroll={handleScroll}
-        style={{ overflowY: showScroll ? "scroll" : "auto" }}
-      >
+        style={{ overflowY: showScroll ? "scroll" : "auto" }}>
         {comments.map((comment, index) => (
           <div key={index} className="flex p-5">
             <p className="w-[560px] p-5 me-2 rounded-xl bg-gray-100 border border-solid">
               <span className="flex flex-wrap-reverse items-center justify-between pb-3">
-              <p className="text-xs text-[#AAAAAA]">{comment.date}</p>
+                <p className="text-xs text-[#AAAAAA]">{comment.date}</p>
                 <span className="flex items-center">
                   <p className="text-xs text-[#AAAAAA] me-2">کامنت گذاشتید</p>
                   <p className="text-[#208D8E] font-bold">شما</p>
@@ -91,11 +82,7 @@ const Comments = () => {
               </span>
               <p className="">{comment.text}</p>
             </p>
-            <img
-              src={Profile}
-              alt="Profile"
-              className="w-[37px] h-[36px] rounded-full"
-            />
+            <img alt="Profile" className="w-[37px] h-[36px] rounded-full" />
           </div>
         ))}
       </div>
@@ -129,8 +116,7 @@ const Comments = () => {
                     : "bg-[#208c8e94] cursor-default"
                 }`}
                 onClick={handleSubmit}
-                disabled={!buttonActive}
-              >
+                disabled={!buttonActive}>
                 ثبت کامنت
               </button>
               <div className="flex items-center gap-5">
