@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import "./App.css";
-import ModalInformation from "../Components/Ui/Modal";
+import { ModalInformation } from "../Components/Ui/Modal";
 
 //--------Import Your Components Here!--------//
 

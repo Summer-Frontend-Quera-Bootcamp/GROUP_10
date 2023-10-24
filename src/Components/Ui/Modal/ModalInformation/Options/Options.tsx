@@ -32,6 +32,7 @@ const Options = () => {
                 <RiUserAddLine className="text-gray-400 text-[20px]" />
               </div>
               <img
+                src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.webp?90af0c8"
                 className="w-[37px] h-[36px] rounded-full -ms-2 z-50"
                 alt="User-Profile"
               />
@@ -43,9 +44,13 @@ const Options = () => {
         </div>
       </div>
       {isOpenModal && (
-        <div className="fixed flex items-center justify-center bg-black bg-opacity-60 z-50 top-0 left-0 w-full h-full">
+        <div className="fixed flex items-center justify-center bg-black bg-opacity-60 z-50 top-0 left-0 w-[100vw] h-[100vh]">
           <div className="relative">
-            <Modal />
+            <Modal
+              onClose={() => {
+                setIsOpenModal(false);
+              }}
+            />
             <span className="absolute top-36 right-4 mt-[-130px]"></span>
           </div>
         </div>

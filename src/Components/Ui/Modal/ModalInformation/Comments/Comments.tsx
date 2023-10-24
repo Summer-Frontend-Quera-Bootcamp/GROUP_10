@@ -82,7 +82,11 @@ const Comments = () => {
               </span>
               <p className="">{comment.text}</p>
             </p>
-            <img alt="Profile" className="w-[37px] h-[36px] rounded-full" />
+            <img
+              src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.webp?90af0c8"
+              alt="Profile"
+              className="w-[37px] h-[36px] rounded-full"
+            />
           </div>
         ))}
       </div>
