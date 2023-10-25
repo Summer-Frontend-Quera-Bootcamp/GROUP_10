@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -49,6 +49,10 @@ export default {
           primary: "#40c057",
           secondary: "#d3f9d8",
         },
+        yellow: {
+          primary: "#FAB005",
+          secondary: "#FFF3BF",
+        },
         lime: {
           primary: "#82c91e",
           secondary: "#e9fac8",
@@ -57,24 +61,11 @@ export default {
           primary: "#fd7e14",
           secondary: "#ffe8cc",
         },
+        yellow: {
+          primary: "#FAB005",
+          secondary: "#FFF3BF",
+        },
       },
-
-      // fontSize: {
-      //   "heading-xs": ["20pt", { lineHeight: "24pt" }],
-      //   "heading-s": ["24pt", { lineHeight: "28pt" }],
-      //   "heading-m": ["28pt", { lineHeight: "32pt" }],
-      //   "heading-l": ["32pt", { lineHeight: "36pt" }],
-      //   "body-xs": ["12pt", { lineHeight: "16pt" }],
-      //   "body-s": ["14pt", { lineHeight: "20pt" }],
-      //   "body-m": ["16pt", { lineHeight: "24pt" }],
-      //   "body-l": ["20pt", { lineHeight: "28pt" }],
-      //   "body-xl": ["24pt", { lineHeight: "32pt" }],
-      //   "bold-xs": ["12pt", { fontWeight: "bold" }],
-      //   "bold-s": ["14pt", { fontWeight: "bold" }],
-      //   "bold-m": ["16pt", { fontWeight: "bold" }],
-      //   "bold-l": ["20pt", { fontWeight: "bold" }],
-      //   "bold-xl": ["24pt", { fontWeight: "bold" }],
-      // },
 
       fontSize: {
         // Add your custom font sizes here

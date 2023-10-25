@@ -1,5 +1,5 @@
 interface IButtonPrimary {
-  children: string;
+  children?: React.ReactNode;
   type?: "submit" | "reset" | "button";
   bigger?: boolean;
   onClick: () => void;

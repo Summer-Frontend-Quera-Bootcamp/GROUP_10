@@ -24,15 +24,16 @@ export const InputText = ({
 }: IInputTextProps) => {
   return (
     <div className="flex flex-col text-right">
-      <label className="text-right" htmlFor={name}></label>
-      {label}
+      <label className="text-right" htmlFor={name}>
+        {label}
+      </label>
       <input
         id={name}
         type={type}
         value={value}
         onChange={onChange}
         placeholder={placeHolder}
-        className="border border-gray-primary rounded-md p-xs my-xs w-full"
+        className="border border-gray-primary rounded-md p-xs my-xs w-full text-right"
         {...(register !== undefined && { ...register(name, options) })}
       />
     </div>
