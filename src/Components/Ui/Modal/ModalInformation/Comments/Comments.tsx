@@ -1,11 +1,9 @@
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent } from "react";
 import { AiOutlineComment } from "react-icons/ai";
 import { GoFile } from "react-icons/go";
 import { GoLink } from "react-icons/go";
 import { BsEmojiSmile } from "react-icons/bs";
 import { MdAlternateEmail } from "react-icons/md";
-import jMoment from "jalali-moment";
-import { FaCircleUser } from "react-icons/fa6";
 
 interface Comment {
   text: string;
@@ -17,7 +15,7 @@ const Comments = () => {
   const [buttonActive, setButtonActive] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [showButton, setShowButton] = useState<boolean>(false);
-  const [persianDate, setPersianDate] = useState<string>("");
+  const persianDate = "";
   const [showScroll, setShowScroll] = useState<boolean>(false);
   const [comments, setComments] = useState<Comment[]>([]);
 
@@ -61,12 +59,6 @@ const Comments = () => {
     }
   };
 
-  useEffect(() => {
-    const today = jMoment();
-    const formatDate = today.format("jYYYY/jMM/jDD");
-    setPersianDate(formatDate);
-  }, []);
-
   const handleClick = () => {
     setInputHeight(150);
     setShowButton(true);
@@ -77,8 +69,7 @@ const Comments = () => {
       <div
         id="targetDiv"
         onScroll={handleScroll}
-        style={{ overflowY: showScroll ? "scroll" : "auto" }}
-      >
+        style={{ overflowY: showScroll ? "scroll" : "auto" }}>
         {comments.map((comment, index) => (
           <div key={index} className="flex p-5">
             <p className="w-[560px] p-5 me-2 rounded-xl bg-gray-100 border border-solid">
@@ -91,8 +82,11 @@ const Comments = () => {
               </span>
               <p className="">{comment.text}</p>
             </p>
-
-            <FaCircleUser className="text-3xl" />
+            <img
+              src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.webp?90af0c8"
+              alt="Profile"
+              className="w-[37px] h-[36px] rounded-full"
+            />
           </div>
         ))}
       </div>
@@ -126,8 +120,7 @@ const Comments = () => {
                     : "bg-[#208c8e94] cursor-default"
                 }`}
                 onClick={handleSubmit}
-                disabled={!buttonActive}
-              >
+                disabled={!buttonActive}>
                 ثبت کامنت
               </button>
               <div className="flex items-center gap-5">

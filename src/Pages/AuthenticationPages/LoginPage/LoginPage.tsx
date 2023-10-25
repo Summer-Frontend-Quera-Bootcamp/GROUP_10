@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -26,6 +26,10 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Check>({ resolver: zodResolver(schema) });
+
+  const onSubmit = (data: FieldValues) => {
+    console.log(data);
+  };
 
   return (
     <>
@@ -67,11 +71,7 @@ const Login = () => {
             </div>
 
             <div className="mt-m">
-              <ButtonPrimary
-                onClick={handleSubmit((data1) => console.log(data1))}
-                bigger={true}
-                type="submit"
-              >
+              <ButtonPrimary onClick={() => {}} bigger={true} type="submit">
                 ورود
               </ButtonPrimary>
             </div>

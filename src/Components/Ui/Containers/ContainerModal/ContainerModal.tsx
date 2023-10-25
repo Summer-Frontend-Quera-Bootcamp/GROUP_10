@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 
 interface IContainerModalProp {
-  heading: string;
+  heading?: string;
   width?: string;
   children: React.ReactNode;
   onBack?: () => void;
@@ -13,7 +13,7 @@ interface IContainerModalProp {
 }
 
 export const ContainerModal = ({
-  heading,
+  heading = "",
   width = "w-[500px]",
   children,
   onBack,
@@ -32,8 +32,7 @@ export const ContainerModal = ({
       {isOpen && (
         <div
           ref={ref}
-          className={`flex flex-col items-center ${width}  drop-shadow-2xl bg-white rounded-2xl p-m `}
-        >
+          className={`flex flex-col items-center ${width}  drop-shadow-2xl bg-white rounded-2xl p-m `}>
           <div className="w-full flex justify-between items-center mb-m">
             {onBack !== undefined ? (
               <IoArrowBackOutline
