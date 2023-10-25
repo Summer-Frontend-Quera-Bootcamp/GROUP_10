@@ -98,7 +98,7 @@ const NewTask = ({ onClose }: INewTaskProps) => {
             </div>
           )}
           {showCalendar && (
-            <div className="absolute left-[700px] top-[300px] ">
+            <div className="absolute left-[300px] top-[100px] ">
               <MinimalistDatePicker
                 onData={(data) => {
                   console.log(data);
