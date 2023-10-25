@@ -17,7 +17,8 @@ const Options = () => {
           <button
             type="button"
             className="bg-transparent text-gray-400 hover:text-gray-600 focus:outline-none"
-            onClick={openModal}>
+            onClick={openModal}
+          >
             <FiShare2 />
           </button>
         </div>
@@ -36,7 +37,7 @@ const Options = () => {
                 src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.webp?90af0c8"
                 className="w-[37px] h-[36px] rounded-full -ms-2 z-50"
                 alt="User-Profile"
-              /> */}
+              />
               <FaCircleUser />
             </div>
           </div>
