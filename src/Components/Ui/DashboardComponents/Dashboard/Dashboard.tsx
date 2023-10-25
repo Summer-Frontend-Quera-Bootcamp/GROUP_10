@@ -6,7 +6,7 @@ const Dashboard = (): JSX.Element => {
     {
       id: 0,
       name: "درس مدیریت پروژه",
-      color: "orange",
+      color: "red",
       projects: [
         {
           id: 0,
@@ -33,7 +33,7 @@ const Dashboard = (): JSX.Element => {
     {
       id: 1,
       name: "درس کامپایلر",
-      color: "teal",
+      color: "cyan",
       projects: [
         {
           id: 1,
@@ -69,8 +69,8 @@ const Dashboard = (): JSX.Element => {
     },
     {
       id: 2,
-      name: "درس ممد اینا",
-      color: "orange",
+      name: "WebWizards",
+      color: "yellow",
       projects: [
         {
           id: 1,
@@ -100,6 +100,21 @@ const Dashboard = (): JSX.Element => {
         {
           id: 6,
           projectName: "ساختن پروژه جدید",
+          icon: false,
+        },
+        {
+          id: 7,
+          projectName: "پروژه اول ",
+          icon: false,
+        },
+        {
+          id: 8,
+          projectName: "پروژه اول ",
+          icon: false,
+        },
+        {
+          id: 9,
+          projectName: "پروژه اول ",
           icon: true,
         },
       ],

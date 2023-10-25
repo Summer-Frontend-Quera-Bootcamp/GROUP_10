@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ButtonPrimary } from "../../../Buttons";
-import ToggleSwitch from "../../../ToggleSwitch";
+import { ButtonPrimary } from "../../../../Components/Ui/Buttons";
+import ToggleSwitch from "../../../../Components/Ui/ToggleSwitch";
 
 const SettingForm = () => {
   const colors = [
@@ -72,7 +72,7 @@ const SettingForm = () => {
               <label
                 key={index}
                 className={
-                  "flex justify-center items-center w-[20px] h-[20px] rounded-lg " +
+                  "flex justify-center cursor-pointer items-center w-[20px] h-[20px] rounded-lg " +
                   "bg-" +
                   color
                 }

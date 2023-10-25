@@ -49,7 +49,7 @@ const Calendar = ({ events }: Props) => {
           <div className="fixed flex justify-center items-center top-[-250px] right-[-300px] w-[130vw] h-[130vh] bg-black opacity-30 z-10" />
           <div
             ref={ref}
-            className="fixed top-[40%] right-[30%] rounded-xl z-20 w-[500px] bg-white p-5 flex flex-col">
+            className="fixed top-[40%] right-[35%] rounded-xl z-20 w-[500px] bg-white p-5 flex flex-col">
             <div className="flex flex-row-reverse items-center">
               <IoClose
                 size="22"

@@ -1,4 +1,4 @@
-import { ButtonPrimary } from "../../../Buttons";
+import { ButtonPrimary } from "../../../../Components/Ui/Buttons";
 const UserInfo = () => {
   return (
     <form
@@ -29,7 +29,7 @@ const UserInfo = () => {
         <input
           id="firstName"
           type="text"
-          className="border border-gray-primary rounded-md w-full grow text-right"
+          className="border border-gray-primary h-[72px] rounded-md w-full grow text-right"
         />
       </div>
 
@@ -38,7 +38,7 @@ const UserInfo = () => {
         <input
           id="lastName"
           type="text"
-          className="border border-gray-primary rounded-md w-full grow text-right"
+          className="border border-gray-primary h-[72px] rounded-md w-full grow text-right"
         />
       </div>
 
@@ -47,7 +47,7 @@ const UserInfo = () => {
         <input
           id="phoneNumber"
           type="text"
-          className="border border-gray-primary rounded-md w-full grow text-right"
+          className="border border-gray-primary h-[72px] rounded-md w-full grow text-right"
         />
       </div>
       <div className="mt-6 w-full">

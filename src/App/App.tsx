@@ -14,10 +14,10 @@ import ListView from "../Components/Ui/BoardListComponents/ListView/ListView";
 import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
 import ColumnView from "../Components/Ui/ColumnView/ColumnView";
 
-import SideBarUi from "../Components/Ui/ProfilePages/ProfileSideBar/SideBarUi/SideBarUi";
-import AccountInfo from "../Components/Ui/ProfilePages/ProfileForms/AccountInfo/AccountInfo";
-import SettingForm from "../Components/Ui/ProfilePages/ProfileForms/SettingForm/SettingForm";
-import UserInfo from "../Components/Ui/ProfilePages/ProfileForms/UserInfo/UserInfo";
+import SideBarUi from "../Pages/ProfilePages/ProfileSideBar/SideBarUi/SideBarUi";
+import AccountInfo from "../Pages/ProfilePages/ProfileForms/AccountInfo/AccountInfo";
+import SettingForm from "../Pages/ProfilePages/ProfileForms/SettingForm/SettingForm";
+import UserInfo from "../Pages/ProfilePages/ProfileForms/UserInfo/UserInfo";
 
 //--------Import Your Components Here!--------//
 
@@ -27,16 +27,13 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
     {
       title: "Event 1",
       start: "2023-10-05",
-      end: "2023-10-11",
+      end: "2023-10-10",
     },
   ];
 
-  // NewTask Modal : Arman
-  // DropDown : Arman
   // Container Col Task : Arman
   // Tags : Arman
-  
-  // TODO:ColumnMoreModal UI Bug should to fix
+
   return (
     <BrowserRouter>
       <Routes>
@@ -57,6 +54,7 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
           ></Route>
         </Route>
         <Route path="/profile" element={<SideBarUi />}>
+          <Route index element={<UserInfo />} />
           <Route path="account-info" element={<AccountInfo />}></Route>
           <Route path="account-setting" element={<SettingForm />}></Route>
           <Route path="account-user" element={<UserInfo />}></Route>

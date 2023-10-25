@@ -60,7 +60,7 @@ const Workspace: React.FC<IWorkspace> = ({
                 setColumnMore((prevState) => !prevState);
               }}
             >
-              <div className="absolute z-[50] group/edit top-7 bg-white w-max right-60 p-3 shadow-lg rounded-lg">
+              <div className="absolute z-[50] group/edit top-5 bg-white w-max right-50 p-3 shadow-lg rounded-lg">
                 <div className="flex flex-col gap-s items-end">
                   {columnMoreItems.map((column) => (
                     <button

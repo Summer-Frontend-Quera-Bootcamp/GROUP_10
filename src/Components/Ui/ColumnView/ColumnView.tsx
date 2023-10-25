@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { ButtonIcon, ButtonNewTask } from "../Buttons";
-import { ColumnHeader, ContainerColTask } from "../Containers";
+import { ColumnHeader, ContainerColTask, ContainerModal } from "../Containers";
 import { NewTask } from "../NewTask";
+import { ModalInformation } from "../Modal";
 
 const ColumnView = () => {
   const [newTask, setNewTask] = useState(false);
+  const [addComment, setAddComment] = useState<boolean>(false);
+
   return (
-    <div className="flex flex-row-reverse h-[78vh] gap-x-s overflow-y-auto pr-4">
+    <div className="flex flex-row-reverse h-[78vh] gap-x-l overflow-y-auto pr-4">
       {newTask && (
         <>
           <div className="fixed flex justify-center items-center top-[-250px] right-[-300px] w-[130vw] h-[130vh] bg-black opacity-30 z-10" />
-          <div className="fixed top-[20%] right-[20%] z-20">
+          <div className="fixed top-[8%] right-[22%] z-20">
             <NewTask
               onClose={() => {
                 setNewTask(false);
@@ -29,33 +32,43 @@ const ColumnView = () => {
           name="Open"
           count={2}
         />
-        <ContainerColTask
-          image="https://cdn.stocksnap.io/img-thumbs/960w/brown-puppy_7DWDQY7PEW.jpg"
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="important"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "سلام", color: "red" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
-        <ContainerColTask
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="high"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "تگ جدید", color: "lime" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            image="https://cdn.stocksnap.io/img-thumbs/960w/brown-puppy_7DWDQY7PEW.jpg"
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="important"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "سلام", color: "red" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="high"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "تگ جدید", color: "lime" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
         <div>
           <ButtonNewTask
             onClick={() => {
@@ -74,46 +87,61 @@ const ColumnView = () => {
           name="In Progress"
           count={3}
         />
-        <ContainerColTask
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="high"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "تگ جدید", color: "lime" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
-        <ContainerColTask
-          image="https://cdn.stocksnap.io/img-thumbs/960w/brown-puppy_7DWDQY7PEW.jpg"
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="important"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "سلام", color: "red" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
-        <ContainerColTask
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="high"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "تگ جدید", color: "lime" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="high"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "تگ جدید", color: "lime" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            image="https://cdn.stocksnap.io/img-thumbs/960w/brown-puppy_7DWDQY7PEW.jpg"
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="important"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "سلام", color: "red" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="high"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "تگ جدید", color: "lime" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
         <ButtonNewTask
           onClick={() => {
             setNewTask(true);
@@ -146,58 +174,78 @@ const ColumnView = () => {
           name="Open"
           count={4}
         />
-        <ContainerColTask
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="important"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "سلام", color: "red" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
-        <ContainerColTask
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="high"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "تگ جدید", color: "lime" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
-        <ContainerColTask
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="important"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "سلام", color: "red" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
-        <ContainerColTask
-          listName="پروژه اول"
-          taskTitle="ین یک تیتر برای این تسک است"
-          priority="high"
-          tags={[
-            { title: "تگ", color: "brand" },
-            { title: "تگ جدید", color: "lime" },
-          ]}
-          onMore={() => {}}
-          onCheck={() => {}}
-          taskStatus={{ allTasks: 15, tasksDone: 4 }}
-          date="۵ -مهر "
-        />
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="important"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "سلام", color: "red" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="high"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "تگ جدید", color: "lime" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="important"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "سلام", color: "red" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
+        <div
+          className="cursor-pointer"
+          onClick={() => setAddComment((prevState) => !prevState)}
+        >
+          <ContainerColTask
+            listName="پروژه اول"
+            taskTitle="ین یک تیتر برای این تسک است"
+            priority="high"
+            tags={[
+              { title: "تگ", color: "brand" },
+              { title: "تگ جدید", color: "lime" },
+            ]}
+            onMore={() => {}}
+            onCheck={() => {}}
+            taskStatus={{ allTasks: 15, tasksDone: 4 }}
+            date="۵ -مهر "
+          />
+        </div>
         <ButtonNewTask
           onClick={() => {
             setNewTask(true);
@@ -209,8 +257,24 @@ const ColumnView = () => {
           useCase="newTask"
           onClick={() => {
             setNewTask(true);
-          }}></ButtonIcon>
+          }}
+        ></ButtonIcon>
       </div>
+      {addComment && (
+        <div className="z-10">
+          <div className="fixed inset-0 bg-gray-900 opacity-50 transition-all duration-300"></div>
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-300">
+            <ContainerModal
+              onClose={() => {
+                setAddComment((prevState) => !prevState);
+              }}
+              width="w-[1400px]"
+            >
+              <ModalInformation />
+            </ContainerModal>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
