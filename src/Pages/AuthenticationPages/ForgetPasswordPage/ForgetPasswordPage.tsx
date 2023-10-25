@@ -31,7 +31,7 @@ const ForgetPass = () => {
   };
 
   return (
-    <AuthLayout>
+    <>
       {formVisiblity && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <ContainerAuth heading=" فراموشی رمز عبور ">
@@ -62,7 +62,7 @@ const ForgetPass = () => {
           </p>
         </ContainerAuth>
       )}
-    </AuthLayout>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ const MainContent = () => {
   const toggle = () => {
     setVisible(!visible);
   };
- 
+
   return (
     <>
       <div className="flex items-center justify-end p-5 pe-10">

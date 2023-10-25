@@ -9,8 +9,9 @@ import { BsSearch } from "react-icons/bs";
 import { LiaFilterSolid } from "react-icons/lia";
 import { useState } from "react";
 import FilterModal from "../FilterView/FilterModal";
-import ShareProjectModal from "../Modals/ShareProjectModal";
+import ShareProjectModal from "./Modals/ShareProjectModal";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -45,30 +46,51 @@ const NavBar = () => {
     setCalenderFlag(false);
   };
   return (
-    <div className="gird w-[1034px] mt-[41px] ml-[50px] border-cyan-600">
+    <div className="gird border-cyan-600">
       <div className="flex flex-row-reverse gap-x-s py-4 border-b-[1px]">
         <h1 className="pl-4 border-l-[2px] font-extrabold">پروژه اول</h1>
-        <button
-          className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px] hover:text-cyan-primary hover:font-extrabold"
-          onClick={onBoardClick}
+        <NavLink
+          to="/boards/listView"
+          className={({ isActive }) =>
+            isActive ? "text-cyan-primary font-extrabold" : ""
+          }
         >
-          <CiCircleList />
-          نمایش لیستی
-        </button>
-        <button
-          className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px] hover:text-cyan-primary hover:font-extrabold"
-          onClick={onBoardClick}
+          <button
+            className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px]"
+            onClick={onBoardClick}
+          >
+            <CiCircleList />
+            نمایش لیستی
+          </button>
+        </NavLink>
+        <NavLink
+          to="/boards/columnView"
+          className={({ isActive }) =>
+            isActive ? "text-cyan-primary font-extrabold" : ""
+          }
         >
-          <MdOutlineViewQuilt />
-          نمایش ستونی
-        </button>
-        <button
-          className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px] hover:text-cyan-primary hover:font-extrabold"
-          onClick={onCalenderClick}
+          <button
+            className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px]"
+            onClick={onBoardClick}
+          >
+            <MdOutlineViewQuilt />
+            نمایش ستونی
+          </button>
+        </NavLink>
+        <NavLink
+          to="/boards/calendarView"
+          className={({ isActive }) =>
+            isActive ? "text-cyan-primary font-extrabold" : ""
+          }
         >
-          <MdDateRange />
-          تقویم
-        </button>
+          <button
+            className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px] hover:text-cyan-primary hover:font-extrabold"
+            onClick={onCalenderClick}
+          >
+            <MdDateRange />
+            تقویم
+          </button>
+        </NavLink>
         <button
           className="flex flex-row-reverse gap-x-xs items-center mr-auto  hover:text-cyan-primary hover:font-extrabold"
           onClick={openShareModal}

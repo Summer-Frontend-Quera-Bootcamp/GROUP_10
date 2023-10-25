@@ -1,13 +1,16 @@
 import { PiCaretCircleDown } from "react-icons/pi";
 import List from "../List/List";
-import { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 
-const BoardProjectList = ({ projectName }) => {
+interface IBoardProjectList extends PropsWithChildren {
+  projectName: string;
+}
+const BoardProjectList: React.FC<IBoardProjectList> = ({ projectName }) => {
   const [showList, setShowList] = useState<boolean>(false);
   return (
     <div
       className={`flex flex-col w-full my-m items-end transition-all duration-300 ${
-        !showList ? "h-0" : "h-full"
+        !showList ? "h-0" : "h-max"
       }`}
     >
       <div className="flex gap-xs items-center ">

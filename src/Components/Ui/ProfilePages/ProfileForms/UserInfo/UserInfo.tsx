@@ -1,26 +1,12 @@
-// import { ChangeEvent, useRef, useState } from "react";
-import { ButtonPrimary } from "../../Ui/Buttons";
-
+import { ButtonPrimary } from "../../../Buttons";
 const UserInfo = () => {
-  // const fileInputRef = useRef<HTMLInputElement | null>(null);
-  // const [imageUrl, setImageUrl] = useState<string | null>(null);
-
-  // const handleButtonClick = () => {
-  //   if (fileInputRef.current) {
-  //     fileInputRef.current.click();
-  //   }
-  // };
-
-  // const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0];
-  //   if (file) {
-  //     const imgUrl = URL.createObjectURL(file);
-  //     setImageUrl(imgUrl);
-  //   }
-  // };
-
   return (
-    <form className="w-[354px] flex flex-col items-end gap-s">
+    <form
+      className="w-[354px] flex flex-col items-end gap-s"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <h1 className="text-[31px] text-right">اطلاعات فردی</h1>
       <div className="flex flex-row justify-start w-[328px] gap-xs">
         <div className="flex flex-col justify-center items-center gap-s">
@@ -30,27 +16,12 @@ const UserInfo = () => {
           >
             ویرایش تصویر پروفایل
           </button>
-          {/* <input
-            type="file"
-            accept="image/*"
-            ref={}
-            onChange={}
-            className="hidden"
-          /> */}
+
           <p className="text-[12px] text-right text-gray-primary">
             این تصویر برای عموم قابل نمایش است
           </p>
         </div>
-        {/* {imageUrl ? (
-          <div
-            className="bg-cover bg-center h-[104px] w-[100px] rounded-full"
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-            }}
-          />
-        ) : (
-          <div className=" bg-center bg-orange-secondary h-[104px] w-[100px] rounded-full" />
-        )} */}
+
         <div className="bg-cover bg-center bg-[url('../src/assets/prof.jpg')] bg-orange-secondary h-[104px] w-[100px] rounded-full" />
       </div>
       <div className="flex flex-col text-right h-[72px] gap-xs w-full">
@@ -79,9 +50,11 @@ const UserInfo = () => {
           className="border border-gray-primary rounded-md w-full grow text-right"
         />
       </div>
-      <ButtonPrimary type="submit" bigger={true} onClick={() => {}}>
-        ثبت تغییرات
-      </ButtonPrimary>
+      <div className="mt-6 w-full">
+        <ButtonPrimary type="submit" bigger={true} onClick={() => {}}>
+          ثبت تغییرات
+        </ButtonPrimary>
+      </div>
     </form>
   );
 };

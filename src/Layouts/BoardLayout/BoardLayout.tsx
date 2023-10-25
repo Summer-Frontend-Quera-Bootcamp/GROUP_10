@@ -1,23 +1,32 @@
 import { PropsWithChildren } from "react";
 import SideBarSection from "../../Components/Ui/SideBar/SideBarSection/SideBarSection";
+import { Outlet, useLocation } from "react-router-dom";
+import NavBar from "../../Components/Ui/NavBar";
 
 interface IBoardLayout extends PropsWithChildren {}
-const BoardLayout: React.FC<IBoardLayout> = ({ children }): JSX.Element => {
+const BoardLayout: React.FC<IBoardLayout> = (): JSX.Element => {
+  const { pathname } = useLocation();
+  console.log(pathname);
+  ///boards/calendarView
   return (
     <>
       <div className="grid grid-cols-4">
-        <div className="grid col-span-3 grid-rows-6 gap-s pt-xl ps-xl h-screen me-s">
+        <div className="grid col-span-3 grid-rows-6  gap-s pt-l ps-xl h-screen me-s">
           {/* Navbar */}
-          <div className="row-span-1 bg-red-500">navbar</div>
-          <div>
-            {/* BoardView */}
-            {/* BoardList */}
-            {/* CalendarView */}
-            {children}
+          <NavBar />
+          {/* Childrens */}
+          <div
+            className={`w-full h-full gap-[10px] ${
+              pathname === "/boards/calendarView" && "mt-4"
+            }  `}
+          >
+            <Outlet />
           </div>
         </div>
         {/* SideBar Section */}
-        <SideBarSection />
+        <div>
+          <SideBarSection />
+        </div>
       </div>
     </>
   );

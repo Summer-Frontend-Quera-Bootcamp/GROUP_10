@@ -35,7 +35,7 @@ const FilterModal = ({ onClose }: Props) => {
   return (
     <>
       {isOpen && (
-        <div className="bg-white w-[718px] min-h-[206px] rounded-lg shadow-md pt-2 pb-4 flex flex-col gap-s ml-[232px] mt-[190px]">
+        <div className="bg-white w-[718px] min-h-[206px]  rounded-lg shadow-md pt-2 pb-4 flex flex-col gap-s mx-auto mt-[130px]">
           <div className="flex flex-row-reverse justify-between items-center w-[673px] ml-[24px]">
             <h1 className="font-extrabold text-2xl ">فیلترها</h1>
             <button onClick={handleClose}>
@@ -45,6 +45,7 @@ const FilterModal = ({ onClose }: Props) => {
 
           {filters.map((index) => (
             <Filter
+              key={index}
               id={index}
               d1Values={options}
               d2Values={optionList}

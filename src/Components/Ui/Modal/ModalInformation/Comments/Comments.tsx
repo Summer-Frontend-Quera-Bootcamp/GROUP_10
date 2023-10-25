@@ -1,11 +1,11 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import { AiOutlineComment } from "react-icons/ai";
 import { GoFile } from "react-icons/go";
 import { GoLink } from "react-icons/go";
 import { BsEmojiSmile } from "react-icons/bs";
 import { MdAlternateEmail } from "react-icons/md";
-import Profile from "../../../../../assets/images.png";
 import jMoment from "jalali-moment";
+import { FaCircleUser } from "react-icons/fa6";
 
 interface Comment {
   text: string;
@@ -57,7 +57,7 @@ const Comments = () => {
       handleOuterClick();
       setShowButton(false);
       setInputHeight(67);
-      setInputValue("") ; 
+      setInputValue("");
     }
   };
 
@@ -83,7 +83,7 @@ const Comments = () => {
           <div key={index} className="flex p-5">
             <p className="w-[560px] p-5 me-2 rounded-xl bg-gray-100 border border-solid">
               <span className="flex flex-wrap-reverse items-center justify-between pb-3">
-              <p className="text-xs text-[#AAAAAA]">{comment.date}</p>
+                <p className="text-xs text-[#AAAAAA]">{comment.date}</p>
                 <span className="flex items-center">
                   <p className="text-xs text-[#AAAAAA] me-2">کامنت گذاشتید</p>
                   <p className="text-[#208D8E] font-bold">شما</p>
@@ -91,11 +91,8 @@ const Comments = () => {
               </span>
               <p className="">{comment.text}</p>
             </p>
-            <img
-              src={Profile}
-              alt="Profile"
-              className="w-[37px] h-[36px] rounded-full"
-            />
+
+            <FaCircleUser className="text-3xl" />
           </div>
         ))}
       </div>

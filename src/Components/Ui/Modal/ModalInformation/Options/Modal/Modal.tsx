@@ -1,6 +1,7 @@
 import { ButtonPrimary } from "../../../../Buttons";
 import { PiLinkLight } from "react-icons/pi";
-import Profile from "../../../../../../assets/images.png";
+// import Profile from "../../../../../../assets/images.png";
+import { FaCircleUser } from "react-icons/fa6";
 const Modal = () => {
   const getInitials = (username: string) => {
     const words = username.split(/[^A-Za-z]/);
@@ -48,7 +49,8 @@ const Modal = () => {
                 Workspace Owner
               </p>
               <p className="me-2">من</p>
-              <img src={Profile} className="w-[36px] h-[36px] rounded-full" />
+              {/* <img src={Profile} className="w-[36px] h-[36px] rounded-full" /> */}
+              <FaCircleUser />
             </div>
           </div>
           <div className="flex justify-between items-center">

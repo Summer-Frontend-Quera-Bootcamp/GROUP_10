@@ -1,5 +1,5 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
-import DropDownList from "../DropDownList";
+import DropDownList from "./FilterDropDownList";
 
 export interface IFilter {
   id: number;

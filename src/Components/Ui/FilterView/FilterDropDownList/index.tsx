@@ -55,7 +55,7 @@ function DropDownList({
       </div>
 
       {isOpen && (
-        <div className="fixed border-x">
+        <div className="fixed border-x z-20">
           {containsSearch && (
             <div
               className={

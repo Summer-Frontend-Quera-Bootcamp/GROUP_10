@@ -34,7 +34,7 @@ const ResetPassword = () => {
   const onSubmit = (data: IFormValues) => console.log(data);
 
   return (
-    <AuthLayout>
+    <>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <ContainerAuth heading="بازیابی رمز عبور">
           <div className="flex flex-col">
@@ -72,7 +72,7 @@ const ResetPassword = () => {
           </div>
         </ContainerAuth>
       </form>
-    </AuthLayout>
+    </>
   );
 };
 

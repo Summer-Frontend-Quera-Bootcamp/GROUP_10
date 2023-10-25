@@ -44,13 +44,13 @@ const Workspace: React.FC<IWorkspace> = ({
   const [columnMore, setColumnMore] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col w-full " key={workspace.name}>
+    <div className="flex flex-col w-full" key={workspace.name}>
       <div
         className={`flex justify-end select-none rounded-md p-1 items-center transition duration-200 ${
           columnMore && "bg-slate-200"
         } hover:bg-slate-200 mt-s`}
       >
-        <div className="flex relative  justify-between group/item items-center w-full">
+        <div className="flex relative justify-between group/item items-center w-full">
           {/* ColumnMoreModal */}
 
           {/* TODO : write map function */}

@@ -51,7 +51,7 @@ export const ColumnHeader = ({
 
   return (
     <>
-      <div className="w-[250px] h-[50px] mb-[10px]">
+      <div className="w-[250px] h-[50px] mb-[10px] mt-6">
         <div
           ref={ref}
           className={`
@@ -68,7 +68,7 @@ export const ColumnHeader = ({
       ${color === "green" && "bg-green-primary"}
       ${color === "lime" && "bg-lime-primary"}
       ${color === "orange" && "bg-orange-primary"} 
-      w-full h-[44px] bg-blue-primary pt-[4px] rounded-2xl shadow-xl`}
+      w-full h-[44px] relative bg-blue-primary pt-[4px] rounded-2xl shadow-xl`}
         >
           <div className="group ease-in-out duration-300 w-full h-[44px] bg-white rounded-2xl flex flex-row items-center justify-between px-s">
             <div className="group-hover:opacity-100 opacity-0 flex flex-row-reverse gap-xs text-gray-darker relative transition-opacity duration-500 ease-in-out">
@@ -94,7 +94,7 @@ export const ColumnHeader = ({
             </div>
           </div>
           {moreDisplay && (
-            <div className="bg-gray-secondary w-[160px] h-[150px] absolute rounded-md left-[15px] top-[15px] shadow-xl text-right text-sm flex flex-col ">
+            <div className="bg-gray-secondary w-[160px] h-[150px] top-10 absolute rounded-md top-[15px] shadow-xl text-right text-sm flex flex-col ">
               <button
                 onClick={onEdit}
                 className="flex flex-row-reverse items-center gap-xs w-full rounded-tr-md rounded-tl-md h-1/4 hover:bg-gray-300 hover:text-orange-primary px-xs"
@@ -116,7 +116,7 @@ export const ColumnHeader = ({
               </button>
               <button
                 onClick={onDelete}
-                className="flex flex-row-reverse items-center gap-xs w-full rounded-bl-md rounded-br-md h-1/4 hover:bg-gray-300 hover:text-red-primary px-xs"
+                className="flex flex-row-reverse  items-center gap-xs w-full rounded-bl-md rounded-br-md h-1/4 hover:bg-gray-300 hover:text-red-primary px-xs"
               >
                 <GoTrash size="19" />
                 حذف ستون
@@ -125,7 +125,6 @@ export const ColumnHeader = ({
           )}
         </div>
       </div>
-      <div className="w-[250px] h-full"></div>
     </>
   );
 };

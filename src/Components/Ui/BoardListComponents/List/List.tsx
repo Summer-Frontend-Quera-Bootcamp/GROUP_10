@@ -1,7 +1,12 @@
 import { PiCaretCircleDown } from "react-icons/pi";
 import Task from "../Task/Task";
-import { useState } from "react";
-const List = ({ listStatus, listColor }) => {
+import { PropsWithChildren, useState } from "react";
+
+interface IList extends PropsWithChildren {
+  listStatus: string;
+  listColor: string;
+}
+const List: React.FC<IList> = ({ listStatus, listColor }) => {
   const [showList, setShowList] = useState<boolean>(false);
 
   return (
@@ -27,8 +32,8 @@ const List = ({ listStatus, listColor }) => {
           <p>تسک 2</p>
         </div>
         {/* left side */}
-        <div>
-          <ul className="flex gap-14 font-bold flex-row-reverse">
+        <div className="flex items-center">
+          <ul className="flex gap-14 font-bold flex-row-reverse items-center">
             <li className="w-20 flex justify-center items-center">اعضا</li>
             <li className="w-20 flex justify-center items-center">ددلاین</li>
             <li className="w-20 flex justify-center items-center">اولویت</li>

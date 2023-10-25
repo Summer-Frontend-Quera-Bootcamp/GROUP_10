@@ -1,4 +1,4 @@
-import { ButtonPrimary } from "../../Ui/Buttons";
+import { ButtonPrimary } from "../../../Buttons";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -106,9 +106,11 @@ const AccountInfo = () => {
           </p>
         )}
       </div>
-      <ButtonPrimary type="submit" bigger={true} onClick={() => {}}>
-        ثبت تغییرات
-      </ButtonPrimary>
+      <div className="mt-6">
+        <ButtonPrimary type="submit" bigger={true} onClick={() => {}}>
+          ثبت تغییرات
+        </ButtonPrimary>
+      </div>
     </form>
   );
 };

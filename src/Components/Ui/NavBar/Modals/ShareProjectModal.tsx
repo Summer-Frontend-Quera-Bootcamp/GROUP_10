@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiLink } from "react-icons/fi";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { InputInvite } from "../Inputs/InputInvite/InputInvite";
+import { InputInvite } from "../../Inputs/InputInvite/InputInvite";
 import PermissionModal from "./PermissionModal";
 
 interface IShareModal {
@@ -37,7 +37,7 @@ const ShareProjectModal = ({ onClose, userPermission }: IShareModal) => {
   return (
     <>
       {isOpen && (
-        <div className="w-[470px] ml-[300px] mt-[50px] bg-white rounded-3xl drop-shadow-2xl p-[20px]">
+        <div className="w-[470px] absoulte inset-0 mx-auto mt-[150px] bg-white rounded-3xl drop-shadow-2xl p-[20px]">
           <div className="flex flex-col gap-m">
             <div className="w-full flex flex-row-reverse justify-start items-center mb-s gap-[80px]">
               <IoClose

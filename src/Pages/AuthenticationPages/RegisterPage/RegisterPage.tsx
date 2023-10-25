@@ -56,7 +56,7 @@ const Register = () => {
   //----------- Return -----------//
 
   return (
-    <AuthLayout>
+    <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ContainerAuth heading=" ثبت‌نام در کوئرا تسک منیجر ">
           <div className="flex flex-col">
@@ -126,7 +126,7 @@ const Register = () => {
           </div>
         </ContainerAuth>
       </form>
-    </AuthLayout>
+    </>
   );
 };
 

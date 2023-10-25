@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ButtonPrimary } from "../../Ui/Buttons";
-import ToggleSwitch from "../../Ui/ToggleSwitch";
+import { ButtonPrimary } from "../../../Buttons";
+import ToggleSwitch from "../../../ToggleSwitch";
 
 const SettingForm = () => {
   const colors = [

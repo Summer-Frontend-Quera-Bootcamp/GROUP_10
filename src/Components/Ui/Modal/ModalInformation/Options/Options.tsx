@@ -1,10 +1,11 @@
 import { FiShare2 } from "react-icons/fi";
 import { FiFlag } from "react-icons/fi";
 import { RiUserAddLine } from "react-icons/ri";
-import Profile from "../../../../../assets/images.png";
+// import Profile from "../../../../../assets/images.png";
 import { useState } from "react";
 import CloseButton from "../CloseButton/CloseButton";
 import Modal from "./Modal/Modal";
+import { FaCircleUser } from "react-icons/fa6";
 const Options = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const openModal = () => {
@@ -37,11 +38,12 @@ const Options = () => {
               <div className="w-[34px] h-[34px] rounded-full flex justify-center items-center border-[1px] border-dashed border-gray-400">
                 <RiUserAddLine className="text-gray-400 text-[20px]" />
               </div>
-              <img
+              {/* <img
                 className="w-[37px] h-[36px] rounded-full -ms-2 z-50"
                 src={Profile}
                 alt="User-Profile"
-              />
+              /> */}
+              <FaCircleUser />
             </div>
           </div>
           <button className="bg-red-500 hover:bg-red-600 border rounded-md h-[30px] w-[111px] text-white text-xs">
@@ -52,7 +54,7 @@ const Options = () => {
       {isOpenModal && (
         <div className="fixed flex items-center justify-center bg-black bg-opacity-60 z-50 top-0 left-0 w-full h-full">
           <div className="relative">
-            <Modal/>
+            <Modal />
             <span className="absolute top-36 right-4 mt-[-130px]">
               <CloseButton onClose={closeModal} />
             </span>

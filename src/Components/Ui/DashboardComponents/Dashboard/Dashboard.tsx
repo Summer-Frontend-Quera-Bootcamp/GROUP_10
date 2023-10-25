@@ -107,8 +107,8 @@ const Dashboard = (): JSX.Element => {
   ];
 
   return (
-    <div className="grid grid-cols-4">
-      <div className="grid col-span-3 gap-s pt-xl ps-xl h-screen me-s">
+    <div className="grid grid-cols-4 ">
+      <div className="grid col-span-3  pt-s ps-xl h-screen me-s">
         {/* DashboardWorkspace */}
         {workspaces.map((workspace) => (
           <DashboardWorkspace

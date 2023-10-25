@@ -7,6 +7,8 @@ import { ContainerAuth } from "../../../Components/Ui/Containers";
 import { InputText } from "../../../Components/Ui/Inputs";
 import { ButtonPrimary } from "../../../Components/Ui/Buttons";
 import { AncherPrimary } from "../../../Components/Ui/Anchers";
+import { Outlet } from "react-router";
+import { Link } from "react-router-dom";
 
 const schema = z.object({
   email: z.string().email({ message: ".لطفا ایمیل خود را به درستی وارد کنید" }),
@@ -26,7 +28,7 @@ const Login = () => {
   } = useForm<Check>({ resolver: zodResolver(schema) });
 
   return (
-    <AuthLayout>
+    <>
       <form>
         <ContainerAuth heading="(:به کوئرا تسک منیجر خوش برگشتی  ">
           <div className="flex flex-col">
@@ -59,7 +61,9 @@ const Login = () => {
             </div>
 
             <div dir="rtl" className="flex items-center text-right">
-              <AncherPrimary href="">رمز عبور را فراموش کرده ای؟</AncherPrimary>
+              <AncherPrimary path="/forget-password">
+                رمز عبور را فراموش کرده ای؟
+              </AncherPrimary>
             </div>
 
             <div className="mt-m">
@@ -72,15 +76,15 @@ const Login = () => {
               </ButtonPrimary>
             </div>
 
-            <div className=" inline text-center">
-              <AncherPrimary href="">ثبت نام</AncherPrimary>
-              <p className="mt-5 inline-block">ثبت نام نکرده ای؟</p>
-              <p className="mt-5 inline-block">سلام</p>
+            <div className="inline text-center">
+              <AncherPrimary path="/register">ثبت نام</AncherPrimary>
+              <p className="mt-5  ms-2 inline-block">ثبت نام نکرده ای؟</p>
             </div>
           </div>
+          <Outlet />
         </ContainerAuth>
       </form>
-    </AuthLayout>
+    </>
   );
 };
 

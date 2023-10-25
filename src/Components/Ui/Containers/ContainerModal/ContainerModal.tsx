@@ -32,7 +32,7 @@ export const ContainerModal = ({
       {isOpen && (
         <div
           ref={ref}
-          className={`flex flex-col items-center ${width} rounded-m drop-shadow-2xl bg-white rounded-3xl p-m `}
+          className={`flex flex-col items-center ${width}  drop-shadow-2xl bg-white rounded-2xl p-m `}
         >
           <div className="w-full flex justify-between items-center mb-m">
             {onBack !== undefined ? (

@@ -7,14 +7,21 @@ import { ISiderBarMenu } from "../Interface";
 import Workspace from "../SideBarWorkspace/SideBarWorkspace";
 import { FaCircleUser } from "react-icons/fa6";
 import { GiExitDoor } from "react-icons/gi";
+import { NavLink } from "react-router-dom";
+type SideBarCondition = {
+  accordionStatus: boolean;
+  toggleDarkMode: boolean;
+};
 const SiderBarMenu: React.FC<ISiderBarMenu> = ({
   workspaceData,
   filteredWorkspace,
   setFilteredWorkspace,
   setDisplayModals,
 }) => {
-  const [accordionStatus, setAccordionStatus] = useState<boolean>(true);
-  const [toggleDarkMode, setToggleDarkMode] = useState<boolean>(false);
+  const [sideBarConditions, setSideBarConditions] = useState<SideBarCondition>({
+    accordionStatus: true,
+    toggleDarkMode: false,
+  });
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const filteredData = workspaceData.filter((workspace) =>
       workspace.name.toLowerCase().includes(e.target.value.toLowerCase())
@@ -23,18 +30,23 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
   };
 
   return (
-    <>
-      <div className="h-screen flex flex-col pe-10 border-s-2 ps-s border-gray-100">
-        <div className="text-center mt-xl mb-m">
+    <div className="h-screen overflow-hidden">
+      <div className="h-screen overflow-hidden flex flex-col pe-10 border-s-2 ps-s border-gray-100">
+        <div className="text-center mt-l mb-m">
           <ProjectTitle />
         </div>
         <div
           className="flex w-full items-center hover:cursor-pointer "
-          onClick={() => setAccordionStatus((prevState) => !prevState)}
+          onClick={() =>
+            setSideBarConditions((prevState) => ({
+              ...prevState,
+              accordionStatus: !prevState.accordionStatus,
+            }))
+          }
         >
           <span
             className={`font-black duration-300 transition ease-in-out ${
-              !accordionStatus && "rotate-90"
+              !sideBarConditions.accordionStatus && "rotate-90"
             }`}
           >
             <IoChevronForwardSharp />
@@ -45,7 +57,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
         </div>
         <div
           className={`transition-all duration-500 ease-in-out  ${
-            accordionStatus
+            sideBarConditions.accordionStatus
               ? "invisible opacity-0 h-0"
               : "visible opacity-100 h-auto"
           }`}
@@ -90,12 +102,15 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
           </div>
         </div>
         <div className="mt-auto mb-l flex gap-s flex-col ">
-          <div className="flex flex-row-reverse items-center ">
-            <span className="ms-xs text-2xl">
-              <FaCircleUser />
-            </span>
-            <p className="text-body-m font-bold">امیر عبدالعظیمی</p>
-          </div>
+          {/* User  */}
+          <NavLink to="/profile/account-user">
+            <div className="flex flex-row-reverse items-center ">
+              <span className="ms-xs text-2xl">
+                <FaCircleUser />
+              </span>
+              <p className="text-body-m font-bold">امیر عبدالعظیمی</p>
+            </div>
+          </NavLink>
           <div className="flex flex-row-reverse items-center justify-between">
             <button className="flex items-center text-gray-primary flex-start flex-row-reverse">
               <span className="text-3xl ">
@@ -105,15 +120,20 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
             </button>
             <button
               className={`transition-all  delay-75 duration-500 w-16 flex rounded-lg p-1 items-center gap-xs ${
-                toggleDarkMode ? "bg-gray-darker " : "bg-gray-secondary "
+                sideBarConditions.toggleDarkMode
+                  ? "bg-gray-darker "
+                  : "bg-gray-secondary "
               }`}
               onClick={() => {
-                setToggleDarkMode((prevState) => !prevState);
+                setSideBarConditions((prevState) => ({
+                  ...prevState,
+                  toggleDarkMode: !prevState.toggleDarkMode,
+                }));
               }}
             >
               <span
                 className={`p-1 transition-all duration-500 text-white flex items-center justify-center rounded bg-gray-primary text-lg ${
-                  toggleDarkMode
+                  sideBarConditions.toggleDarkMode
                     ? "visible opacity-100"
                     : "invisible  opacity-0"
                 }`}
@@ -122,7 +142,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
               </span>
               <span
                 className={`p-1 transition-all duration-500 text-black bg-white flex items-center justify-center rounded text-lg ${
-                  toggleDarkMode
+                  sideBarConditions.toggleDarkMode
                     ? "invisible  opacity-0"
                     : "visible opacity-100"
                 }`}
@@ -133,7 +153,7 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
