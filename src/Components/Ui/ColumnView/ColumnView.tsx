@@ -1,8 +1,24 @@
-import { ButtonNewTask } from "../Buttons";
+import { useState } from "react";
+import { ButtonIcon, ButtonNewTask } from "../Buttons";
 import { ColumnHeader, ContainerColTask } from "../Containers";
+import { NewTask } from "../NewTask";
+
 const ColumnView = () => {
+  const [newTask, setNewTask] = useState(false);
   return (
     <div className="flex flex-row-reverse h-[78vh] gap-x-s overflow-y-auto pr-4">
+      {newTask && (
+        <>
+          <div className="fixed flex justify-center items-center top-[-250px] right-[-300px] w-[130vw] h-[130vh] bg-black opacity-30 z-10" />
+          <div className="fixed top-[20%] right-[20%] z-20">
+            <NewTask
+              onClose={() => {
+                setNewTask(false);
+              }}
+            />
+          </div>
+        </>
+      )}
       <div className="w-[250px]">
         <ColumnHeader
           color="orange"
@@ -41,7 +57,11 @@ const ColumnView = () => {
           date="۵ -مهر "
         />
         <div>
-          <ButtonNewTask onClick={() => {}} />
+          <ButtonNewTask
+            onClick={() => {
+              setNewTask(true);
+            }}
+          />
         </div>
       </div>
       <div className="w-[250px]">
@@ -94,7 +114,11 @@ const ColumnView = () => {
           taskStatus={{ allTasks: 15, tasksDone: 4 }}
           date="۵ -مهر "
         />
-        <ButtonNewTask onClick={() => {}} />
+        <ButtonNewTask
+          onClick={() => {
+            setNewTask(true);
+          }}
+        />
       </div>
       <div>
         <ColumnHeader
@@ -106,7 +130,11 @@ const ColumnView = () => {
           name="Pending"
           count={0}
         />
-        <ButtonNewTask onClick={() => {}} />
+        <ButtonNewTask
+          onClick={() => {
+            setNewTask(true);
+          }}
+        />
       </div>
       <div className="w-[250px]">
         <ColumnHeader
@@ -170,7 +198,18 @@ const ColumnView = () => {
           taskStatus={{ allTasks: 15, tasksDone: 4 }}
           date="۵ -مهر "
         />
-        <ButtonNewTask onClick={() => {}} />
+        <ButtonNewTask
+          onClick={() => {
+            setNewTask(true);
+          }}
+        />
+      </div>
+      <div className=" absolute bottom-[50px] left-[50px]">
+        <ButtonIcon
+          useCase="newTask"
+          onClick={() => {
+            setNewTask(true);
+          }}></ButtonIcon>
       </div>
     </div>
   );
