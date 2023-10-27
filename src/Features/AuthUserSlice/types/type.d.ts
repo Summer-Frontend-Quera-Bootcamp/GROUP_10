@@ -1,19 +1,14 @@
 export type User = {
-  user: number;
+  id: string;
   username: string;
   email: string;
 };
 
-export type authToken = {
-  refreshToken: string;
-  accessToken: string;
-};
-
-export type initialState = {
-  authToken: { accessToken: string; refreshToken: string } | null;
+export type initialStateType = {
+  authToken: { access: string; refresh: string } | null;
   user: User | null;
-  isSuccess: boolean;
   isLoading: boolean;
   isError: boolean;
+  isSuccess: boolean;
   message: unknown;
 };

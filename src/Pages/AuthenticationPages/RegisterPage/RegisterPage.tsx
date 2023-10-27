@@ -3,13 +3,21 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 //------ Other Components -----//
 
-import AuthLayout from "../../../Layouts/AuthLayout/AuthLayout";
 import { ButtonPrimary } from "../../../Components/Ui/Buttons";
 import { ContainerAuth } from "../../../Components/Ui/Containers";
 import { InputText } from "../../../Components/Ui/Inputs";
+import { useAppDispatch, useAppSelector } from "../../../Features/Hooks/Hooks";
+import {
+  register as registerApi,
+  reset,
+} from "../../../Features/AuthUserSlice/AuthSlice/AuthUserSlice";
+import Terms from "../../../Components/Ui/Terms/Terms";
 
 //------ Zod Schema here ------//
 
@@ -33,7 +41,8 @@ const schema = z.object({
 
 //------ Types & Interfaces ------//
 
-type IFormValues = z.infer<typeof schema>;
+export type IFormValues = z.infer<typeof schema>;
+export type FieldValues = Record<string, unknown>;
 
 //---- Component Starts Here ----//
 
@@ -45,15 +54,42 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormValues>({
+  } = useForm<FieldValues>({
     resolver: zodResolver(schema),
   });
 
   //---------- Functions ---------//
-
-  const onSubmit = (data: IFormValues) => console.log(data);
-
-  //----------- Return -----------//
+  const Navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { isSuccess, isLoading, isError, message } = useAppSelector(
+    (state) => state.auth
+  );
+  useEffect(() => {
+    if (isError) {
+      toast.dismiss();
+      toast.error(`${message}`);
+      dispatch(reset());
+    }
+    if (isSuccess) {
+      toast.dismiss();
+      toast.success(`ثبت نام با موفقیت انجام شد ✅`, {
+        autoClose: 1000,
+        rtl: true,
+      });
+      Navigate("/login");
+      dispatch(reset());
+    }
+  }, [isSuccess, isError, message, isLoading, Navigate, dispatch]);
+  const onSubmit = ({ username, email, password }: FieldValues) => {
+    dispatch(
+      registerApi({
+        username,
+        email,
+        password,
+      })
+    );
+  };
+  const [openTermsModal, setPpenTermsModal] = useState<boolean>(false);
 
   return (
     <>
@@ -109,6 +145,9 @@ const Register = () => {
               <label
                 htmlFor="guideline"
                 className="mx-xs font-bold cursor-pointer"
+                onClick={() => {
+                  setPpenTermsModal((prevState) => !prevState);
+                }}
               >
                 قوانین و مقررات را می‌پذیرم.
               </label>
@@ -119,12 +158,18 @@ const Register = () => {
               </p>
             )}
             <div className="mt-m">
-              <ButtonPrimary onClick={() => {}} bigger={true} type="submit">
+              <ButtonPrimary
+                onClick={() => {}}
+                bigger={true}
+                type="submit"
+                disabled={isLoading}
+              >
                 ثبت‌نام
               </ButtonPrimary>
             </div>
           </div>
         </ContainerAuth>
+        {openTermsModal && <Terms closeModal={setPpenTermsModal} />}
       </form>
     </>
   );

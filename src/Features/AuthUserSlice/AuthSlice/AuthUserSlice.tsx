@@ -1,61 +1,83 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authMethods from "../authMethods/authMethods";
 import { AxiosError } from "axios";
-import { initialState } from "../types/type";
-
-const initialState: initialState = {
-  user: JSON.parse(localStorage.getItem("user") as string) || null,
-  authToken: JSON.parse(localStorage.getItem("authToken") as string) || null,
-  isSuccess: false,
-  isError: false,
-  isLoading: false,
-  message: "",
+// import { initialStateType,User } from "../types/type";
+import { FieldValues } from "../../../Pages/AuthenticationPages/RegisterPage/RegisterPage";
+type User = {
+  id: string;
+  username: string;
+  email: string;
+  settings: any[];
 };
 
-export const login = createAsyncThunk(
-  "auth/login",
-  async (userData, thunkApi) => {
-    try {
-      return await authMethods.login(userData);
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        const message = error.response?.data.message || error.message;
-        return thunkApi.rejectWithValue(message);
-      }
-    }
-  }
-);
+type initialStateType = {
+  authToken: { access: string; refresh: string } | null;
+  user: User | null;
+  isLoading: boolean;
+  isError: boolean;
+  isSuccess: boolean;
+  message: unknown;
+};
 
+const initialState: initialStateType = {
+  user: JSON.parse(localStorage.getItem("user") as string) || null,
+  authToken: JSON.parse(localStorage.getItem("authToken") as string) || null,
+  isLoading: false,
+  isError: false,
+  isSuccess: false,
+  message: "",
+};
 export const register = createAsyncThunk(
-  "auth/register",
-  async (userData, thunkApi) => {
+  "Auth/register",
+  async (userData: FieldValues, thunkAPI) => {
     try {
       return await authMethods.register(userData);
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof AxiosError) {
-        const message = error.response?.data.message || error.message;
-        return thunkApi.rejectWithValue(message);
+        const message =
+          error?.response?.data?.message || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
       }
+      throw error;
     }
   }
 );
-
-export const forgetPass = createAsyncThunk(
-  "auth/forgetPass",
-  async (email, thunkApi) => {
+export const login = createAsyncThunk(
+  "Auth/login",
+  async (userData: FieldValues, thunkAPI) => {
     try {
-      return await authMethods.forgetPass(email);
-    } catch (error) {
+      return await authMethods.login(userData);
+    } catch (error: unknown) {
       if (error instanceof AxiosError) {
-        const message = error.response?.data.message || error.message;
-        return thunkApi.rejectWithValue(message);
+        const message =
+          error?.response?.data?.message || error.message || error.toString();
+
+        return thunkAPI.rejectWithValue(message);
       }
+      throw error;
     }
   }
 );
 
-const authUserSlice = createSlice({
-  name: "auth",
+export const forgot = createAsyncThunk(
+  "Auth/forget-password",
+  async (userEmail: FieldValues, thunkAPI) => {
+    try {
+      return await authMethods.forgot(userEmail);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message =
+          error?.response?.data?.message || error.message || error.toString();
+
+        return thunkAPI.rejectWithValue(message);
+      }
+      throw error;
+    }
+  }
+);
+
+const authSlice = createSlice({
+  name: "Auth",
   initialState,
   reducers: {
     reset: (state) => {
@@ -64,48 +86,57 @@ const authUserSlice = createSlice({
       state.isError = false;
       state.message = "";
     },
+    logOut: (state) => {
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("user");
+      state.user = null;
+      state.authToken = null;
+    },
+    authTokenUpdate: (state, action) => {
+      state.authToken = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(login.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        const { accessToken, refreshToken } = action.payload.data;
-        state.authToken = { accessToken, refreshToken };
-        state.user = action.payload.data;
-        state.message = action.payload;
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
       .addCase(register.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = action.payload;
         state.authToken = null;
+        state.message = action.payload.message;
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(forgetPass.pending, (state) => {
+      .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(forgetPass.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        const { access, refresh } = action.payload;
+        state.authToken = { access, refresh };
+        state.user = action.payload.data;
+        state.message = action.payload.message;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
         state.message = action.payload;
       })
-      .addCase(forgetPass.rejected, (state, action) => {
+      .addCase(forgot.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(forgot.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+      .addCase(forgot.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -113,10 +144,5 @@ const authUserSlice = createSlice({
   },
 });
 
-export const { reset } = authUserSlice.actions;
-export default authUserSlice.reducer;
-
-// RestPassword
-// ForgetPassword
-// RefreshToken
-// Logout
+export const { reset, logOut, authTokenUpdate } = authSlice.actions;
+export default authSlice.reducer;

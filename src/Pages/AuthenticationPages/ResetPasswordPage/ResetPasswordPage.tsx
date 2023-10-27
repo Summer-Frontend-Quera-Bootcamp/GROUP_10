@@ -6,6 +6,13 @@ import { ButtonPrimary } from "../../../Components/Ui/Buttons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../Features/Hooks/Hooks";
+import { reset } from "../../../Features/AuthUserSlice/AuthSlice/AuthUserSlice";
+import axios from "axios";
+const API_URL = "https://quera.iran.liara.run/";
 const ResetPassword = () => {
   const PasswordResetSchema = z
     .object({
@@ -30,8 +37,55 @@ const ResetPassword = () => {
     formState: { errors },
   } = useForm<IFormValues>({
     resolver: zodResolver(PasswordResetSchema),
+    defaultValues: {
+      password: "",
+      confirmPassword: "",
+    },
   });
-  const onSubmit = (data: IFormValues) => console.log(data);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { isSuccess, isLoading, isError, message } = useAppSelector(
+    (state) => state.auth
+  );
+  useEffect(() => {
+    if (isError) {
+      toast.dismiss();
+      toast.error(`لینک بازیابی رمز منقضی شده است ❌`);
+      dispatch(reset());
+    }
+    if (isSuccess) {
+      toast.dismiss();
+      toast.success(`تغییر رمز عبور با موفقیت انجام شد ✅ `, {
+        autoClose: 1000,
+        rtl: true,
+      });
+      navigate("/login");
+      dispatch(reset());
+    }
+  }, [isSuccess, isError, message, isLoading, navigate, dispatch]);
+  const [searchParams] = useSearchParams();
+  const onSubmit = async (data: IFormValues) => {
+    const { token } = Object.fromEntries([...searchParams]);
+    isLoading;
+    try {
+      const response = await axios.patch(
+        API_URL + "accounts/reset-password/set-password/",
+        {
+          token: token,
+          password: data.password,
+          password1: data.confirmPassword,
+        }
+      );
+      console.log(response.data);
+      isSuccess;
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+      if (axios.isAxiosError(error)) {
+        isError;
+      }
+    }
+  };
 
   return (
     <>
@@ -65,7 +119,12 @@ const ResetPassword = () => {
               )}
             </div>
             <div>
-              <ButtonPrimary onClick={() => {}} bigger={true} type="submit">
+              <ButtonPrimary
+                onClick={() => {}}
+                bigger={true}
+                type="submit"
+                disabled={isLoading}
+              >
                 تغییر رمز عبور
               </ButtonPrimary>
             </div>

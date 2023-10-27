@@ -7,7 +7,10 @@ import { ISiderBarMenu } from "../Interface";
 import Workspace from "../SideBarWorkspace/SideBarWorkspace";
 import { FaCircleUser } from "react-icons/fa6";
 import { GiExitDoor } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {logOut as logoutUser } from "../../../../Features/AuthUserSlice/AuthSlice/AuthUserSlice";
+import { useAppDispatch,useAppSelector } from "../../../../Features/Hooks/Hooks";
+import { resetAllState } from "../../../../Features/app/store";
 type SideBarCondition = {
   accordionStatus: boolean;
   toggleDarkMode: boolean;
@@ -22,12 +25,17 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
     accordionStatus: true,
     toggleDarkMode: false,
   });
+
+  const dispatch = useAppDispatch();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const filteredData = workspaceData.filter((workspace) =>
       workspace.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredWorkspace(filteredData);
   };
+
+
 
   return (
     <div className="h-screen overflow-hidden">
@@ -113,7 +121,13 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
           </Link>
           <div className="flex flex-row-reverse items-center justify-between">
             <Link to="/login">
-              <button className="flex items-center text-gray-primary flex-start flex-row-reverse">
+              <button className="flex items-center text-gray-primary flex-start flex-row-reverse" 
+              onClick={()=>{
+                dispatch(resetAllState())
+                dispatch(logoutUser())
+              }}
+              
+              >
                 <span className="text-3xl ">
                   <GiExitDoor />
                 </span>
