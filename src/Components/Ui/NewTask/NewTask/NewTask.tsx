@@ -38,8 +38,7 @@ const NewTask = ({ onClose }: INewTaskProps) => {
       {isOpen && (
         <div
           ref={ref}
-          className="w-[1000px] h-[600px] flex flex-col justify-between rounded-lg shadow-xl p-m relative"
-        >
+          className="w-[1000px] h-[600px] flex flex-col justify-between rounded-lg shadow-xl p-m relative bg-white">
           {/* Header */}
           <div className="flex flex-row-reverse items-center w-full">
             <RiCheckboxBlankFill size="20" className="ml-xs text-gray-300" />
@@ -80,8 +79,7 @@ const NewTask = ({ onClose }: INewTaskProps) => {
             <p className="ml-xs font-bold">افزودن پیوست </p>
             <label
               htmlFor="file-upload"
-              className="flex flex-row items-center gap-xs border-2 border-brand-primary rounded px-xs py-[3px] font-bold"
-            >
+              className="flex flex-row items-center gap-xs border-2 border-brand-primary rounded px-xs py-[3px] font-bold">
               آپلود فایل
               <BiLink size="20" className="text-brand-primary" />
             </label>
@@ -100,7 +98,7 @@ const NewTask = ({ onClose }: INewTaskProps) => {
             </div>
           )}
           {showCalendar && (
-            <div className="absolute left-[700px] top-[300px] ">
+            <div className="absolute left-[300px] top-[100px] ">
               <MinimalistDatePicker
                 onData={(data) => {
                   console.log(data);
@@ -112,7 +110,8 @@ const NewTask = ({ onClose }: INewTaskProps) => {
           {showTagSearch && (
             <div className="absolute left-[830px] top-[430px] ">
               <TagSearch
-                onData={(data) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onData={(data: any) => {
                   console.log(data);
                   setShowTagSearch(false);
                 }}
@@ -127,24 +126,21 @@ const NewTask = ({ onClose }: INewTaskProps) => {
                 onClick={() => {
                   setShowTagSearch(true);
                 }}
-                className="w-[50px] min-h-[50px] flex justify-center items-center rounded-full border-dotted border-2 border-gray-300 cursor-pointer hover:border-gray-primary"
-              >
+                className="w-[50px] min-h-[50px] flex justify-center items-center rounded-full border-dotted border-2 border-gray-300 cursor-pointer hover:border-gray-primary">
                 <BsTags size="25" className="text-gray-300" />
               </span>
               <span
                 onClick={() => {
                   setShowCalendar(true);
                 }}
-                className="w-[50px] min-h-[50px] flex justify-center items-center rounded-full border-dotted border-2 border-gray-300 cursor-pointer hover:border-gray-primary"
-              >
+                className="w-[50px] min-h-[50px] flex justify-center items-center rounded-full border-dotted border-2 border-gray-300 cursor-pointer hover:border-gray-primary">
                 <BsCalendar3 size="23" className="text-gray-300" />
               </span>
               <span
                 className="w-[50px] min-h-[50px] flex justify-center items-center rounded-full border-dotted border-2 border-gray-300 cursor-pointer hover:border-gray-primary"
                 onClick={() => {
                   setShowPriority(true);
-                }}
-              >
+                }}>
                 <FiFlag size="25" className="text-gray-300" />
               </span>
             </div>

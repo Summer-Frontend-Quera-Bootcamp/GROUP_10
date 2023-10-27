@@ -7,7 +7,10 @@ import { ISiderBarMenu } from "../Interface";
 import Workspace from "../SideBarWorkspace/SideBarWorkspace";
 import { FaCircleUser } from "react-icons/fa6";
 import { GiExitDoor } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {logOut as logoutUser } from "../../../../Features/AuthUserSlice/AuthSlice/AuthUserSlice";
+import { useAppDispatch,useAppSelector } from "../../../../Features/Hooks/Hooks";
+import { resetAllState } from "../../../../Features/app/store";
 type SideBarCondition = {
   accordionStatus: boolean;
   toggleDarkMode: boolean;
@@ -22,12 +25,17 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
     accordionStatus: true,
     toggleDarkMode: false,
   });
+
+  const dispatch = useAppDispatch();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const filteredData = workspaceData.filter((workspace) =>
       workspace.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredWorkspace(filteredData);
   };
+
+
 
   return (
     <div className="h-screen overflow-hidden">
@@ -103,21 +111,29 @@ const SiderBarMenu: React.FC<ISiderBarMenu> = ({
         </div>
         <div className="mt-auto mb-l flex gap-s flex-col ">
           {/* User  */}
-          <NavLink to="/profile/account-user">
+          <Link to="/profile/account-user">
             <div className="flex flex-row-reverse items-center ">
               <span className="ms-xs text-2xl">
                 <FaCircleUser />
               </span>
               <p className="text-body-m font-bold">امیر عبدالعظیمی</p>
             </div>
-          </NavLink>
+          </Link>
           <div className="flex flex-row-reverse items-center justify-between">
-            <button className="flex items-center text-gray-primary flex-start flex-row-reverse">
-              <span className="text-3xl ">
-                <GiExitDoor />
-              </span>
-              <span className="mr-xs text-body-m">خروج</span>
-            </button>
+            <Link to="/login">
+              <button className="flex items-center text-gray-primary flex-start flex-row-reverse" 
+              onClick={()=>{
+                dispatch(resetAllState())
+                dispatch(logoutUser())
+              }}
+              
+              >
+                <span className="text-3xl ">
+                  <GiExitDoor />
+                </span>
+                <span className="mr-xs text-body-m">خروج</span>
+              </button>
+            </Link>
             <button
               className={`transition-all  delay-75 duration-500 w-16 flex rounded-lg p-1 items-center gap-xs ${
                 sideBarConditions.toggleDarkMode

@@ -16,7 +16,7 @@ const BoardLayout: React.FC<IBoardLayout> = (): JSX.Element => {
           <NavBar />
           {/* Childrens */}
           <div
-            className={`w-full h-full gap-[10px] ${
+            className={`w-full row-span-5 h-full gap-[10px] ${
               pathname === "/boards/calendarView" && "mt-4"
             }  `}
           >

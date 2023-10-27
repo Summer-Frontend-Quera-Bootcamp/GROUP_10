@@ -1,36 +1,41 @@
 import axios from "axios";
+import { FieldValues } from "../../../Pages/AuthenticationPages/RegisterPage/RegisterPage";
 
 const API_URL = "https://quera.iran.liara.run/";
-
-const login = async (userData) => {
+const login = async (userData: FieldValues) => {
   const response = await axios.post(API_URL + "accounts/login/", userData);
+
   if (response.data) {
     localStorage.setItem(
       "authToken",
       JSON.stringify({
-        accessToken: response.data.data.accessToken,
-        refreshToken: response.data.data.refreshToken,
+        access: response.data.access,
+        refresh: response.data.refresh,
       })
     );
-    localStorage.setItem("user", JSON.stringify(response.data.data));
+    localStorage.setItem(
+      "user",
+      JSON.stringify(response.data)
+    );
   }
   return response.data;
 };
+const register = async (userData: FieldValues) => {
+    const response = await axios.post(API_URL + "accounts/", userData);
+    return response.data;
+  };
+  
+const forgot = async (userEmail: FieldValues) => {
+  const response = await axios.post(API_URL + "accounts/reset-password/", userEmail);
 
-const register = async (userData) => {
-  const response = await axios.post(API_URL + "accounts/register/", userData);
   return response.data;
 };
 
-const forgetPass = async (email) => {
-  const response = await axios.post(API_URL + "accounts/reset-password", email);
-  return response.data;
-};
 
-const authService = {
+const authMethods = {
   register,
   login,
-  forgetPass,
+  forgot,
 };
 
-export default authService;
+export default authMethods;

@@ -7,4 +7,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ["src/Components/**/*.tsx"],
   },
+  server:{
+    port:3000
+  }
 });

@@ -6,7 +6,7 @@ import Options from "./Options/Options";
 
 const ModalInformation = () => {
   return (
-    <ContainerModal onClose={() => {}} width="w-[1400px]">
+    <div>
       <div className="relative h-[550px]">
         <div className="grid grid-cols-2 h-[600px] rounded-xl overflow-hidden p-2 absolute left-[-30px] bottom-[-50px]">
           <div className="border-solid border-e col-span-1 border-b">
@@ -27,7 +27,7 @@ const ModalInformation = () => {
           </div>
         </div>
       </div>
-    </ContainerModal>
+    </div>
   );
 };
 

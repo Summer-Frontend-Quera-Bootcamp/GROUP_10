@@ -84,7 +84,7 @@ const NavBar = () => {
           }
         >
           <button
-            className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px] hover:text-cyan-primary hover:font-extrabold"
+            className="flex flex-row-reverse gap-x-xs items-center pl-4 border-l-[2px]"
             onClick={onCalenderClick}
           >
             <MdDateRange />

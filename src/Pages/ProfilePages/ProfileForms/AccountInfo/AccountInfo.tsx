@@ -1,4 +1,4 @@
-import { ButtonPrimary } from "../../../Buttons";
+import { ButtonPrimary } from "../../../../Components/Ui/Buttons";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -71,7 +71,7 @@ const AccountInfo = () => {
         <input
           id="currentPassword"
           type="password"
-          className="border border-gray-primary rounded-md w-full grow text-right"
+          className="border border-gray-primary h-[72px] rounded-md w-full grow text-right"
         />
       </div>
       <div className="flex flex-col text-right gap-xs">
