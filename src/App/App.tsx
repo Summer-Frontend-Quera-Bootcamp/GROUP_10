@@ -89,7 +89,14 @@ const App: React.FC<IPropsApp> = (/*props: IPropsApp*/): JSX.Element => {
         />
 
         <Route path="profile" element={<SideBarUi />}>
-          <Route path="/profile" element={<UserInfo />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute path="account-user">
+                <UserInfo />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="account-info"
             element={

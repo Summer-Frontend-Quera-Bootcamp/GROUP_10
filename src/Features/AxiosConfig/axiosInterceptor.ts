@@ -1,5 +1,8 @@
 import axios from "axios";
-import { authTokenUpdate, logOut } from "../AuthUserSlice/AuthSlice/AuthUserSlice";
+import {
+  authTokenUpdate,
+  logOut,
+} from "../AuthUserSlice/AuthSlice/AuthUserSlice";
 import store from "../app/store";
 import API from "./apiConfig";
 import "./interceptorHandler";
@@ -9,7 +12,7 @@ let authToken = JSON.parse(localStorage.getItem("authToken") || "null");
 API.interceptors.request.use(
   async (config) => {
     if (authToken?.access) {
-      config.headers['Authorization'] = `Bearer ${authToken.accessToken}`;
+      config.headers["Authorization"] = `Bearer ${authToken.accessToken}`;
     }
     return config;
   },
@@ -29,14 +32,20 @@ API.interceptors.response.use(
       origReq._retry = true;
       try {
         const token = JSON.parse(localStorage.getItem("authToken") || "{}");
-        const response = await axios.post("https://quera.iran.liara.run/accounts/refresh/", {
-          refresh: token.refresh,
-        });
-        const { access: newAccessToken, refresh: currentRefreshToken } = response.data;
+        const response = await axios.post(
+          "https://quera.iran.liara.run/accounts/refresh/",
+          {
+            refresh: token.refresh,
+          }
+        );
+        const { access: newAccessToken, refresh: currentRefreshToken } =
+          response.data;
         authToken = { access: newAccessToken, refresh: currentRefreshToken };
         localStorage.setItem("authToken", JSON.stringify(authToken));
         store.dispatch(authTokenUpdate(authToken));
-        API.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+        API.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${newAccessToken}`;
         return API(origReq);
       } catch (refreshError) {
         store.dispatch(logOut());

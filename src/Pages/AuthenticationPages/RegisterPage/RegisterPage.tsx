@@ -89,7 +89,7 @@ const Register = () => {
       })
     );
   };
-  const [openTermsModal, setPpenTermsModal] = useState<boolean>(false);
+  const [openTermsModal, setOpenTermsModal] = useState<boolean>(false);
 
   return (
     <>
@@ -146,7 +146,7 @@ const Register = () => {
                 htmlFor="guideline"
                 className="mx-xs font-bold cursor-pointer"
                 onClick={() => {
-                  setPpenTermsModal((prevState) => !prevState);
+                  setOpenTermsModal((prevState) => !prevState);
                 }}
               >
                 قوانین و مقررات را می‌پذیرم.
@@ -169,7 +169,7 @@ const Register = () => {
             </div>
           </div>
         </ContainerAuth>
-        {openTermsModal && <Terms closeModal={setPpenTermsModal} />}
+        {openTermsModal && <Terms closeModal={setOpenTermsModal} />}
       </form>
     </>
   );
